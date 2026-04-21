@@ -1,5 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
 import PublicLayout from '@/Layouts/PublicLayout';
+import { HeroGeometric } from '@/components/ui/shape-landing-hero';
 
 const formatPrice = (price) =>
     new Intl.NumberFormat('fr-FR', {
@@ -28,69 +29,15 @@ export default function HomeIndex({ products = [], latestNews = [], convention =
         <PublicLayout>
             <Head title="Accueil" />
 
-            <section className="relative isolate overflow-hidden bg-slate-50">
-                <div className="absolute -left-32 top-10 h-72 w-72 rounded-full bg-amber-300/30 blur-3xl" />
-                <div className="absolute right-0 top-0 h-[420px] w-[420px] rounded-full bg-indigo-200/50 blur-3xl" />
-
-                <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 pb-14 pt-16 sm:px-6 lg:grid-cols-12 lg:items-center lg:gap-8 lg:px-8 lg:pb-20 lg:pt-24">
-                    <div className="relative z-10 lg:col-span-6">
-                        <p className="inline-flex rounded-full border border-slate-300/70 bg-white/80 px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-600">
-                            {convention?.year ? `Light Convention ${convention.year}` : 'Light Convention'}
-                        </p>
-
-                        <h1 className="mt-6 max-w-2xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-slate-950 sm:text-5xl lg:text-7xl">
-                            La lumière en mouvement.
-                        </h1>
-
-                        <p className="mt-6 max-w-xl text-base leading-relaxed text-slate-700 sm:text-lg">
-                            Light Foursquare connecte foi, jeunesse et excellence créative pour vivre une convention immersive et commander les articles officiels via WhatsApp.
-                        </p>
-
-                        <div className="mt-8 flex flex-wrap gap-3">
-                            <Link
-                                href="/convention"
-                                className="inline-flex items-center rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-slate-800"
-                            >
-                                Voir la convention
-                            </Link>
-                            <Link
-                                href="/shop"
-                                className="inline-flex items-center rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-900 transition duration-300 hover:-translate-y-0.5 hover:border-slate-500"
-                            >
-                                Ouvrir la boutique
-                            </Link>
-                        </div>
-                    </div>
-
-                    <div className="relative z-10 lg:col-span-6">
-                        <div className="grid grid-cols-6 grid-rows-6 gap-3 sm:gap-4">
-                            <div className="col-span-4 row-span-6 overflow-hidden rounded-[2rem] bg-slate-200">
-                                <img
-                                    src={convention?.poster || 'https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80'}
-                                    alt={convention?.title || 'Light Convention'}
-                                    className="h-full w-full object-cover transition duration-700 hover:scale-105"
-                                />
-                            </div>
-                            <div className="col-span-2 row-span-3 overflow-hidden rounded-[1.5rem] bg-slate-100">
-                                <img
-                                    src="https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=700&q=80"
-                                    alt="Communauté Light"
-                                    className="h-full w-full object-cover transition duration-700 hover:scale-105"
-                                />
-                            </div>
-                            <div className="col-span-2 row-span-3 rounded-[1.5rem] bg-gradient-to-br from-amber-300 via-amber-200 to-indigo-200 p-4 text-slate-900 shadow-xl shadow-amber-200/40">
-                                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-700">Prochaine édition</p>
-                                <p className="mt-3 text-xl font-black leading-tight">
-                                    {convention?.title || 'Convention Light'}
-                                </p>
-                                <p className="mt-2 text-sm font-medium text-slate-700">
-                                    {convention?.location || 'Abidjan'}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                        <HeroGeometric
+                badge={convention?.year ? `Light Convention ${convention.year}` : "Light Convention"}
+                title1="LA LUMIÈRE"
+                title2="EN MOUVEMENT"
+                description="Light Foursquare connecte foi, jeunesse et excellence créative pour vivre une convention immersive et impacter une génération entière."
+                backgroundImage={convention?.poster || "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=2000&q=80"}
+                primaryCta={{ label: "Voir la convention", href: "/convention" }}
+                secondaryCta={{ label: "Ouvrir la boutique", href: "/shop" }}
+            />
 
             <section className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-8">
                 <div className="lg:col-span-5">
