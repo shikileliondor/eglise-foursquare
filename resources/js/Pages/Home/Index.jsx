@@ -1,6 +1,6 @@
 import { Head, Link } from '@inertiajs/react';
 import PublicLayout from '@/Layouts/PublicLayout';
-import { HeroGeometric } from '@/components/ui/shape-landing-hero';
+import HeroLight from '@/components/ui/hero-light';
 
 const formatPrice = (price) =>
     new Intl.NumberFormat('fr-FR', {
@@ -29,15 +29,7 @@ export default function HomeIndex({ products = [], latestNews = [], convention =
         <PublicLayout>
             <Head title="Accueil" />
 
-                        <HeroGeometric
-                badge={convention?.year ? `Light Convention ${convention.year}` : "Light Convention"}
-                title1="LA LUMIÈRE"
-                title2="EN MOUVEMENT"
-                description="Light Foursquare connecte foi, jeunesse et excellence créative pour vivre une convention immersive et impacter une génération entière."
-                backgroundImage={convention?.poster || "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=2000&q=80"}
-                primaryCta={{ label: "Voir la convention", href: "/convention" }}
-                secondaryCta={{ label: "Ouvrir la boutique", href: "/shop" }}
-            />
+                        <HeroLight />
 
             <section className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-12 lg:gap-12 lg:px-8">
                 <div className="lg:col-span-5">
