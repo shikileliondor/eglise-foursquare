@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\ConventionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IntroController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+Route::get('/intro', [IntroController::class, 'index'])->name('intro');
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
