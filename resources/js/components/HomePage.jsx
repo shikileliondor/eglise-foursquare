@@ -29,7 +29,7 @@ export default function HomePage() {
                 <DemoFloatingHeader />
             </section>
 
-            <section className="mx-auto flex max-w-6xl flex-col items-start px-6 pb-16 md:pb-20">
+            {/* <section className="mx-auto flex max-w-6xl flex-col items-start px-6 pb-16 md:pb-20">
                 <h1 className="text-4xl font-extrabold leading-tight md:text-6xl">Welcome to Light Foursquare</h1>
                 <p className="mt-4 max-w-2xl text-lg text-slate-600 md:text-xl">Youth movement of Foursquare Church</p>
                 <button
@@ -38,7 +38,7 @@ export default function HomePage() {
                 >
                     Discover the Convention
                 </button>
-            </section>
+            </section> */}
 
             <section className="bg-[#f4f4f4] py-16 md:py-20">
                 <div className="mx-auto max-w-6xl px-6">
