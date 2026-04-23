@@ -13,13 +13,13 @@ export default function HomeIndex() {
             <main className="relative min-h-screen w-full overflow-hidden bg-black">
                 <IntroSplash show={showIntro} onComplete={() => setShowIntro(false)} />
 
-                <section className="h-screen w-full">
+                {/* <section className="h-screen w-full">
                     <img
                         src="/images/banniere.png"
                         alt="Bannière Light Foursquare"
                         className="h-full w-full object-cover object-center"
                     />
-                </section>
+                </section> */}
             </main>
         </>
     );
