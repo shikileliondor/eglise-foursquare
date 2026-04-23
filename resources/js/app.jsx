@@ -1,6 +1,7 @@
 import '../css/app.css';
 import './bootstrap';
 
+import SiteFooter from '@/components/ui/site-footer';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
@@ -30,7 +31,14 @@ createInertiaApp({
     setup({ el, App, props }) {
         const root = createRoot(el);
 
-        root.render(<App {...props} />);
+        root.render(
+            <div id="top" className="flex min-h-screen flex-col">
+                <main className="flex-1">
+                    <App {...props} />
+                </main>
+                <SiteFooter />
+            </div>,
+        );
     },
     progress: {
         color: '#4B5563',
