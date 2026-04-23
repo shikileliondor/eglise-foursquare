@@ -53,19 +53,19 @@ export default function IntroScreen() {
             <div className="text-center">
                 <AnimatedLetters
                     text="LIGHT"
-                    className="bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 bg-clip-text text-6xl font-extrabold tracking-[0.18em] text-transparent md:text-8xl"
+                    className="font-chewy bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 bg-clip-text text-6xl font-extrabold tracking-[0.18em] text-transparent md:text-8xl"
                     delay={0}
                 />
 
                 <AnimatedLetters
                     text="FOURSQUARE"
-                    className="mt-4 text-3xl font-bold tracking-[0.22em] text-blue-600 md:text-5xl"
+                    className="font-chewy mt-4 text-3xl font-bold tracking-[0.22em] text-blue-600 md:text-5xl"
                     delay={0.5}
                 />
 
                 <AnimatedLetters
                     text="Living in God’s Holy Truth"
-                    className="mt-6 text-xs uppercase tracking-[0.45em] text-gray-500 md:text-sm"
+                    className="font-chewy mt-6 text-xs uppercase tracking-[0.45em] text-gray-500 md:text-sm"
                     delay={1.05}
                 />
             </div>
