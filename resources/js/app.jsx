@@ -1,6 +1,7 @@
 import '../css/app.css';
 import './bootstrap';
 
+import { Footer7 } from '@/components/ui/footer-7';
 import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
@@ -30,7 +31,14 @@ createInertiaApp({
     setup({ el, App, props }) {
         const root = createRoot(el);
 
-        root.render(<App {...props} />);
+        root.render(
+            <div className="flex min-h-screen flex-col">
+                <main className="flex-1">
+                    <App {...props} />
+                </main>
+                <Footer7 />
+            </div>,
+        );
     },
     progress: {
         color: '#4B5563',
