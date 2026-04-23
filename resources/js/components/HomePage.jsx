@@ -1,4 +1,5 @@
 import PublicNavbar from '@/Components/PublicNavbar';
+import OffersCarouselDemo from '@/components/ui/offers-carousel-demo';
 
 const newsItems = [
     {
@@ -129,6 +130,22 @@ export default function HomePage() {
                                 <p className="mt-8 text-3xl font-extrabold leading-tight text-[#260d10]">{mission}</p>
                             </article>
                         ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-slate-50 py-16 md:py-20">
+                <div className="mx-auto max-w-6xl px-6">
+                    <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#260d10]">Boutique</p>
+                    <h2 className="mt-4 text-4xl font-black uppercase leading-tight text-[#260d10] md:text-5xl">
+                        Offres recommandées
+                    </h2>
+                    <p className="mt-5 max-w-3xl text-lg text-slate-600">
+                        Découvrez des hébergements partenaires après la section de nos missions pour préparer votre séjour.
+                    </p>
+
+                    <div className="mt-10">
+                        <OffersCarouselDemo />
                     </div>
                 </div>
             </section>
