@@ -1,4 +1,5 @@
 import { Head, Link } from '@inertiajs/react';
+import SiteFooter from '@/components/ui/site-footer';
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     const handleImageError = () => {
@@ -356,6 +357,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     </div>
                 </div>
             </div>
+            <SiteFooter />
         </>
     );
 }
