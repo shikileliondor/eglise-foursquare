@@ -1,38 +1,10 @@
 import { Link } from '@inertiajs/react';
+import PublicNavbar from '@/Components/PublicNavbar';
 
 export default function PublicLayout({ children }) {
     return (
         <div className="min-h-screen bg-slate-50 text-slate-900">
-            <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur">
-                <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-                    <Link href="/" className="flex items-center gap-3">
-                        <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-amber-400 text-lg font-black text-slate-900">
-                            L
-                        </span>
-                        <div>
-                            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Light Convention</p>
-                            <p className="text-base font-extrabold leading-none">Foursquare</p>
-                        </div>
-                    </Link>
-
-                    <nav className="hidden items-center gap-7 text-sm font-medium md:flex">
-                        <Link href="/" className="text-slate-700 transition hover:text-slate-900">Accueil</Link>
-                        <Link href="/about" className="text-slate-700 transition hover:text-slate-900">À propos</Link>
-                        <Link href="/convention" className="text-slate-700 transition hover:text-slate-900">Convention</Link>
-                        <Link href="/shop" className="text-slate-700 transition hover:text-slate-900">Boutique</Link>
-                        <Link href="/news" className="text-slate-700 transition hover:text-slate-900">Actualités</Link>
-                    </nav>
-
-                    <div className="flex items-center gap-2">
-                        <Link
-                            href="/shop"
-                            className="inline-flex items-center rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-700"
-                        >
-                            Commander
-                        </Link>
-                    </div>
-                </div>
-            </header>
+            <PublicNavbar />
 
             <main>{children}</main>
 
