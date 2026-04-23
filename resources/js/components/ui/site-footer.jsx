@@ -1,12 +1,21 @@
 import { Link } from '@inertiajs/react';
-import { ArrowUp, Facebook, Linkedin, Twitter, Youtube } from 'lucide-react';
+// import { ArrowUp, Facebook, Linkedin, Twitter, Youtube } from 'lucide-react';
+
+import { ArrowUp } from 'lucide-react';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
 
 const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'X' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
+    { icon: FaFacebookF, href: '#', label: 'Facebook' },
+    { icon: FaTwitter, href: '#', label: 'X' },
+    { icon: FaLinkedinIn, href: '#', label: 'LinkedIn' },
+    { icon: FaYoutube, href: '#', label: 'YouTube' },
 ];
+// const socialLinks = [
+//     { icon: Facebook, href: '#', label: 'Facebook' },
+//     { icon: Twitter, href: '#', label: 'X' },
+//     { icon: Linkedin, href: '#', label: 'LinkedIn' },
+//     { icon: Youtube, href: '#', label: 'YouTube' },
+// ];
 
 export default function SiteFooter() {
     return (
