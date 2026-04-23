@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Convention;
 use App\Models\News;
 use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -13,8 +14,12 @@ class HomeController extends Controller
     /**
      * Display the homepage with featured content for the storefront.
      */
-    public function index(): Response
+    public function index(): Response|RedirectResponse
     {
+        if (! session('intro_seen', false)) {
+            return redirect()->route('intro');
+        }
+
         $products = Product::query()
             ->available()
             ->with('variants')
