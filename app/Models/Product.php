@@ -73,6 +73,14 @@ class Product extends Model
      */
     public function getImageUrlAttribute(): ?string
     {
-        return $this->image ? Storage::url($this->image) : null;
+        if (!$this->image) {
+            return null;
+        }
+
+        if (str_starts_with($this->image, '/')) {
+            return $this->image;
+        }
+
+        return Storage::url($this->image);
     }
 }

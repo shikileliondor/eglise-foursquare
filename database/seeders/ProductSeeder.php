@@ -31,7 +31,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'hoodie-foursquare',
                 'description' => 'Sweat à capuche premium, intérieur molletonné.',
                 'price' => 10000,
-                'image' => null,
+                'image' => '/images/image 7.jpg',
                 'is_available' => true,
                 'variants' => [
                     ['label' => 'M / Gris', 'stock' => 15, 'price' => 52.90],
@@ -44,7 +44,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'casquette-foursquare',
                 'description' => 'Casquette réglable avec broderie frontale.',
                 'price' => 10000,
-                'image' => null,
+                'image' => '/images/image 8.jpg',
                 'is_available' => true,
                 'variants' => [
                     ['label' => 'Taille unique / Noir', 'stock' => 50, 'price' => null],
@@ -56,7 +56,7 @@ class ProductSeeder extends Seeder
                 'slug' => 'mug-foursquare',
                 'description' => 'Mug en céramique 330 ml, impression recto-verso.',
                 'price' => 15000,
-                'image' => null,
+                'image' => '/images/image 9.jpg',
                 'is_available' => true,
                 'variants' => [
                     ['label' => 'Blanc mat', 'stock' => 60, 'price' => null],
