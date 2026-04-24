@@ -6,7 +6,11 @@ import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
 const ItemCard = ({ item }) => (
-    <motion.div className="group w-64 flex-shrink-0" whileHover={{ y: -5 }} transition={{ type: 'spring', stiffness: 300 }}>
+    <motion.div
+        className="group w-[150px] flex-shrink-0 snap-start sm:w-52 md:w-64"
+        whileHover={{ y: -5 }}
+        transition={{ type: 'spring', stiffness: 300 }}
+    >
         <div className="overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm">
             <div className="relative">
                 <img
@@ -14,7 +18,7 @@ const ItemCard = ({ item }) => (
                     alt={item.title}
                     width={256}
                     height={160}
-                    className="h-40 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="h-28 w-full object-cover transition-transform duration-300 group-hover:scale-105 sm:h-36 md:h-40"
                 />
                 {item.discountPercentage && (
                     <div className="absolute bottom-2 right-2 rounded-md bg-primary px-2 py-1 text-xs font-semibold text-primary-foreground">
@@ -22,22 +26,22 @@ const ItemCard = ({ item }) => (
                     </div>
                 )}
             </div>
-            <div className="p-4">
+            <div className="p-2.5 sm:p-4">
                 <div className="flex items-start justify-between">
-                    <h3 className="text-base font-semibold leading-tight">{item.title}</h3>
+                    <h3 className="line-clamp-2 text-xs font-semibold leading-tight sm:text-base">{item.title}</h3>
                     <div className="ml-2 flex flex-shrink-0 items-center gap-1 rounded-full bg-blue-100 px-2 py-0.5 text-xs font-semibold text-blue-600 dark:bg-blue-900/50 dark:text-blue-400">
                         <Star className="h-3 w-3" />
                         <span>{item.rating.toFixed(1)}</span>
                     </div>
                 </div>
-                <p className="mt-1 text-sm text-muted-foreground">{item.subtitle}</p>
+                <p className="mt-1 line-clamp-1 text-[11px] text-muted-foreground sm:text-sm">{item.subtitle}</p>
                 <div className="mt-3 flex items-end gap-2">
-                    <p className="text-lg font-bold">₹{item.price.toLocaleString('en-IN')}</p>
+                    <p className="text-base font-bold sm:text-lg">₹{item.price.toLocaleString('en-IN')}</p>
                     {item.originalPrice && (
-                        <p className="text-sm text-muted-foreground line-through">₹{item.originalPrice.toLocaleString('en-IN')}</p>
+                        <p className="text-xs text-muted-foreground line-through sm:text-sm">₹{item.originalPrice.toLocaleString('en-IN')}</p>
                     )}
                 </div>
-                <p className="text-xs text-muted-foreground">/ night</p>
+                <p className="text-[11px] text-muted-foreground sm:text-xs">/ night</p>
             </div>
         </div>
     </motion.div>
@@ -99,8 +103,8 @@ const OffersCarousel = React.forwardRef(
                     </div>
 
                     <div className="relative lg:col-span-9">
-                        <div ref={carouselRef} className="overflow-x-auto scrollbar-hide">
-                            <motion.div className="flex gap-4 px-1 py-2" animate={controls}>
+                        <div ref={carouselRef} className="overflow-x-auto pb-1 scrollbar-hide">
+                            <motion.div className="flex snap-x snap-mandatory gap-3 px-1 py-2 sm:gap-4" animate={controls}>
                                 {items.map((item) => (
                                     <ItemCard key={item.id} item={item} />
                                 ))}
