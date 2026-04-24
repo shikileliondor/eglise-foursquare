@@ -48,8 +48,30 @@ class NewsController extends Controller
                 'slug' => $news->slug,
                 'content' => $news->content,
                 'image_url' => $news->image_url,
+                'photo_urls' => $this->extractPhotoUrls($news),
                 'published_at' => $news->published_at?->toDateTimeString(),
             ],
         ]);
+    }
+
+    /**
+     * Build a list of photos from the featured image and content image URLs.
+     *
+     * @return list<string>
+     */
+    private function extractPhotoUrls(News $news): array
+    {
+        $images = [];
+
+        if ($news->image_url) {
+            $images[] = $news->image_url;
+        }
+
+        preg_match_all('/https?:\\/\\/[^\\s"\'<>]+\\.(?:jpg|jpeg|png|gif|webp|avif)/i', $news->content, $matches);
+
+        return array_values(array_unique([
+            ...$images,
+            ...($matches[0] ?? []),
+        ]));
     }
 }
