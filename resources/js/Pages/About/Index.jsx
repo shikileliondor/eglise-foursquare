@@ -41,7 +41,7 @@ export default function AboutIndex() {
                         <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-16 text-center md:pb-24 md:pt-24">
                             <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#c96442]">Light Foursquare</p>
                             <h1 className="font-heading mt-5 text-4xl font-black uppercase leading-[0.95] tracking-tight text-[#260d10] sm:text-5xl md:text-6xl">
-                                À propos du mouvement
+                                À propos  de  Light
                             </h1>
                             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
                                 Une génération de jeunes passionnés qui grandit dans la foi, sert avec amour et influence
@@ -97,7 +97,7 @@ export default function AboutIndex() {
                                 <div className="absolute -bottom-6 -right-6 h-28 w-28 rounded-full bg-[#dcd6fb]" />
                                 <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-[0_20px_60px_-30px_rgba(15,23,42,0.35)]">
                                     <img
-                                        src="/images/534336857_122251521824024944_5650508535512238767_n.jpg"
+                                        src="/images/image 6.jpg"
                                         alt="Jeunes en moment de louange à l'église"
                                         className="h-full min-h-[320px] w-full object-cover"
                                     />
@@ -133,7 +133,7 @@ export default function AboutIndex() {
                             >
                                 <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#6a58c7]">Objectifs</p>
                                 <h2 className="font-heading mt-4 text-3xl font-extrabold uppercase leading-tight text-[#260d10] sm:text-4xl">
-                                    Des actions concrètes pour bâtir demain
+                                    Des actions pour bâtir demain
                                 </h2>
                             </motion.div>
 

@@ -15,7 +15,7 @@ const communityPhotos = [
     '/images/image 4.jpg',
 ]
 
-const fallbackNewsImage = 'https://placehold.co/1200x700/E7E8DF/6D6D63?text=Actualite'
+// const fallbackNewsImage = 'https://placehold.co/1200x700/E7E8DF/6D6D63?text=Actualite'
 
 function formatDate(dateString) {
     if (!dateString) return 'Date à confirmer'
@@ -271,7 +271,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
                                             >
                                                 <div className="aspect-[4/3] overflow-hidden bg-slate-200">
                                                     <img
-                                                        src={item.image_url || fallbackNewsImage}
+                                                        src="/images/image 3.jpg"
                                                         alt={item.title}
                                                         className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                                                     />
