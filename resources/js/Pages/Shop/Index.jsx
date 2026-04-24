@@ -50,8 +50,6 @@ export default function ShopIndex({ products }) {
                     <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
                         {products.map((product) => {
                             const minPrice = getMinPrice(product);
-                            const hasVariants = (product.variants ?? []).length > 0;
-
                             return (
                                 <article key={product.id} className="group">
                                     <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-[#e6e7de] p-3 sm:rounded-2xl sm:p-5">
@@ -69,22 +67,13 @@ export default function ShopIndex({ products }) {
                                         <p className="mt-2 text-base text-zinc-600 sm:mt-4 sm:text-lg">{formatPrice(minPrice)}</p>
 
                                         <div className="mt-2 space-y-1.5 sm:mt-3 sm:space-y-2">
-                                            {hasVariants ? (
-                                                <Link
-                                                    href={route('shop.show', product.slug)}
-                                                    className="inline-flex w-full items-center justify-center rounded-full border border-zinc-400 px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-zinc-700 sm:px-4 sm:py-2 sm:text-sm"
-                                                >
-                                                    Ajouter au panier
-                                                </Link>
-                                            ) : (
-                                                <button
-                                                    type="button"
-                                                    onClick={() => handleAddToCart(product)}
-                                                    className="w-full rounded-full border border-zinc-400 px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-zinc-700 transition hover:bg-zinc-900 hover:text-white sm:px-4 sm:py-2 sm:text-sm"
-                                                >
-                                                    Ajouter au panier
-                                                </button>
-                                            )}
+                                            <button
+                                                type="button"
+                                                onClick={() => handleAddToCart(product)}
+                                                className="w-full rounded-full border border-zinc-400 px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-zinc-700 transition hover:bg-zinc-900 hover:text-white sm:px-4 sm:py-2 sm:text-sm"
+                                            >
+                                                Ajouter au panier
+                                            </button>
 
                                             <Link
                                                 href={route('cart.index')}

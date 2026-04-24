@@ -49,6 +49,23 @@ class ShopController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
+        $otherProducts = Product::query()
+            ->available()
+            ->whereKeyNot($product->id)
+            ->latest()
+            ->take(3)
+            ->get()
+            ->map(fn (Product $item): array => [
+                'id' => $item->id,
+                'name' => $item->name,
+                'slug' => $item->slug,
+                'description' => $item->description,
+                'base_price' => (float) $item->price,
+                'image_url' => $item->image_url,
+            ]);
+
+        $whatsAppPhone = preg_replace('/\D+/', '', (string) env('WHATSAPP_PHONE', '2252720213520'));
+
         return Inertia::render('Shop/Show', [
             'product' => [
                 'id' => $product->id,
@@ -64,6 +81,8 @@ class ShopController extends Controller
                     'price' => $variant->price !== null ? (float) $variant->price : null,
                 ]),
             ],
+            'otherProducts' => $otherProducts,
+            'whatsappPhone' => $whatsAppPhone,
         ]);
     }
 }
