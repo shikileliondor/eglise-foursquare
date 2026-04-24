@@ -5,6 +5,10 @@
 @tailwind utilities;
 
 @layer base {
+    html {
+        font-size: 95%;
+    }
+
     body {
         @apply font-sans text-[15px] leading-7 text-slate-900 md:text-base;
     }
