@@ -9,27 +9,27 @@ import { ChevronLeft } from "lucide-react"
 const SLIDES = [
   {
     id: "slide-1",
-    title: "frontend dev",
+    title: "Atelier médias",
     imageUrl: "/images/Convention 2025.jpg",
   },
   {
     id: "slide-2",
-    title: "backend dev",
+    title: "Programme de prière",
     imageUrl: "/images/Programme 1.jpg",
   },
   {
     id: "slide-3",
-    title: "ui ux design",
+    title: "Formation biblique",
     imageUrl: "/images/image 3.jpg",
   },
   {
     id: "slide-4",
-    title: "video editing",
+    title: "Soirée d'adoration",
     imageUrl: "/images/Programme 2.jpg",
   },
   {
     id: "slide-5",
-    title: "seo optimization",
+    title: "Impact communautaire",
     imageUrl: "/images/image 4.jpg",
   },
 ]
@@ -45,19 +45,10 @@ export function HoverSliderDemo() {
         <ChevronLeft className="h-5 w-5" />
       </button>
 
-      {/* ✅ inline style pour forcer le layout 2 colonnes */}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1.3fr",
-          gap: "3rem",
-          alignItems: "center",
-        }}
-      >
+      <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_1.3fr] md:gap-12">
         {/* Colonne gauche : image */}
         <HoverSliderImageWrap
-          style={{ height: "480px", width: "100%" }}
-          className="overflow-hidden rounded-sm"
+          className="h-[340px] w-full overflow-hidden rounded-sm sm:h-[400px] md:h-[480px]"
         >
           {SLIDES.map((slide, index) => (
             <HoverSliderImage
@@ -76,7 +67,7 @@ export function HoverSliderDemo() {
         {/* Colonne droite : texte */}
         <div className="flex flex-col items-start justify-center gap-4">
           <h3 className="text-sm font-medium capitalize tracking-wide text-[#c96442]">
-            / Our Services
+            / Nos services & événements
           </h3>
           {SLIDES.map((slide, index) => (
             <TextStaggerHover

@@ -1,5 +1,6 @@
 import PublicNavbar from '@/Components/PublicNavbar'
 import { HoverSliderDemo } from '@/components/ui/animated-slideshow-demo'
+import { ExpandableGallery } from '@/components/ui/expandable-gallery'
 import OffersCarouselDemo from '@/components/ui/offers-carousel-demo'
 import { MotionSection } from '@/components/ui/motion-section'
 import { Link } from '@inertiajs/react'
@@ -103,9 +104,9 @@ export default function HomePage({ products = [], latestNews = [] }) {
 
                     <MotionSection delay={0.2}>
                         <div className="mt-8 flex items-center justify-end border-t border-black/8 pt-6">
-                            <a href="#" className="group flex items-center gap-3 border border-slate-900 px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-900 transition hover:bg-slate-900 hover:text-white">
+                            <Link href={route('about')} className="group flex items-center gap-3 border border-slate-900 px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-900 transition hover:bg-slate-900 hover:text-white">
                                 Rejoindre <span className="transition group-hover:translate-x-1">→</span>
-                            </a>
+                            </Link>
                         </div>
                     </MotionSection>
 
@@ -119,12 +120,10 @@ export default function HomePage({ products = [], latestNews = [] }) {
                         <div className="relative mx-auto w-full max-w-[520px]">
                             <div className="absolute left-0 top-14 h-[80%] w-[82%] bg-[#ded7bf]" />
                             <div
-                                className="absolute right-0 top-0 h-64 w-72 bg-gradient-to-b from-[#eb7036] via-[#f4d767] to-[#e9ca64]"
-                                style={{ clipPath: 'polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 30%)' }}
+                                className="absolute right-0 top-0 h-64 w-72 bg-gradient-to-b from-[#eb7036] via-[#f4d767] to-[#e9ca64] [clip-path:polygon(20%_0%,100%_0%,100%_100%,0%_100%,0%_30%)]"
                             />
                             <div
-                                className="relative mx-auto aspect-[4/5] w-[78%] overflow-hidden"
-                                style={{ clipPath: 'polygon(28% 3%, 78% 0%, 98% 20%, 91% 66%, 57% 95%, 25% 88%, 8% 63%, 0% 47%, 8% 29%)' }}
+                                className="relative mx-auto aspect-[4/5] w-[78%] overflow-hidden [clip-path:polygon(28%_3%,78%_0%,98%_20%,91%_66%,57%_95%,25%_88%,8%_63%,0%_47%,8%_29%)]"
                             >
                                 <img src="/images/izo pro.jpg" alt="Membres en communion" className="h-full w-full object-cover" />
                             </div>
@@ -139,13 +138,13 @@ export default function HomePage({ products = [], latestNews = [] }) {
                             <p className="mt-4 text-[1.05rem] leading-7 text-black/85">
                                 Dieu t'a-t-il donné une passion, un don ou une vision ? Alors cette maison est aussi la tienne.
                             </p>
-                            <a href="#" className="group mt-10 inline-flex flex-col text-base font-semibold text-black transition hover:text-[#5b4ab8] md:text-lg">
+                            <Link href={route('about')} className="group mt-10 inline-flex flex-col text-base font-semibold text-black transition hover:text-[#5b4ab8] md:text-lg">
                                 <span className="inline-flex items-center gap-3">
                                     Rejoins le mouvement Light Foursquare
                                     <span className="text-xl text-[#6a58c7] transition group-hover:translate-x-1">→</span>
                                 </span>
                                 <span className="mt-3 h-[3px] w-full bg-gradient-to-r from-[#1f4b84] via-[#c2a43f] to-[#6a58c7]" />
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </section>
@@ -222,26 +221,15 @@ export default function HomePage({ products = [], latestNews = [] }) {
                             Nos derniers souvenirs en images
                         </h2>
                         <motion.div
-                            className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+                            className="mt-10"
                             variants={staggerContainer}
                             initial="initial"
                             whileInView="animate"
                             viewport={{ once: true, margin: '-60px' }}
                         >
-                            {communityPhotos.map((photo, index) => (
-                                <motion.article
-                                    key={photo}
-                                    variants={staggerItem}
-                                    {...hoverLift}
-                                    className="overflow-hidden rounded-2xl bg-white shadow-md"
-                                >
-                                    <img
-                                        src={photo}
-                                        alt={`Moment Light Foursquare ${index + 1}`}
-                                        className="h-64 w-full object-cover transition duration-300 hover:scale-105"
-                                    />
-                                </motion.article>
-                            ))}
+                            <motion.div variants={staggerItem} {...hoverLift}>
+                                <ExpandableGallery images={communityPhotos} />
+                            </motion.div>
                         </motion.div>
                     </div>
                 </section>
@@ -258,9 +246,9 @@ export default function HomePage({ products = [], latestNews = [] }) {
                         <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
                             Retrouvez des articles exclusifs Light Foursquare pour affirmer votre identité en tant que jeune chrétien engagé.
                         </p>
-                        <a href="/shop" className="mt-6 inline-flex items-center gap-3 text-base font-semibold text-black transition hover:text-[#5b4ab8] md:text-lg">
+                        <Link href={route('shop.index')} className="mt-6 inline-flex items-center gap-3 text-base font-semibold text-black transition hover:text-[#5b4ab8] md:text-lg">
                             Voir la boutique <span className="text-xl text-[#6a58c7]">→</span>
-                        </a>
+                        </Link>
                         <div className="mt-8">
                             <OffersCarouselDemo products={products} />
                         </div>
