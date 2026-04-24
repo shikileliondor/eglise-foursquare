@@ -37,9 +37,6 @@ const SLIDES = [
 export function HoverSliderDemo() {
   return (
     <HoverSlider className="relative rounded-3xl border border-slate-200 bg-[#f4f4f4] p-6 md:p-12 lg:p-16 text-[#3d3929]">
-      <h3 className="mb-10 text-sm font-medium capitalize tracking-wide text-[#c96442]">
-        / Our Services
-      </h3>
       <button
         type="button"
         aria-label="Précédent"
@@ -47,19 +44,8 @@ export function HoverSliderDemo() {
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
-      <div className="grid items-center gap-8 lg:grid-cols-[1.45fr_0.75fr] lg:gap-10">
-        <div className="flex flex-col items-start space-y-4 md:space-y-5">
-          {SLIDES.map((slide, index) => (
-            <div key={slide.id} className="leading-none">
-              <TextStaggerHover
-                index={index}
-                className="cursor-pointer text-4xl font-bold uppercase tracking-tight text-[#260d10] md:text-6xl"
-                text={slide.title}
-              />
-            </div>
-          ))}
-        </div>
-        <HoverSliderImageWrap className="h-[360px] w-full max-w-[370px] justify-self-end overflow-hidden rounded-sm md:h-[470px] md:max-w-[400px]">
+      <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 xl:gap-24">
+        <HoverSliderImageWrap className="order-1 h-[420px] w-full max-w-[460px] justify-self-center overflow-hidden rounded-sm md:h-[560px] lg:justify-self-start">
           {SLIDES.map((slide, index) => (
             <div key={slide.id}>
               <HoverSliderImage
@@ -74,6 +60,20 @@ export function HoverSliderDemo() {
             </div>
           ))}
         </HoverSliderImageWrap>
+        <div className="order-2 flex flex-col items-start justify-center space-y-4 md:space-y-5">
+          <h3 className="mb-4 text-sm font-medium capitalize tracking-wide text-[#c96442]">
+            / Our Services
+          </h3>
+          {SLIDES.map((slide, index) => (
+            <div key={slide.id} className="leading-none">
+              <TextStaggerHover
+                index={index}
+                className="cursor-pointer text-3xl font-bold uppercase tracking-tight text-[#260d10] sm:text-4xl md:text-5xl xl:text-6xl"
+                text={slide.title}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </HoverSlider>
   )
