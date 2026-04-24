@@ -1,6 +1,6 @@
 import PublicNavbar from '@/Components/PublicNavbar';
 import { addCartItem } from '@/lib/cart';
-import { Head, Link, router } from '@inertiajs/react';
+import { Head, Link } from '@inertiajs/react';
 import { Heart } from 'lucide-react';
 import { useMemo } from 'react';
 
@@ -27,7 +27,6 @@ export default function ShopIndex({ products }) {
             variant_id: firstVariant?.id ?? null,
             quantity: 1,
         });
-        router.visit(route('cart.index'));
     };
 
     return (
@@ -69,22 +68,31 @@ export default function ShopIndex({ products }) {
                                         </Link>
                                         <p className="mt-4 text-lg text-zinc-600">{formatPrice(minPrice)}</p>
 
-                                        {hasVariants ? (
+                                        <div className="mt-3 space-y-2">
+                                            {hasVariants ? (
+                                                <Link
+                                                    href={route('shop.show', product.slug)}
+                                                    className="inline-flex w-full items-center justify-center rounded-full border border-zinc-400 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-zinc-700"
+                                                >
+                                                    Choisir options
+                                                </Link>
+                                            ) : (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => handleAddToCart(product)}
+                                                    className="w-full rounded-full border border-zinc-400 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-zinc-700 transition hover:bg-zinc-900 hover:text-white"
+                                                >
+                                                    Ajouter au panier
+                                                </button>
+                                            )}
+
                                             <Link
-                                                href={route('shop.show', product.slug)}
-                                                className="mt-3 inline-flex w-full items-center justify-center rounded-full border border-zinc-400 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-zinc-700"
+                                                href={route('cart.index')}
+                                                className="inline-flex w-full items-center justify-center rounded-full border border-zinc-300 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-zinc-600 transition hover:border-zinc-500 hover:text-zinc-900"
                                             >
-                                                Choisir options
+                                                Voir panier
                                             </Link>
-                                        ) : (
-                                            <button
-                                                type="button"
-                                                onClick={() => handleAddToCart(product)}
-                                                className="mt-3 w-full rounded-full border border-zinc-400 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-zinc-700 transition hover:bg-zinc-900 hover:text-white"
-                                            >
-                                                Add to cart
-                                            </button>
-                                        )}
+                                        </div>
                                     </div>
                                 </article>
                             );
