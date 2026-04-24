@@ -81,7 +81,14 @@ export default function CartPanel({ open, onClose, cart }) {
 
     return (
         <>
-            {open ? <button type="button" onClick={handleClose} className="fixed inset-0 z-40 bg-transparent" aria-label="Fermer le panier" /> : null}
+            {open ? (
+                <button
+                    type="button"
+                    onClick={handleClose}
+                    className="fixed inset-0 z-40 bg-black/35 backdrop-blur-[1px]"
+                    aria-label="Fermer le panier"
+                />
+            ) : null}
 
             <aside
                 className={`fixed right-0 top-0 z-50 h-full w-full max-w-md transform border-l border-zinc-200 bg-white p-6 shadow-xl transition-transform duration-300 ${

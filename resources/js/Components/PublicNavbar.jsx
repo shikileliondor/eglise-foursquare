@@ -14,6 +14,7 @@ const links = [
 export default function PublicNavbar() {
     const [cartCount, setCartCount] = useState(0);
     const [isVisible, setIsVisible] = useState(true);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     useEffect(() => {
         fetchCart()
@@ -24,6 +25,24 @@ export default function PublicNavbar() {
             setCartCount(nextCart?.count ?? 0);
         });
     }, []);
+
+    useEffect(() => {
+        if (!isMenuOpen) {
+            return undefined;
+        }
+
+        const handleEscape = (event) => {
+            if (event.key === 'Escape') {
+                setIsMenuOpen(false);
+            }
+        };
+
+        window.addEventListener('keydown', handleEscape);
+
+        return () => {
+            window.removeEventListener('keydown', handleEscape);
+        };
+    }, [isMenuOpen]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -82,11 +101,35 @@ export default function PublicNavbar() {
                             </span>
                         ) : null}
                     </Link>
-                    <button type="button" className="p-1 transition hover:text-slate-500 md:hidden" aria-label="Menu">
+                    <button
+                        type="button"
+                        onClick={() => setIsMenuOpen((prev) => !prev)}
+                        className="p-1 transition hover:text-slate-500 md:hidden"
+                        aria-label="Menu"
+                        aria-expanded={isMenuOpen}
+                        aria-controls="mobile-main-menu"
+                    >
                         <Menu className="h-6 w-6" strokeWidth={1.7} />
                     </button>
                 </div>
             </div>
+
+            {isMenuOpen ? (
+                <div className="border-t border-slate-200 bg-white px-4 py-4 shadow-sm md:hidden" id="mobile-main-menu">
+                    <nav className="flex flex-col gap-3 text-sm font-medium text-slate-800">
+                        {links.map((link) => (
+                            <Link
+                                key={link.href}
+                                href={link.href}
+                                className="rounded-lg px-2 py-2 transition hover:bg-slate-100"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
+                    </nav>
+                </div>
+            ) : null}
         </header>
     );
 }
