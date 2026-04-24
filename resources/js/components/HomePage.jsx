@@ -170,8 +170,15 @@ export default function HomePage({ products = [], latestNews = [] }) {
                                 whileInView="animate"
                                 viewport={{ once: true, margin: '-60px' }}
                             >
-                                {latestNews.map((item) => (
-                                    <motion.div key={item.id} variants={staggerItem} {...hoverLift}>
+                                {latestNews.map((item, index) => (
+                                    <motion.div
+                                        key={item.id}
+                                        variants={staggerItem}
+                                        {...hoverLift}
+                                        className={`max-w-[22rem] ${
+                                            index % 2 === 0 ? 'mr-auto' : 'ml-auto'
+                                        } md:max-w-none md:mx-0`}
+                                    >
                                         <Link
                                             href={route('news.show', item.slug)}
                                             className="group block overflow-hidden rounded-2xl bg-white shadow-sm"
