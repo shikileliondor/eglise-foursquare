@@ -333,9 +333,9 @@ export default function HomePage({ products = [], latestNews = [] }) {
             <MotionSection>
                 <section className="bg-slate-50 py-16 md:py-20">
                     <div className="mx-auto max-w-6xl px-6">
-                        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#260d10]">🛍️ Boutique Light</p>
+                        {/* <p className="text-xs font-semibold uppercase tracking-[0.9em] text-[#260d10]"> Boutique Light</p> */}
                         <h2 className="font-heading mt-4 text-3xl font-extrabold uppercase leading-tight text-[#260d10] md:text-4xl">
-                            Collection Foursquare
+                            Boutique Light
                         </h2>
                         <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
                             Retrouvez des articles exclusifs Light Foursquare pour affirmer votre identité en tant que jeune chrétien engagé.
