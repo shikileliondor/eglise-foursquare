@@ -5,6 +5,7 @@ import OffersCarouselDemo from '@/components/ui/offers-carousel-demo'
 import { MotionSection } from '@/components/ui/motion-section'
 import { Link } from '@inertiajs/react'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import { hoverLift, staggerContainer, staggerItem } from '@/lib/animations'
 
 const communityPhotos = [
@@ -26,6 +27,20 @@ function formatDate(dateString) {
 }
 
 export default function HomePage({ products = [], latestNews = [] }) {
+    const [activeNewsIndex, setActiveNewsIndex] = useState(0)
+
+    const goToPreviousNews = () => {
+        setActiveNewsIndex((currentIndex) =>
+            currentIndex === 0 ? latestNews.length - 1 : currentIndex - 1
+        )
+    }
+
+    const goToNextNews = () => {
+        setActiveNewsIndex((currentIndex) =>
+            currentIndex === latestNews.length - 1 ? 0 : currentIndex + 1
+        )
+    }
+
     return (
         <div className="min-h-screen bg-slate-50 text-slate-900">
             <PublicNavbar />
@@ -163,48 +178,120 @@ export default function HomePage({ products = [], latestNews = [] }) {
                                 Aucune actualité publiée pour le moment.
                             </div>
                         ) : (
-                            <motion.div
-                                className="mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-3"
-                                variants={staggerContainer}
-                                initial="initial"
-                                whileInView="animate"
-                                viewport={{ once: true, margin: '-60px' }}
-                            >
-                                {latestNews.map((item, index) => (
-                                    <motion.div
-                                        key={item.id}
-                                        variants={staggerItem}
-                                        {...hoverLift}
-                                        className={`max-w-[22rem] ${
-                                            index % 2 === 0 ? 'mr-auto' : 'ml-auto'
-                                        } md:max-w-none md:mx-0`}
-                                    >
-                                        <Link
-                                            href={route('news.show', item.slug)}
-                                            className="group block overflow-hidden rounded-2xl bg-white shadow-sm"
+                            <>
+                                <div className="mt-10 md:hidden">
+                                    <div className="overflow-hidden rounded-2xl">
+                                        <div
+                                            className="flex transition-transform duration-300 ease-out"
+                                            style={{ transform: `translateX(-${activeNewsIndex * 100}%)` }}
                                         >
-                                            <div className="aspect-[4/3] overflow-hidden bg-slate-200">
-                                                <img
-                                                    src={item.image_url || fallbackNewsImage}
-                                                    alt={item.title}
-                                                    className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                                                />
+                                            {latestNews.map((item) => (
+                                                <div key={item.id} className="w-full shrink-0">
+                                                    <Link
+                                                        href={route('news.show', item.slug)}
+                                                        className="group block overflow-hidden rounded-2xl bg-white shadow-sm"
+                                                    >
+                                                        <div className="aspect-[4/3] overflow-hidden bg-slate-200">
+                                                            <img
+                                                                src={item.image_url || fallbackNewsImage}
+                                                                alt={item.title}
+                                                                className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                                                            />
+                                                        </div>
+                                                        <div className="p-5">
+                                                            <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
+                                                                {formatDate(item.published_at)}
+                                                            </p>
+                                                            <h3 className="font-heading mt-3 text-xl font-bold leading-snug text-[#260d10]">
+                                                                {item.title}
+                                                            </h3>
+                                                            <p className="mt-4 inline-flex items-center text-sm font-semibold text-[#5b4ab8]">
+                                                                Lire l&apos;actualité <span className="ml-2 text-base">→</span>
+                                                            </p>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {latestNews.length > 1 && (
+                                        <div className="mt-5 flex items-center justify-between gap-4">
+                                            <button
+                                                type="button"
+                                                onClick={goToPreviousNews}
+                                                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#260d10]/20 bg-white text-xl text-[#260d10] transition hover:border-[#260d10] hover:bg-[#260d10] hover:text-white"
+                                                aria-label="Actualité précédente"
+                                            >
+                                                ←
+                                            </button>
+
+                                            <div className="flex items-center gap-2">
+                                                {latestNews.map((item, index) => (
+                                                    <span
+                                                        key={item.id}
+                                                        className={`h-2.5 w-2.5 rounded-full transition ${
+                                                            index === activeNewsIndex ? 'bg-[#260d10]' : 'bg-[#260d10]/20'
+                                                        }`}
+                                                    />
+                                                ))}
                                             </div>
-                                            <div className="p-5">
-                                                <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
-                                                    {formatDate(item.published_at)}
-                                                </p>
-                                                <h3 className="font-heading mt-3 text-xl font-bold leading-snug text-[#260d10] md:text-2xl">
-                                                    {item.title}
-                                                </h3>
-                                                <p className="mt-4 inline-flex items-center text-sm font-semibold text-[#5b4ab8]">
-                                                    Lire l&apos;actualité <span className="ml-2 text-base">→</span>
-                                                </p>
-                                            </div>
-                                        </Link>
-                                    </motion.div>
-                                ))}
-                            </motion.div>
+
+                                            <button
+                                                type="button"
+                                                onClick={goToNextNews}
+                                                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#260d10]/20 bg-white text-xl text-[#260d10] transition hover:border-[#260d10] hover:bg-[#260d10] hover:text-white"
+                                                aria-label="Actualité suivante"
+                                            >
+                                                →
+                                            </button>
+                                        </div>
+                                    )}
+                                </div>
+
+                                <motion.div
+                                    className="mt-10 hidden gap-8 md:grid md:grid-cols-2 xl:grid-cols-3"
+                                    variants={staggerContainer}
+                                    initial="initial"
+                                    whileInView="animate"
+                                    viewport={{ once: true, margin: '-60px' }}
+                                >
+                                    {latestNews.map((item, index) => (
+                                        <motion.div
+                                            key={item.id}
+                                            variants={staggerItem}
+                                            {...hoverLift}
+                                            className={`max-w-[22rem] ${
+                                                index % 2 === 0 ? 'mr-auto' : 'ml-auto'
+                                            } md:max-w-none md:mx-0`}
+                                        >
+                                            <Link
+                                                href={route('news.show', item.slug)}
+                                                className="group block overflow-hidden rounded-2xl bg-white shadow-sm"
+                                            >
+                                                <div className="aspect-[4/3] overflow-hidden bg-slate-200">
+                                                    <img
+                                                        src={item.image_url || fallbackNewsImage}
+                                                        alt={item.title}
+                                                        className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                                                    />
+                                                </div>
+                                                <div className="p-5">
+                                                    <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
+                                                        {formatDate(item.published_at)}
+                                                    </p>
+                                                    <h3 className="font-heading mt-3 text-xl font-bold leading-snug text-[#260d10] md:text-2xl">
+                                                        {item.title}
+                                                    </h3>
+                                                    <p className="mt-4 inline-flex items-center text-sm font-semibold text-[#5b4ab8]">
+                                                        Lire l&apos;actualité <span className="ml-2 text-base">→</span>
+                                                    </p>
+                                                </div>
+                                            </Link>
+                                        </motion.div>
+                                    ))}
+                                </motion.div>
+                            </>
                         )}
                     </div>
                 </section>
