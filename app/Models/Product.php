@@ -53,6 +53,14 @@ class Product extends Model
     }
 
     /**
+     * Un produit peut être présent dans plusieurs lignes de panier.
+     */
+    public function cartItems(): HasMany
+    {
+        return $this->hasMany(CartItem::class);
+    }
+
+    /**
      * Scope pour récupérer uniquement les produits disponibles.
      */
     public function scopeAvailable(Builder $query): Builder

@@ -1,21 +1,19 @@
 import { useMemo, useState } from 'react';
 import axios from 'axios';
-import { clearCart, removeCartItem, updateCartQuantity } from '@/lib/cart';
+import { clearCart, removeCartItem, updateCartItemQuantity } from '@/lib/cart';
 
 function formatPrice(value) {
     return `${Number(value).toFixed(2)} €`;
 }
 
-export default function CartPanel({ open, onClose, items }) {
+export default function CartPanel({ open, onClose, cart }) {
     const [customerName, setCustomerName] = useState('');
     const [customerPhone, setCustomerPhone] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [feedback, setFeedback] = useState(null);
 
-    const total = useMemo(
-        () => items.reduce((sum, item) => sum + Number(item.unit_price) * item.quantity, 0),
-        [items],
-    );
+    const items = cart?.items ?? [];
+    const total = useMemo(() => Number(cart?.total ?? 0), [cart?.total]);
 
     const handleCheckout = async (event) => {
         event.preventDefault();
@@ -40,7 +38,7 @@ export default function CartPanel({ open, onClose, items }) {
             };
 
             const { data } = await axios.post('/orders', payload);
-            clearCart();
+            await clearCart();
             setCustomerName('');
             setCustomerPhone('');
             setFeedback({ type: 'success', message: 'Commande enregistrée. Redirection WhatsApp...' });
@@ -82,7 +80,7 @@ export default function CartPanel({ open, onClose, items }) {
                         </p>
                     ) : (
                         items.map((item) => (
-                            <article key={`${item.product_id}-${item.variant_id ?? 'base'}`} className="rounded-2xl border border-zinc-200 p-3">
+                            <article key={item.id} className="rounded-2xl border border-zinc-200 p-3">
                                 <p className="text-sm font-semibold uppercase tracking-wide text-rose-700">{item.brand}</p>
                                 <p className="text-sm text-zinc-800">{item.name}</p>
                                 {item.variant_label ? <p className="text-xs text-zinc-500">Option: {item.variant_label}</p> : null}
@@ -91,7 +89,7 @@ export default function CartPanel({ open, onClose, items }) {
                                 <div className="mt-2 flex items-center gap-2">
                                     <button
                                         type="button"
-                                        onClick={() => updateCartQuantity(item.product_id, item.variant_id, item.quantity - 1)}
+                                        onClick={() => item.quantity > 1 && updateCartItemQuantity(item.id, item.quantity - 1)}
                                         className="h-8 w-8 rounded-full border border-zinc-300 text-zinc-700"
                                     >
                                         −
@@ -99,14 +97,14 @@ export default function CartPanel({ open, onClose, items }) {
                                     <span className="min-w-7 text-center text-sm font-semibold">{item.quantity}</span>
                                     <button
                                         type="button"
-                                        onClick={() => updateCartQuantity(item.product_id, item.variant_id, item.quantity + 1)}
+                                        onClick={() => updateCartItemQuantity(item.id, item.quantity + 1)}
                                         className="h-8 w-8 rounded-full border border-zinc-300 text-zinc-700"
                                     >
                                         +
                                     </button>
                                     <button
                                         type="button"
-                                        onClick={() => removeCartItem(item.product_id, item.variant_id)}
+                                        onClick={() => removeCartItem(item.id)}
                                         className="ml-auto text-xs font-medium text-zinc-500 underline"
                                     >
                                         Retirer
@@ -124,24 +122,10 @@ export default function CartPanel({ open, onClose, items }) {
                     </div>
 
                     <form onSubmit={handleCheckout} className="space-y-3">
-                        <input
-                            required
-                            value={customerName}
-                            onChange={(event) => setCustomerName(event.target.value)}
-                            placeholder="Nom complet"
-                            className="w-full rounded-xl border border-zinc-300 px-3 py-2 text-sm"
-                        />
-                        <input
-                            required
-                            value={customerPhone}
-                            onChange={(event) => setCustomerPhone(event.target.value)}
-                            placeholder="Téléphone"
-                            className="w-full rounded-xl border border-zinc-300 px-3 py-2 text-sm"
-                        />
+                        <input required value={customerName} onChange={(event) => setCustomerName(event.target.value)} placeholder="Nom complet" className="w-full rounded-xl border border-zinc-300 px-3 py-2 text-sm" />
+                        <input required value={customerPhone} onChange={(event) => setCustomerPhone(event.target.value)} placeholder="Téléphone" className="w-full rounded-xl border border-zinc-300 px-3 py-2 text-sm" />
 
-                        {feedback ? (
-                            <p className={`text-xs ${feedback.type === 'error' ? 'text-red-600' : 'text-emerald-600'}`}>{feedback.message}</p>
-                        ) : null}
+                        {feedback ? <p className={`text-xs ${feedback.type === 'error' ? 'text-red-600' : 'text-emerald-600'}`}>{feedback.message}</p> : null}
 
                         <button
                             type="submit"

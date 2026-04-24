@@ -1,6 +1,6 @@
 import CartPanel from '@/Components/shop/CartPanel';
 import PublicNavbar from '@/Components/PublicNavbar';
-import { getCart, subscribeCart, upsertCartItem } from '@/lib/cart';
+import { addCartItem, fetchCart, subscribeCart } from '@/lib/cart';
 import { Head, Link } from '@inertiajs/react';
 import { ChevronLeft, ShoppingCart } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
@@ -13,14 +13,14 @@ function formatPrice(value) {
 
 export default function ShopShow({ product }) {
     const [selectedVariantId, setSelectedVariantId] = useState(product.variants?.[0]?.id ?? null);
-    const [cartItems, setCartItems] = useState([]);
+    const [cart, setCart] = useState({ items: [], count: 0, total: 0 });
     const [isCartOpen, setIsCartOpen] = useState(false);
 
     useEffect(() => {
-        setCartItems(getCart());
+        fetchCart().then(setCart);
 
-        return subscribeCart((items) => {
-            setCartItems(items);
+        return subscribeCart((nextCart) => {
+            setCart(nextCart);
         });
     }, []);
 
@@ -30,17 +30,12 @@ export default function ShopShow({ product }) {
     );
 
     const currentPrice = selectedVariant?.price ?? product.base_price;
-    const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
-    const handleAddToCart = () => {
-        upsertCartItem({
+    const handleAddToCart = async () => {
+        await addCartItem({
             product_id: product.id,
             variant_id: selectedVariant?.id ?? null,
-            variant_label: selectedVariant?.label ?? null,
             quantity: 1,
-            unit_price: currentPrice,
-            name: product.name,
-            brand: product.name,
         });
 
         setIsCartOpen(true);
@@ -67,7 +62,7 @@ export default function ShopShow({ product }) {
                         >
                             <ShoppingCart className="h-4 w-4" />
                             Panier
-                            {cartCount > 0 ? <span className="rounded-full bg-zinc-900 px-2 py-0.5 text-xs text-white">{cartCount}</span> : null}
+                            {cart.count > 0 ? <span className="rounded-full bg-zinc-900 px-2 py-0.5 text-xs text-white">{cart.count}</span> : null}
                         </button>
                     </div>
 
@@ -115,7 +110,7 @@ export default function ShopShow({ product }) {
                     </div>
                 </section>
 
-                <CartPanel open={isCartOpen} onClose={() => setIsCartOpen(false)} items={cartItems} />
+                <CartPanel open={isCartOpen} onClose={() => setIsCartOpen(false)} cart={cart} />
             </div>
         </>
     );

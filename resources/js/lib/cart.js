@@ -1,88 +1,51 @@
-const CART_STORAGE_KEY = 'lf_cart_v1';
+import axios from 'axios';
+
 const CART_EVENT = 'lf-cart-updated';
 
-function safeParse(value) {
-    try {
-        return JSON.parse(value);
-    } catch {
-        return [];
-    }
+function emitCart(cart) {
+    window.dispatchEvent(new CustomEvent(CART_EVENT, { detail: cart }));
 }
 
-export function getCart() {
-    if (typeof window === 'undefined') return [];
+export async function fetchCart() {
+    const { data } = await axios.get('/cart/summary');
+    emitCart(data);
 
-    const stored = localStorage.getItem(CART_STORAGE_KEY);
-    if (!stored) return [];
-
-    const parsed = safeParse(stored);
-    return Array.isArray(parsed) ? parsed : [];
+    return data;
 }
 
-export function saveCart(items) {
-    if (typeof window === 'undefined') return;
+export async function addCartItem(payload) {
+    const { data } = await axios.post('/cart/items', payload);
+    emitCart(data);
 
-    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(items));
-    window.dispatchEvent(new CustomEvent(CART_EVENT, { detail: items }));
+    return data;
 }
 
-export function upsertCartItem(item) {
-    const currentItems = getCart();
-    const itemKey = `${item.product_id}:${item.variant_id ?? 'base'}`;
+export async function updateCartItemQuantity(cartItemId, quantity) {
+    const { data } = await axios.patch(`/cart/items/${cartItemId}`, { quantity });
+    emitCart(data);
 
-    const existingIndex = currentItems.findIndex(
-        (currentItem) => `${currentItem.product_id}:${currentItem.variant_id ?? 'base'}` === itemKey,
-    );
-
-    if (existingIndex === -1) {
-        saveCart([...currentItems, item]);
-        return;
-    }
-
-    const nextItems = [...currentItems];
-    nextItems[existingIndex] = {
-        ...nextItems[existingIndex],
-        quantity: nextItems[existingIndex].quantity + item.quantity,
-    };
-
-    saveCart(nextItems);
+    return data;
 }
 
-export function updateCartQuantity(productId, variantId, quantity) {
-    const currentItems = getCart();
+export async function removeCartItem(cartItemId) {
+    const { data } = await axios.delete(`/cart/items/${cartItemId}`);
+    emitCart(data);
 
-    const nextItems = currentItems
-        .map((item) => {
-            if (item.product_id === productId && (item.variant_id ?? null) === (variantId ?? null)) {
-                return {
-                    ...item,
-                    quantity,
-                };
-            }
-
-            return item;
-        })
-        .filter((item) => item.quantity > 0);
-
-    saveCart(nextItems);
+    return data;
 }
 
-export function removeCartItem(productId, variantId) {
-    const currentItems = getCart();
-    saveCart(currentItems.filter((item) => !(item.product_id === productId && (item.variant_id ?? null) === (variantId ?? null))));
-}
+export async function clearCart() {
+    const { data } = await axios.delete('/cart/items');
+    emitCart(data);
 
-export function clearCart() {
-    saveCart([]);
+    return data;
 }
 
 export function subscribeCart(listener) {
     if (typeof window === 'undefined') return () => {};
 
-    const handler = (event) => listener(event.detail ?? getCart());
+    const handler = (event) => listener(event.detail);
     window.addEventListener(CART_EVENT, handler);
 
-    return () => {
-        window.removeEventListener(CART_EVENT, handler);
-    };
+    return () => window.removeEventListener(CART_EVENT, handler);
 }

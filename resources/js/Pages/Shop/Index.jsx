@@ -1,6 +1,6 @@
 import CartPanel from '@/Components/shop/CartPanel';
 import PublicNavbar from '@/Components/PublicNavbar';
-import { getCart, subscribeCart, upsertCartItem } from '@/lib/cart';
+import { addCartItem, fetchCart, subscribeCart } from '@/lib/cart';
 import { Head, Link } from '@inertiajs/react';
 import { Heart, ShoppingCart } from 'lucide-react';
 import { useEffect, useMemo, useState } from 'react';
@@ -17,35 +17,27 @@ function getMinPrice(product) {
     return Math.min(...prices.map((price) => Number(price)));
 }
 
-function cartCount(items) {
-    return items.reduce((sum, item) => sum + item.quantity, 0);
-}
-
 export default function ShopIndex({ products }) {
-    const [cartItems, setCartItems] = useState([]);
+    const [cart, setCart] = useState({ items: [], count: 0, total: 0 });
     const [isCartOpen, setIsCartOpen] = useState(false);
 
     useEffect(() => {
-        setCartItems(getCart());
+        fetchCart().then(setCart);
 
-        return subscribeCart((items) => {
-            setCartItems(items);
+        return subscribeCart((nextCart) => {
+            setCart(nextCart);
         });
     }, []);
 
     const totalProducts = useMemo(() => products.length, [products]);
 
-    const handleAddToCart = (product) => {
+    const handleAddToCart = async (product) => {
         const firstVariant = (product.variants ?? []).find((variant) => variant.stock > 0);
 
-        upsertCartItem({
+        await addCartItem({
             product_id: product.id,
             variant_id: firstVariant?.id ?? null,
-            variant_label: firstVariant?.label ?? null,
             quantity: 1,
-            unit_price: firstVariant?.price ?? product.base_price,
-            name: product.name,
-            brand: product.name,
         });
 
         setIsCartOpen(true);
@@ -74,9 +66,7 @@ export default function ShopIndex({ products }) {
                         >
                             <ShoppingCart className="h-4 w-4" />
                             Panier
-                            {cartCount(cartItems) > 0 ? (
-                                <span className="rounded-full bg-zinc-900 px-2 py-0.5 text-xs text-white">{cartCount(cartItems)}</span>
-                            ) : null}
+                            {cart.count > 0 ? <span className="rounded-full bg-zinc-900 px-2 py-0.5 text-xs text-white">{cart.count}</span> : null}
                         </button>
                     </div>
 
@@ -88,15 +78,8 @@ export default function ShopIndex({ products }) {
                             return (
                                 <article key={product.id} className="group">
                                     <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl bg-[#e6e7de] p-5">
-                                        <img
-                                            src={product.image_url || defaultImage}
-                                            alt={product.name}
-                                            className="h-full w-full object-contain transition duration-500 group-hover:scale-105"
-                                        />
-                                        <button
-                                            type="button"
-                                            className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white text-zinc-400"
-                                        >
+                                        <img src={product.image_url || defaultImage} alt={product.name} className="h-full w-full object-contain transition duration-500 group-hover:scale-105" />
+                                        <button type="button" className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white text-zinc-400">
                                             <Heart className="h-4 w-4" />
                                         </button>
                                     </div>
@@ -131,7 +114,7 @@ export default function ShopIndex({ products }) {
                     </div>
                 </section>
 
-                <CartPanel open={isCartOpen} onClose={() => setIsCartOpen(false)} items={cartItems} />
+                <CartPanel open={isCartOpen} onClose={() => setIsCartOpen(false)} cart={cart} />
             </div>
         </>
     );

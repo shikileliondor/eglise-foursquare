@@ -48,4 +48,12 @@ class ProductVariant extends Model
     {
         return $this->hasMany(OrderItem::class, 'variant_id');
     }
+
+    /**
+     * Une variante peut apparaître dans plusieurs lignes de panier.
+     */
+    public function cartItems(): HasMany
+    {
+        return $this->hasMany(CartItem::class, 'variant_id');
+    }
 }
