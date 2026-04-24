@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Link } from '@inertiajs/react';
 
 const defaultImage = 'https://placehold.co/500x500/E7E8DF/6D6D63?text=Produit';
 
@@ -58,12 +59,12 @@ const OffersCarouselDemo = ({ products = [] }) => {
                                     ? `${product.variants_count} variante(s) disponible(s)`
                                     : 'Stock standard'}
                             </p>
-                            <a
-                                href={`/shop/${product.slug}`}
+                            <Link
+                                href={route('shop.show', product.slug)}
                                 className="inline-flex text-xs font-semibold text-[#5b4ab8] hover:underline"
                             >
                                 Voir le produit →
-                            </a>
+                            </Link>
                         </div>
                     </article>
                 ))}
