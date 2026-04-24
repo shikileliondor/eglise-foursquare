@@ -20,6 +20,10 @@ Route::get('/about', function () {
     return Inertia::render('About/Index');
 })->name('about');
 
+Route::get('/contact', function () {
+    return Inertia::render('Contact/Index');
+})->name('contact');
+
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/shop/{slug}', [ShopController::class, 'show'])->name('shop.show');
 
