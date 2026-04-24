@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import axios from 'axios';
 import { clearCart, removeCartItem, updateCartItemQuantity } from '@/lib/cart';
 
@@ -14,6 +14,28 @@ export default function CartPanel({ open, onClose, cart }) {
 
     const items = cart?.items ?? [];
     const total = useMemo(() => Number(cart?.total ?? 0), [cart?.total]);
+    const handleClose = () => {
+        setFeedback(null);
+        onClose?.();
+    };
+
+    useEffect(() => {
+        if (!open) {
+            return undefined;
+        }
+
+        const handleEscape = (event) => {
+            if (event.key === 'Escape') {
+                handleClose();
+            }
+        };
+
+        window.addEventListener('keydown', handleEscape);
+
+        return () => {
+            window.removeEventListener('keydown', handleEscape);
+        };
+    }, [open]);
 
     const handleCheckout = async (event) => {
         event.preventDefault();
@@ -59,16 +81,16 @@ export default function CartPanel({ open, onClose, cart }) {
 
     return (
         <>
-            {open ? <button type="button" onClick={onClose} className="fixed inset-0 z-40 bg-black/30" aria-label="Fermer le panier" /> : null}
+            {open ? <button type="button" onClick={handleClose} className="fixed inset-0 z-40 bg-black/30" aria-label="Fermer le panier" /> : null}
 
             <aside
                 className={`fixed right-0 top-0 z-50 h-full w-full max-w-md transform border-l border-zinc-200 bg-white p-6 shadow-xl transition-transform duration-300 ${
                     open ? 'translate-x-0' : 'translate-x-full'
-                }`}
+                } ${open ? 'pointer-events-auto' : 'pointer-events-none'}`}
             >
                 <div className="mb-6 flex items-center justify-between">
                     <h2 className="text-xl font-semibold text-zinc-900">Votre panier</h2>
-                    <button type="button" onClick={onClose} className="text-sm font-medium text-zinc-500 hover:text-zinc-900">
+                    <button type="button" onClick={handleClose} className="text-sm font-medium text-zinc-500 hover:text-zinc-900">
                         Fermer
                     </button>
                 </div>
