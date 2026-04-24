@@ -28,10 +28,30 @@ const communityPhotos = [
 ];
 
 const visionItems = [
-    'Élever une génération enracinée en Christ',
-    'Développer les dons et les talents des jeunes',
-    'Créer une communauté unie et engagée',
-    'Impacter l’église et la société par l’Évangile',
+    {
+        tag: 'Former',
+        title: 'Élever une génération enracinée en Christ',
+        description: 'Accompagner chaque jeune dans une foi profonde, authentique et durable.',
+        icon: '🌱',
+    },
+    {
+        tag: 'Équiper',
+        title: 'Développer les dons et les talents des jeunes',
+        description: 'Révéler les potentiels et former des serviteurs utiles pour le Royaume.',
+        icon: '✨',
+    },
+    {
+        tag: 'Unir',
+        title: 'Créer une communauté unie et engagée',
+        description: 'Bâtir une famille spirituelle soudée, active et remplie d’amour fraternel.',
+        icon: '🤝',
+    },
+    {
+        tag: 'Impacter',
+        title: 'Impacter l’église et la société par l’Évangile',
+        description: 'Porter la lumière de Christ dans nos écoles, quartiers et environnements.',
+        icon: '🌍',
+    },
 ];
 
 export default function HomePage() {
@@ -120,19 +140,31 @@ export default function HomePage() {
                 </div>
             </section>
 
-            <section className="bg-white py-16 md:py-20">
+            <section className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] py-16 md:py-20">
                 <div className="mx-auto max-w-6xl px-6">
                     <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#260d10]">🌍 Notre vision</p>
                     <h2 className="font-heading mt-4 text-3xl font-extrabold uppercase leading-tight text-[#260d10] md:text-4xl lg:text-5xl">
                         Light Foursquare existe pour
                     </h2>
+                    <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600 md:text-lg">
+                        Former une jeunesse enracinée en Christ, équipée pour servir et prête à transformer sa génération.
+                    </p>
 
-                    <div className="mt-12 grid gap-0 border border-slate-200 md:grid-cols-2 xl:grid-cols-4">
+                    <div className="mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
                         {visionItems.map((vision) => (
-                            <article key={vision} className="min-h-72 border-b border-slate-200 p-8 md:border-r xl:border-b-0">
-                                <p className="text-3xl text-[#260d10]">→</p>
-                                <p className="mt-8 text-3xl text-yellow-500">◉</p>
-                                <p className="font-heading mt-6 text-2xl font-bold leading-snug text-[#260d10]">{vision}</p>
+                            <article
+                                key={vision.title}
+                                className="group min-h-80 rounded-2xl border border-slate-200 bg-white p-8 shadow-[0_10px_30px_rgba(15,23,42,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#d0b15d] hover:shadow-[0_20px_38px_rgba(15,23,42,0.12)]"
+                            >
+                                <div className="flex items-center justify-between">
+                                    <span className="inline-flex rounded-full border border-[#d9c386] bg-[#fff9e8] px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-[#725c1f]">
+                                        {vision.tag}
+                                    </span>
+                                    <span className="text-2xl">{vision.icon}</span>
+                                </div>
+                                <p className="mt-8 text-2xl text-[#260d10] transition duration-300 group-hover:translate-x-1">→</p>
+                                <p className="font-heading mt-5 text-2xl font-bold leading-snug text-[#260d10]">{vision.title}</p>
+                                <p className="mt-4 text-sm leading-6 text-slate-600">{vision.description}</p>
                             </article>
                         ))}
                     </div>
