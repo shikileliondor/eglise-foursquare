@@ -19,19 +19,21 @@ export const AboutDemo = () => {
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 px-8 py-12 md:grid-cols-2">
         <ContainerStagger>
           <ContainerAnimated className="mb-4 block text-xs font-medium text-rose-500 md:text-sm">
-            Innovate & Grow
+            Light Convention 2026
           </ContainerAnimated>
-          <ContainerAnimated className="tracking-tight text-4xl font-semibold md:text-[2.4rem]">
+          {/* <ContainerAnimated className="tracking-tight text-4xl font-semibold md:text-[2.4rem]">
             Scale Your Business Through Innovation
-          </ContainerAnimated>
+          </ContainerAnimated> */}
           <ContainerAnimated className="my-4 text-base text-slate-700 md:my-6 md:text-lg">
-            Transform your startup&apos;s potential through innovative solutions
-            and strategic growth. We help businesses adapt, evolve, and thrive
-            in today&apos;s competitive marketplace.
+            Grandir dans la foi, marcher dans la lumière
+            Un temps fort de prière, d’adoration et de communion fraternelle pour raviver notre foi et avancer ensemble dans la présence de Dieu.
+
           </ContainerAnimated>
           <ContainerAnimated>
-            <Button className="bg-rose-500">Start Scaling Today</Button>
-          </ContainerAnimated>
+  <Button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-md transition-all duration-300">
+    Participer à la convention
+  </Button>
+</ContainerAnimated>
         </ContainerStagger>
 
         <GalleryGrid>

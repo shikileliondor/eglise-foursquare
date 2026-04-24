@@ -103,11 +103,11 @@ export default function HomePage({ products = [], latestNews = [] }) {
                     </MotionSection>
 
                     <MotionSection delay={0.2}>
-                        <div className="mt-8 flex items-center justify-end border-t border-black/8 pt-6">
+                        {/* <div className="mt-8 flex items-center justify-end border-t border-black/8 pt-6">
                             <Link href={route('about')} className="group flex items-center gap-3 border border-slate-900 px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-900 transition hover:bg-slate-900 hover:text-white">
                                 Rejoindre <span className="transition group-hover:translate-x-1">→</span>
                             </Link>
-                        </div>
+                        </div> */}
                     </MotionSection>
 
                 </div>
@@ -225,7 +225,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
                     <div className="mx-auto max-w-6xl px-6">
                         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#260d10]">Moments Light</p>
                         <h2 className="font-heading mt-4 text-3xl font-extrabold uppercase leading-tight text-[#260d10] md:text-4xl">
-                            Nos derniers souvenirs en images
+                            Nos derniers souvenirs
                         </h2>
                         <motion.div
                             className="mt-10"
