@@ -14,13 +14,13 @@ export default function PublicNavbar() {
         <header className="sticky top-0 z-40 border-b border-slate-200 bg-white">
             <div className="mx-auto flex w-full max-w-7xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
                 <Link href="/" className="flex items-center gap-3">
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-amber-400 bg-white text-lg font-black text-slate-900">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-amber-400 bg-white font-heading text-base font-extrabold text-slate-900">
                         LF
                     </span>
-                    <span className="hidden text-sm font-bold tracking-wide text-slate-900 sm:inline">Light Foursquare</span>
+                    <span className="font-heading hidden text-sm font-semibold tracking-wide text-slate-900 sm:inline">Light Foursquare</span>
                 </Link>
 
-                <nav className="ml-2 hidden flex-1 items-center justify-center gap-8 text-xl font-medium text-slate-800 md:flex">
+                <nav className="ml-2 hidden flex-1 items-center justify-center gap-8 text-base font-medium text-slate-800 md:flex">
                     {links.map((link) => (
                         <Link key={link.href} href={link.href} className="transition hover:text-slate-500">
                             {link.label}

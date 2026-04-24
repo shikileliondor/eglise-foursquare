@@ -28,28 +28,28 @@ export default function SiteFooter() {
                             alt="MASA logo"
                             className="h-20 w-auto object-contain sm:h-24"
                         />
-                        <h2 className="mt-4 max-w-xl text-2xl font-black uppercase leading-tight tracking-wide text-white/95 sm:text-3xl">
+                        <h2 className="font-heading mt-4 max-w-xl text-xl font-bold uppercase leading-tight tracking-wide text-white/95 sm:text-2xl">
                             Marché des Arts du Spectacle Africain d&apos;Abidjan
                         </h2>
                     </div>
 
                     <div className="lg:col-span-3">
-                        <h3 className="text-3xl font-bold text-white/95">Adresse</h3>
-                        <p className="mt-5 text-xl leading-relaxed text-white/80">
+                        <h3 className="font-heading text-2xl font-semibold text-white/95">Adresse</h3>
+                        <p className="mt-5 text-base leading-7 text-white/80">
                             La Maison du MASA – Plateau, rue Toussaint Louverture
                             09 BP 2877 Abidjan 09, Côte d’Ivoire.
                         </p>
                     </div>
 
                     <div className="lg:col-span-3">
-                        <h3 className="text-3xl font-bold text-white/95">Contact</h3>
+                        <h3 className="font-heading text-2xl font-semibold text-white/95">Contact</h3>
                         <a
                             href="mailto:administration@masa-ci.org"
-                            className="mt-5 inline-block text-xl text-white/85 underline underline-offset-4 transition hover:text-white"
+                            className="mt-5 inline-block text-base text-white/85 underline underline-offset-4 transition hover:text-white"
                         >
                             administration@masa-ci.org
                         </a>
-                        <p className="mt-6 text-5xl font-bold tracking-tight text-white sm:text-6xl">
+                        <p className="font-heading mt-6 text-4xl font-bold tracking-tight text-white sm:text-5xl">
                             +225 27 20 21 35 20
                         </p>
                     </div>
@@ -68,7 +68,7 @@ export default function SiteFooter() {
                     ))}
                 </div>
 
-                <div className="mt-16 flex flex-col gap-6 border-t border-white/10 pt-8 text-lg text-white/80 md:flex-row md:items-center md:justify-between">
+                <div className="mt-16 flex flex-col gap-6 border-t border-white/10 pt-8 text-base text-white/80 md:flex-row md:items-center md:justify-between">
                     <ul className="flex flex-wrap items-center gap-8">
                         <li>
                             <Link href="/news" className="transition hover:text-white">
@@ -88,7 +88,7 @@ export default function SiteFooter() {
                     </ul>
 
                     <div className="flex items-center gap-6">
-                        <p className="text-lg text-white/80">MASA © 2025. Tous droits réservés.</p>
+                        <p className="text-base text-white/80">MASA © 2025. Tous droits réservés.</p>
                         <a
                             href="#top"
                             aria-label="Retour en haut"
