@@ -16,10 +16,10 @@ export default function ContactIndex() {
         <>
             <Head title="Contact" />
  
-            <div className="min-h-screen bg-gray-50">
+            <div className="bg-gray-50">
                 <PublicNavbar />
  
-                <main className="mx-auto w-full max-w-4xl px-4 pb-20 pt-56 sm:px-6 lg:px-8">
+                <main className="mx-auto w-full max-w-4xl px-4 pb-8 pt-60 sm:px-6 lg:px-8">
                     <section className="rounded-3xl border border-gray-200 bg-white p-6 shadow-xl sm:p-10">
                         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-amber-600">Contact</p>
                         <h1 className="mt-3 text-3xl font-black text-gray-900 sm:text-4xl">Formulaire simple</h1>
@@ -100,12 +100,14 @@ export default function ContactIndex() {
                                 </div>
                             ) : null}
  
-                            <button
-                                type="submit"
-                                className="inline-flex items-center rounded-xl bg-amber-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-amber-600"
-                            >
-                                Envoyer
-                            </button>
+                            <div className="pt-2">
+                                <button
+                                    type="submit"
+                                    className="inline-flex w-full items-center justify-center rounded-xl bg-amber-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-amber-600 sm:w-auto"
+                                >
+                                    Envoyer le formulaire
+                                </button>
+                            </div>
                         </form>
                     </section>
                 </main>
