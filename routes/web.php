@@ -31,6 +31,9 @@ Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/convention', [ConventionController::class, 'index'])->name('convention.index');
 
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+Route::get('/cart', function () {
+    return Inertia::render('Cart/Index');
+})->name('cart.index');
 Route::get('/cart/summary', [CartController::class, 'show'])->name('cart.show');
 Route::post('/cart/items', [CartController::class, 'store'])->name('cart.items.store');
 Route::patch('/cart/items/{cartItem}', [CartController::class, 'update'])->name('cart.items.update');
