@@ -36,7 +36,7 @@ const SLIDES = [
 
 export function HoverSliderDemo() {
   return (
-    <HoverSlider className="relative rounded-3xl border border-slate-200 bg-[#f4f4f4] p-6 md:p-12 lg:p-16 text-[#3d3929]">
+    <HoverSlider className="relative rounded-3xl border border-slate-200 bg-[#f4f4f4] p-6 md:p-10 text-[#3d3929]">
       <button
         type="button"
         aria-label="Précédent"
@@ -44,34 +44,47 @@ export function HoverSliderDemo() {
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
-      <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 xl:gap-24">
-        <HoverSliderImageWrap className="order-1 h-[420px] w-full max-w-[460px] justify-self-center overflow-hidden rounded-sm md:h-[560px] lg:justify-self-start">
+
+      {/* ✅ inline style pour forcer le layout 2 colonnes */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1.3fr",
+          gap: "3rem",
+          alignItems: "center",
+        }}
+      >
+        {/* Colonne gauche : image */}
+        <HoverSliderImageWrap
+          style={{ height: "480px", width: "100%" }}
+          className="overflow-hidden rounded-sm"
+        >
           {SLIDES.map((slide, index) => (
-            <div key={slide.id}>
-              <HoverSliderImage
-                index={index}
-                imageUrl={slide.imageUrl}
-                src={slide.imageUrl}
-                alt={slide.title}
-                className="size-full object-cover"
-                loading="eager"
-                decoding="async"
-              />
-            </div>
+            <HoverSliderImage
+              key={slide.id}
+              index={index}
+              imageUrl={slide.imageUrl}
+              src={slide.imageUrl}
+              alt={slide.title}
+              className="size-full object-cover"
+              loading="eager"
+              decoding="async"
+            />
           ))}
         </HoverSliderImageWrap>
-        <div className="order-2 flex flex-col items-start justify-center space-y-4 md:space-y-5">
-          <h3 className="mb-4 text-sm font-medium capitalize tracking-wide text-[#c96442]">
+
+        {/* Colonne droite : texte */}
+        <div className="flex flex-col items-start justify-center gap-4">
+          <h3 className="text-sm font-medium capitalize tracking-wide text-[#c96442]">
             / Our Services
           </h3>
           {SLIDES.map((slide, index) => (
-            <div key={slide.id} className="leading-none">
-              <TextStaggerHover
-                index={index}
-                className="cursor-pointer text-3xl font-bold uppercase tracking-tight text-[#260d10] sm:text-4xl md:text-5xl xl:text-6xl"
-                text={slide.title}
-              />
-            </div>
+            <TextStaggerHover
+              key={slide.id}
+              index={index}
+              className="cursor-pointer text-4xl font-bold uppercase tracking-tight text-[#260d10] md:text-5xl"
+              text={slide.title}
+            />
           ))}
         </div>
       </div>
