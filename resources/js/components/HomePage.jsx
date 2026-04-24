@@ -13,37 +13,37 @@ const communityPhotos = [
 
 const legendsSpotlight = [
     {
-        name: 'Sarah N.',
+        // name: 'Sarah N.',
         role: 'Worship',
         image: '/images/image 1.jpg',
         className: 'md:col-span-3 md:row-span-2',
     },
     {
-        name: 'Jordan K.',
+        // name: 'Jordan K.',
         role: 'Media',
-        image: '/images/image 2.jpg',
+        image: '/images/image 7.jpg',
         className: 'md:col-span-2 md:row-span-1',
     },
     {
-        name: 'Grace M.',
+        // name: 'Grace M.',
         role: 'Com',
         image: '/images/image 3.jpg',
         className: 'md:col-span-2 md:row-span-1',
     },
     {
-        name: 'David T.',
+        // name: 'David T.',
         role: 'Intercession',
         image: '/images/image 4.jpg',
         className: 'md:col-span-2 md:row-span-2',
     },
     {
-        name: 'Naomi L.',
+        // name: 'Naomi L.',
         role: 'Events',
         image: '/images/image 5.jpg',
         className: 'md:col-span-2 md:row-span-1',
     },
     {
-        name: 'Joel P.',
+        // name: 'Joel P.',
         role: 'Accueil',
         image: '/images/image 6.jpg',
         className: 'md:col-span-2 md:row-span-1',
@@ -69,44 +69,124 @@ export default function HomePage({ products = [], latestNews = [] }) {
         <div className="min-h-screen bg-slate-50 text-slate-900">
             <PublicNavbar />
 
-            <section className="relative overflow-hidden bg-[#f89b21] pb-12 pt-8 text-[#f6efb6] md:pb-16 md:pt-12">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_35%,rgba(38,13,16,0.72),transparent_42%),radial-gradient(circle_at_70%_100%,rgba(18,6,8,0.82),transparent_48%)]" />
-                <div className="relative mx-auto grid max-w-7xl gap-8 px-4 md:px-6 xl:grid-cols-[0.95fr_1.3fr]">
-                    <div className="flex flex-col justify-end">
-                        <p className="font-heading text-3xl font-extrabold uppercase leading-none md:text-5xl">
-                            Meet your legend
-                        </p>
-                        <p className="mt-5 max-w-md text-sm font-semibold uppercase tracking-wide text-[#ffd177] md:text-base">
-                            Nous mettons en lumière les talents Light Foursquare pour une nouvelle génération qui
-                            impacte.
-                        </p>
-                    </div>
+           <section className="relative overflow-hidden bg-white pb-16 pt-12 md:pb-20 md:pt-16">
+  {/* Ligne décorative top */}
+  <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#c96442] via-[#f89b21] to-transparent" />
 
-                    <div className="grid auto-rows-[150px] grid-cols-2 gap-3 md:auto-rows-[180px] md:grid-cols-6">
-                        {legendsSpotlight.map((legend) => (
-                            <article
-                                key={legend.name}
-                                className={`group relative overflow-hidden border border-[#9d4a11] bg-[#3a1811]/80 ${legend.className}`}
-                            >
-                                <img
-                                    src={legend.image}
-                                    alt={legend.name}
-                                    className="h-full w-full object-cover opacity-75 sepia transition duration-300 group-hover:scale-105 group-hover:opacity-95"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#2a0d0a]/85 via-transparent to-transparent" />
-                                <div className="absolute bottom-3 left-3">
-                                    <span className="inline-flex bg-[#2e130d]/80 px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-[#f6efb6]">
-                                        {legend.role}
-                                    </span>
-                                    <p className="mt-1 text-sm font-bold uppercase leading-tight text-[#fff7c2] md:text-base">
-                                        {legend.name}
-                                    </p>
-                                </div>
-                            </article>
-                        ))}
-                    </div>
-                </div>
-            </section>
+  <div className="relative mx-auto max-w-7xl px-4 md:px-6">
+
+    {/* Header */}
+    <div className="mb-10 flex items-end justify-between border-b border-black/8 pb-8">
+      <div>
+        <p className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-[#c96442]">
+          — Light Foursquare
+        </p>
+        <h2 className="font-heading text-4xl font-black uppercase leading-[0.92] tracking-tight text-slate-900 md:text-6xl">
+          Living God's <br />
+          <span className="text-[#c96442]">Holy Truth</span>
+        </h2>
+      </div>
+      <p className="hidden max-w-[240px] text-right text-sm leading-7 text-slate-400 md:block">
+        Nous mettons en lumière les talents Light Foursquare pour une nouvelle génération qui impacte.
+      </p>
+    </div>
+
+    {/* Bento grid */}
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(12, 1fr)',
+        gridTemplateRows: 'repeat(2, 200px)',
+        gap: '8px',
+      }}
+    >
+      {/* Grande — col 1-5, row 1-2 */}
+      <article className="group relative overflow-hidden bg-slate-100" style={{ gridColumn: '1 / 6', gridRow: '1 / 3' }}>
+        <img src="/images/image 1.jpg" alt=" N." className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+        <div className="absolute bottom-5 left-5">
+          <span className="mb-1 block text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Worship</span>
+          <p className="text-lg font-black uppercase text-white"></p>
+        </div>
+        <span className="absolute right-4 top-4 text-[10px] font-bold text-white/25">01</span>
+      </article>
+
+      {/* col 6-9, row 1 */}
+      <article className="group relative overflow-hidden bg-slate-100" style={{ gridColumn: '6 / 9', gridRow: '1 / 2' }}>
+        <img src="/images/image 9.jpg" alt="Jordan K." className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+        <div className="absolute bottom-4 left-4">
+          <span className="mb-1 block text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Media</span>
+          <p className="text-sm font-black uppercase text-white"></p>
+        </div>
+        <span className="absolute right-3 top-3 text-[10px] font-bold text-white/25">02</span>
+      </article>
+
+      {/* col 9-13, row 1 */}
+      <article className="group relative overflow-hidden bg-slate-100" style={{ gridColumn: '9 / 13', gridRow: '1 / 2' }}>
+        <img src="/images/image 3.jpg" alt="Grace M." className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+        <div className="absolute bottom-4 left-4">
+          <span className="mb-1 block text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Com</span>
+          <p className="text-sm font-black uppercase text-white"></p>
+        </div>
+        <span className="absolute right-3 top-3 text-[10px] font-bold text-white/25">03</span>
+      </article>
+
+      {/* col 6-8, row 2 */}
+      <article className="group relative overflow-hidden bg-slate-100" style={{ gridColumn: '6 / 8', gridRow: '2 / 3' }}>
+        <img src="/images/image 4.jpg" alt="David T." className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+        <div className="absolute bottom-4 left-4">
+          <span className="mb-1 block text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Intercession</span>
+          <p className="text-sm font-black uppercase text-white"></p>
+        </div>
+        <span className="absolute right-3 top-3 text-[10px] font-bold text-white/25">04</span>
+      </article>
+
+      {/* col 8-10, row 2 */}
+      <article className="group relative overflow-hidden bg-slate-100" style={{ gridColumn: '8 / 10', gridRow: '2 / 3' }}>
+        <img src="/images/image 5.jpg" alt="Naomi L." className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+        <div className="absolute bottom-4 left-4">
+          <span className="mb-1 block text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Events</span>
+          <p className="text-sm font-black uppercase text-white"></p>
+        </div>
+        <span className="absolute right-3 top-3 text-[10px] font-bold text-white/25">05</span>
+      </article>
+
+      {/* col 10-13, row 2 */}
+      <article className="group relative overflow-hidden bg-slate-100" style={{ gridColumn: '10 / 13', gridRow: '2 / 3' }}>
+        <img src="/images/image 6.jpg" alt="Joel P." className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
+        <div className="absolute bottom-4 left-4">
+          <span className="mb-1 block text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Accueil</span>
+          <p className="text-sm font-black uppercase text-white"></p>
+        </div>
+        <span className="absolute right-3 top-3 text-[10px] font-bold text-white/25">06</span>
+      </article>
+    </div>
+
+    {/* Footer stats */}
+    <div className="mt-8 flex items-center justify-between border-t border-black/8 pt-6">
+      <div className="flex items-center gap-8">
+        {/* <div>
+          <p className="text-2xl font-black text-slate-900">6+</p>
+          <p className="text-[10px] uppercase tracking-widest text-slate-400">Équipes</p>
+        </div>
+        <div className="h-8 w-px bg-slate-200" />
+        <div>
+          <p className="text-2xl font-black text-slate-900">100+</p>
+          <p className="text-[10px] uppercase tracking-widest text-slate-400">Membres</p>
+        </div> */}
+      </div>
+      <a href="#" className="group flex items-center gap-3 border border-slate-900 px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-900 transition hover:bg-slate-900 hover:text-white">
+        Rejoindre <span className="transition group-hover:translate-x-1">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
 
             <section className="bg-[#f4f4f4] pb-8 pt-8 md:pt-12">
                 <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 lg:grid-cols-2">
@@ -135,14 +215,11 @@ export default function HomePage({ products = [], latestNews = [] }) {
 
                     <div className="max-w-xl">
                         <h1 className="font-heading text-3xl font-extrabold leading-[1.15] text-black md:text-4xl lg:text-[2.65rem]">
-                            Nouveau dans Light Foursquare ?<br />
-                            Bienvenue dans la famille !
+                            {/* Nouveau dans Light Foursquare ?<br /> */}
+                            Bienvenue dans la famille  Light !
                         </h1>
                         <p className="mt-6 text-base leading-7 text-black/85 md:text-lg">
-                            Light Foursquare est un mouvement de jeunes chrétiens engagés, appelés à grandir ensemble
-                            dans la foi, à servir avec passion et à impacter leur génération pour Christ. Ici, chaque
-                            talent compte, chaque appel est important, et chaque jeune a une place dans le plan de
-                            Dieu.
+                           Light Foursquare rassemble les jeunes chrétiens appelés à grandir dans la foi, servir avec passion et impacter leur génération pour Christ.
                         </p>
                         <p className="text-spiritual mt-4 text-[1.05rem] leading-7 text-black/85">
                             Dieu t’a-t-il donné une passion, un don ou une vision ? Alors cette maison est aussi la
@@ -154,7 +231,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
                             className="group mt-10 inline-flex flex-col text-base font-semibold text-black transition hover:text-[#5b4ab8] md:text-lg"
                         >
                             <span className="inline-flex items-center gap-3">
-                                👉 Rejoins le mouvement Light Foursquare
+                                 Rejoins le mouvement Light Foursquare
                                 <span className="text-xl text-[#6a58c7] transition group-hover:translate-x-1">→</span>
                             </span>
                             <span className="mt-3 h-[3px] w-full bg-gradient-to-r from-[#1f4b84] via-[#c2a43f] to-[#6a58c7]" />
@@ -166,7 +243,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
             <section className="bg-[#f4f4f4] py-16 md:py-20">
                 <div className="mx-auto max-w-6xl px-6">
                     <h2 className="font-heading text-3xl font-extrabold uppercase tracking-tight text-[#260d10] md:text-4xl">
-                        🔥 Actualités
+                         Actualités
                     </h2>
 
                     <div className="mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
@@ -214,7 +291,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
 
             <section className="bg-[#f4f4f4] py-16 md:py-20">
                 <div className="mx-auto max-w-6xl px-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#260d10]">📸 Moments Light</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#260d10]"> Moments Light</p>
                     <h2 className="font-heading mt-4 text-3xl font-extrabold uppercase leading-tight text-[#260d10] md:text-4xl">
                         Nos derniers souvenirs en images
                     </h2>
@@ -248,7 +325,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
                         href="/shop"
                         className="mt-6 inline-flex items-center gap-3 text-base font-semibold text-black transition hover:text-[#5b4ab8] md:text-lg"
                     >
-                        👉 Voir la boutique <span className="text-xl text-[#6a58c7]">→</span>
+                        Voir la boutique <span className="text-xl text-[#6a58c7]">→</span>
                     </a>
 
                     <div className="mt-8">

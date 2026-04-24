@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
                 'name' => 'T-shirt Foursquare',
                 'slug' => 't-shirt-foursquare',
                 'description' => 'T-shirt officiel en coton biologique avec logo Foursquare.',
-                'price' => 24.90,
+                'price' => 5000,
                 'image' => null,
                 'is_available' => true,
                 'variants' => [
@@ -30,7 +30,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Hoodie Foursquare',
                 'slug' => 'hoodie-foursquare',
                 'description' => 'Sweat à capuche premium, intérieur molletonné.',
-                'price' => 49.90,
+                'price' => 10000,
                 'image' => null,
                 'is_available' => true,
                 'variants' => [
@@ -43,7 +43,7 @@ class ProductSeeder extends Seeder
                 'name' => 'Casquette Foursquare',
                 'slug' => 'casquette-foursquare',
                 'description' => 'Casquette réglable avec broderie frontale.',
-                'price' => 19.90,
+                'price' => 10000,
                 'image' => null,
                 'is_available' => true,
                 'variants' => [
@@ -55,12 +55,12 @@ class ProductSeeder extends Seeder
                 'name' => 'Mug Foursquare',
                 'slug' => 'mug-foursquare',
                 'description' => 'Mug en céramique 330 ml, impression recto-verso.',
-                'price' => 14.50,
+                'price' => 15000,
                 'image' => null,
                 'is_available' => true,
                 'variants' => [
                     ['label' => 'Blanc mat', 'stock' => 60, 'price' => null],
-                    ['label' => 'Noir brillant', 'stock' => 22, 'price' => 15.50],
+                    ['label' => 'Noir brillant', 'stock' => 22, 'price' => 15000],
                 ],
             ],
         ];
