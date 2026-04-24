@@ -29,11 +29,14 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        $whatsAppPhone = preg_replace('/\D+/', '', (string) env('WHATSAPP_PHONE', '2252720213520'));
+
         return [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
             ],
+            'whatsappPhone' => $whatsAppPhone,
         ];
     }
 }
