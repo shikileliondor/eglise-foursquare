@@ -16,24 +16,19 @@ const IMAGES = [
 export const AboutDemo = () => {
   return (
     <section>
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 px-8 py-12 md:grid-cols-2">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-6 px-6 py-8 md:grid-cols-2 md:gap-8 md:px-8 md:py-10">
         <ContainerStagger>
-          <ContainerAnimated className="mb-4 block text-xs font-medium text-rose-500 md:text-sm">
+          <ContainerAnimated className="mb-2 block text-xs font-semibold uppercase tracking-[0.14em] text-rose-500 md:text-sm">
             Light Convention 2026
           </ContainerAnimated>
-          {/* <ContainerAnimated className="tracking-tight text-4xl font-semibold md:text-[2.4rem]">
-            Scale Your Business Through Innovation
-          </ContainerAnimated> */}
-          <ContainerAnimated className="my-4 text-base text-slate-700 md:my-6 md:text-lg">
-            Grandir dans la foi, marcher dans la lumière
-            Un temps fort de prière, d’adoration et de communion fraternelle pour raviver notre foi et avancer ensemble dans la présence de Dieu.
-
+          <ContainerAnimated className="max-w-xl text-base font-normal leading-relaxed text-slate-700 md:text-lg">
+            Grandir dans la foi, marcher dans la lumière. Un temps fort de prière, d’adoration et de communion fraternelle pour raviver notre foi et avancer ensemble dans la présence de Dieu.
           </ContainerAnimated>
-          <ContainerAnimated>
-  <Button className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-md transition-all duration-300">
-    Participer à la convention
-  </Button>
-</ContainerAnimated>
+          <ContainerAnimated className="mt-4 md:mt-5">
+            <Button className="rounded-md bg-red-600 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-red-700 md:text-base">
+              Participer à la convention
+            </Button>
+          </ContainerAnimated>
         </ContainerStagger>
 
         <GalleryGrid>
