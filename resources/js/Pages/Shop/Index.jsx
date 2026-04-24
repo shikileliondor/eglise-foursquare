@@ -32,13 +32,13 @@ export default function ShopIndex({ products }) {
     return (
         <>
             <Head title="Boutique" />
-            <div className="min-h-screen bg-[#f5f5f3] text-zinc-800">
+            <div className="min-h-screen bg-[#f5f5f3] font-sans text-zinc-800">
                 <PublicNavbar />
 
-                <section className="mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 lg:px-8">
+                <section className="mx-auto max-w-7xl px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-12 lg:px-8">
                     <div className="mb-10 text-center">
-                        <h1 className="font-serif text-5xl font-semibold text-zinc-700">Elevare Exclusive</h1>
-                        <p className="mx-auto mt-3 max-w-2xl text-sm text-zinc-500">
+                        <h1 className="font-heading text-4xl font-extrabold text-zinc-700 sm:text-5xl">Elevare Exclusive</h1>
+                        <p className="mx-auto mt-3 max-w-2xl text-xs text-zinc-500 sm:text-sm">
                             Découvrez notre sélection premium, inspirée du design partagé, avec options de panier et commande rapide.
                         </p>
                     </div>
@@ -47,40 +47,40 @@ export default function ShopIndex({ products }) {
                         <p className="text-sm text-zinc-500">Showing {totalProducts} products</p>
                     </div>
 
-                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                    <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
                         {products.map((product) => {
                             const minPrice = getMinPrice(product);
                             const hasVariants = (product.variants ?? []).length > 0;
 
                             return (
                                 <article key={product.id} className="group">
-                                    <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl bg-[#e6e7de] p-5">
+                                    <div className="relative flex aspect-square items-center justify-center overflow-hidden rounded-xl bg-[#e6e7de] p-3 sm:rounded-2xl sm:p-5">
                                         <img src={product.image_url || defaultImage} alt={product.name} className="h-full w-full object-contain transition duration-500 group-hover:scale-105" />
-                                        <button type="button" className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-white text-zinc-400">
-                                            <Heart className="h-4 w-4" />
+                                        <button type="button" className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-white text-zinc-400 sm:right-3 sm:top-3 sm:h-8 sm:w-8">
+                                            <Heart className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                                         </button>
                                     </div>
 
-                                    <div className="mt-4">
+                                    <div className="mt-3 sm:mt-4">
                                         <p className="text-xs font-bold uppercase tracking-wide text-[#bd7f6f]">{product.name}</p>
-                                        <Link href={route('shop.show', product.slug)} className="mt-1 line-clamp-2 text-sm text-zinc-600 hover:underline">
+                                        <Link href={route('shop.show', product.slug)} className="mt-1 line-clamp-2 text-xs text-zinc-600 hover:underline sm:text-sm">
                                             {product.description || product.name}
                                         </Link>
-                                        <p className="mt-4 text-lg text-zinc-600">{formatPrice(minPrice)}</p>
+                                        <p className="mt-2 text-base text-zinc-600 sm:mt-4 sm:text-lg">{formatPrice(minPrice)}</p>
 
-                                        <div className="mt-3 space-y-2">
+                                        <div className="mt-2 space-y-1.5 sm:mt-3 sm:space-y-2">
                                             {hasVariants ? (
                                                 <Link
                                                     href={route('shop.show', product.slug)}
-                                                    className="inline-flex w-full items-center justify-center rounded-full border border-zinc-400 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-zinc-700"
+                                                    className="inline-flex w-full items-center justify-center rounded-full border border-zinc-400 px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-zinc-700 sm:px-4 sm:py-2 sm:text-sm"
                                                 >
-                                                    Choisir options
+                                                    Ajouter au panier
                                                 </Link>
                                             ) : (
                                                 <button
                                                     type="button"
                                                     onClick={() => handleAddToCart(product)}
-                                                    className="w-full rounded-full border border-zinc-400 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-zinc-700 transition hover:bg-zinc-900 hover:text-white"
+                                                    className="w-full rounded-full border border-zinc-400 px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-zinc-700 transition hover:bg-zinc-900 hover:text-white sm:px-4 sm:py-2 sm:text-sm"
                                                 >
                                                     Ajouter au panier
                                                 </button>
@@ -88,7 +88,7 @@ export default function ShopIndex({ products }) {
 
                                             <Link
                                                 href={route('cart.index')}
-                                                className="inline-flex w-full items-center justify-center rounded-full border border-zinc-300 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-zinc-600 transition hover:border-zinc-500 hover:text-zinc-900"
+                                                className="inline-flex w-full items-center justify-center rounded-full border border-zinc-300 px-2 py-1.5 text-[11px] font-semibold uppercase tracking-wide text-zinc-600 transition hover:border-zinc-500 hover:text-zinc-900 sm:px-4 sm:py-2 sm:text-sm"
                                             >
                                                 Voir panier
                                             </Link>
