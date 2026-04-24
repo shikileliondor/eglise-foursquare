@@ -1,9 +1,8 @@
-import CartPanel from '@/Components/shop/CartPanel';
 import PublicNavbar from '@/Components/PublicNavbar';
-import { addCartItem, fetchCart, subscribeCart } from '@/lib/cart';
-import { Head, Link } from '@inertiajs/react';
-import { ChevronLeft, ShoppingCart } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
+import { addCartItem } from '@/lib/cart';
+import { Head, Link, router } from '@inertiajs/react';
+import { ChevronLeft } from 'lucide-react';
+import { useMemo, useState } from 'react';
 
 const defaultImage = 'https://placehold.co/700x700/E7E8DF/6D6D63?text=Produit';
 
@@ -13,16 +12,6 @@ function formatPrice(value) {
 
 export default function ShopShow({ product }) {
     const [selectedVariantId, setSelectedVariantId] = useState(product.variants?.[0]?.id ?? null);
-    const [cart, setCart] = useState({ items: [], count: 0, total: 0 });
-    const [isCartOpen, setIsCartOpen] = useState(false);
-
-    useEffect(() => {
-        fetchCart().then(setCart);
-
-        return subscribeCart((nextCart) => {
-            setCart(nextCart);
-        });
-    }, []);
 
     const selectedVariant = useMemo(
         () => (product.variants ?? []).find((variant) => variant.id === selectedVariantId) ?? null,
@@ -37,8 +26,7 @@ export default function ShopShow({ product }) {
             variant_id: selectedVariant?.id ?? null,
             quantity: 1,
         });
-
-        setIsCartOpen(true);
+        router.visit(route('cart.index'));
     };
 
     return (
@@ -55,15 +43,6 @@ export default function ShopShow({ product }) {
                             Retour boutique
                         </Link>
 
-                        <button
-                            type="button"
-                            onClick={() => setIsCartOpen(true)}
-                            className="relative inline-flex items-center gap-2 rounded-full border border-zinc-400 px-4 py-2 text-sm font-medium"
-                        >
-                            <ShoppingCart className="h-4 w-4" />
-                            Panier
-                            {cart.count > 0 ? <span className="rounded-full bg-zinc-900 px-2 py-0.5 text-xs text-white">{cart.count}</span> : null}
-                        </button>
                     </div>
 
                     <div className="grid gap-8 rounded-3xl bg-white p-6 shadow-sm lg:grid-cols-2 lg:p-10">
@@ -110,7 +89,6 @@ export default function ShopShow({ product }) {
                     </div>
                 </section>
 
-                <CartPanel open={isCartOpen} onClose={() => setIsCartOpen(false)} cart={cart} />
             </div>
         </>
     );

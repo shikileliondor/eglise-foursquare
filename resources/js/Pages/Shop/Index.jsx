@@ -1,9 +1,8 @@
-import CartPanel from '@/Components/shop/CartPanel';
 import PublicNavbar from '@/Components/PublicNavbar';
-import { addCartItem, fetchCart, subscribeCart } from '@/lib/cart';
-import { Head, Link } from '@inertiajs/react';
-import { Heart, ShoppingCart } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
+import { addCartItem } from '@/lib/cart';
+import { Head, Link, router } from '@inertiajs/react';
+import { Heart } from 'lucide-react';
+import { useMemo } from 'react';
 
 const defaultImage = 'https://placehold.co/500x500/E7E8DF/6D6D63?text=Produit';
 
@@ -18,17 +17,6 @@ function getMinPrice(product) {
 }
 
 export default function ShopIndex({ products }) {
-    const [cart, setCart] = useState({ items: [], count: 0, total: 0 });
-    const [isCartOpen, setIsCartOpen] = useState(false);
-
-    useEffect(() => {
-        fetchCart().then(setCart);
-
-        return subscribeCart((nextCart) => {
-            setCart(nextCart);
-        });
-    }, []);
-
     const totalProducts = useMemo(() => products.length, [products]);
 
     const handleAddToCart = async (product) => {
@@ -39,8 +27,7 @@ export default function ShopIndex({ products }) {
             variant_id: firstVariant?.id ?? null,
             quantity: 1,
         });
-
-        setIsCartOpen(true);
+        router.visit(route('cart.index'));
     };
 
     return (
@@ -59,15 +46,6 @@ export default function ShopIndex({ products }) {
 
                     <div className="mb-6 flex items-center justify-between">
                         <p className="text-sm text-zinc-500">Showing {totalProducts} products</p>
-                        <button
-                            type="button"
-                            onClick={() => setIsCartOpen(true)}
-                            className="relative inline-flex items-center gap-2 rounded-full border border-zinc-400 px-4 py-2 text-sm font-medium"
-                        >
-                            <ShoppingCart className="h-4 w-4" />
-                            Panier
-                            {cart.count > 0 ? <span className="rounded-full bg-zinc-900 px-2 py-0.5 text-xs text-white">{cart.count}</span> : null}
-                        </button>
                     </div>
 
                     <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -114,7 +92,6 @@ export default function ShopIndex({ products }) {
                     </div>
                 </section>
 
-                <CartPanel open={isCartOpen} onClose={() => setIsCartOpen(false)} cart={cart} />
             </div>
         </>
     );
