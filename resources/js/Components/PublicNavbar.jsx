@@ -47,11 +47,17 @@ export default function PublicNavbar() {
         >
             <div className="mx-auto flex w-full max-w-7xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
                 <Link href="/" className="flex items-center gap-3">
-                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-amber-400 bg-white font-heading text-base font-extrabold text-slate-900">
-                        LF
-                    </span>
-                    <span className="font-heading hidden text-sm font-semibold tracking-wide text-slate-900 sm:inline">Light Foursquare</span>
-                </Link>
+    <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-amber-400 overflow-hidden bg-white">
+        <img
+            src="/images/logo.jpg"
+            alt="Light Foursquare"
+            className="h-full w-full object-cover"
+        />
+    </span>
+    <span className="font-heading hidden text-sm font-semibold tracking-wide text-slate-900 sm:inline">
+        Light <br/> Foursquare
+    </span>
+</Link>
 
                 <nav className="ml-2 hidden flex-1 items-center justify-center gap-8 text-base font-medium text-slate-800 md:flex">
                     {links.map((link) => (
@@ -62,12 +68,12 @@ export default function PublicNavbar() {
                 </nav>
 
                 <div className="ml-auto flex items-center gap-4 text-slate-800">
-                    <button type="button" className="hidden p-1 transition hover:text-slate-500 md:inline-flex" aria-label="Langue">
+                    {/* <button type="button" className="hidden p-1 transition hover:text-slate-500 md:inline-flex" aria-label="Langue">
                         🇬🇧
-                    </button>
-                    <button type="button" className="hidden p-1 transition hover:text-slate-500 md:inline-flex" aria-label="Rechercher">
+                    </button> */}
+                    {/* <button type="button" className="hidden p-1 transition hover:text-slate-500 md:inline-flex" aria-label="Rechercher">
                         <Search className="h-6 w-6" strokeWidth={1.7} />
-                    </button>
+                    </button> */}
                     <Link href="/cart" className="relative p-1 transition hover:text-slate-500" aria-label="Panier">
                         <ShoppingCart className="h-6 w-6" strokeWidth={1.7} />
                         {cartCount > 0 ? (
