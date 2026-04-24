@@ -10,7 +10,16 @@ function formatPrice(value) {
     return `${Number(value).toFixed(2)} €`;
 }
 
-export default function ShopShow({ product }) {
+function buildWhatsAppUrl(phone, product, variant) {
+    if (!phone) return null;
+
+    const selectedVariantLabel = variant?.label ? ` (${variant.label})` : '';
+    const message = `Bonjour, je souhaite commander ${product.name}${selectedVariantLabel}.`;
+
+    return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+}
+
+export default function ShopShow({ product, otherProducts = [], whatsappPhone = '' }) {
     const [selectedVariantId, setSelectedVariantId] = useState(product.variants?.[0]?.id ?? null);
 
     const selectedVariant = useMemo(
@@ -19,6 +28,7 @@ export default function ShopShow({ product }) {
     );
 
     const currentPrice = selectedVariant?.price ?? product.base_price;
+    const whatsappUrl = buildWhatsAppUrl(whatsappPhone, product, selectedVariant);
 
     const handleAddToCart = async () => {
         await addCartItem({
@@ -42,7 +52,6 @@ export default function ShopShow({ product }) {
                             <ChevronLeft className="h-4 w-4" />
                             Retour boutique
                         </Link>
-
                     </div>
 
                     <div className="grid gap-8 rounded-3xl bg-white p-6 shadow-sm lg:grid-cols-2 lg:p-10">
@@ -78,17 +87,53 @@ export default function ShopShow({ product }) {
                                 </div>
                             ) : null}
 
-                            <button
-                                type="button"
-                                onClick={handleAddToCart}
-                                className="mt-8 w-full rounded-full border border-zinc-400 px-5 py-3 text-sm font-semibold uppercase tracking-wide text-zinc-700 transition hover:bg-zinc-900 hover:text-white"
-                            >
-                                Ajouter au panier
-                            </button>
+                            <div className="mt-8 space-y-3">
+                                <button
+                                    type="button"
+                                    onClick={handleAddToCart}
+                                    className="w-full rounded-full border border-zinc-400 px-5 py-3 text-sm font-semibold uppercase tracking-wide text-zinc-700 transition hover:bg-zinc-900 hover:text-white"
+                                >
+                                    Ajouter au panier
+                                </button>
+
+                                {whatsappUrl ? (
+                                    <a
+                                        href={whatsappUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex w-full items-center justify-center rounded-full border border-emerald-500 bg-emerald-500 px-5 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-emerald-600"
+                                    >
+                                        Commander sur WhatsApp
+                                    </a>
+                                ) : null}
+                            </div>
                         </div>
                     </div>
-                </section>
 
+                    {otherProducts.length ? (
+                        <div className="mt-12">
+                            <h2 className="text-xl font-semibold text-zinc-800">Voir d&apos;autres produits</h2>
+                            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                                {otherProducts.map((item) => (
+                                    <Link
+                                        key={item.id}
+                                        href={route('shop.show', item.slug)}
+                                        className="rounded-2xl border border-zinc-200 bg-white p-4 transition hover:border-zinc-400"
+                                    >
+                                        <img
+                                            src={item.image_url || defaultImage}
+                                            alt={item.name}
+                                            className="h-44 w-full rounded-xl bg-[#e6e7de] object-contain p-2"
+                                        />
+                                        <p className="mt-3 text-xs font-bold uppercase tracking-wide text-[#bd7f6f]">{item.name}</p>
+                                        <p className="mt-1 line-clamp-2 text-sm text-zinc-600">{item.description || item.name}</p>
+                                        <p className="mt-2 text-base font-semibold text-zinc-700">{formatPrice(item.base_price)}</p>
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+                    ) : null}
+                </section>
             </div>
         </>
     );
