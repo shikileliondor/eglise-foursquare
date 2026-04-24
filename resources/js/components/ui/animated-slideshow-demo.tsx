@@ -7,10 +7,10 @@ import {
 import { Button } from "@/components/ui/button"
 
 const IMAGES = [
-  "https://images.unsplash.com/photo-1455849318743-b2233052fcff?q=80&w=2338&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1733680958774-39a0e8a64a54?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1548783307-f63adc3f200b?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1703622377707-29bc9409aaf2?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "/images/image.jpg",
+  "/images/image%201.jpg",
+  "/images/image%202.jpg",
+  "/images/image%203.jpg",
 ]
 
 export const AboutDemo = () => {
@@ -39,7 +39,7 @@ export const AboutDemo = () => {
                 width="100%"
                 height="100%"
                 src={imageUrl}
-                alt=""
+                alt={`Photo convention ${index + 1}`}
               />
             </GalleryGridCell>
           ))}
