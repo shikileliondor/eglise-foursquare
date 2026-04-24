@@ -1,5 +1,7 @@
 import { Link } from '@inertiajs/react';
 import { Menu, Search, ShoppingCart } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { fetchCart, subscribeCart } from '@/lib/cart';
 
 const links = [
     { label: 'Accueil', href: '/' },
@@ -10,6 +12,18 @@ const links = [
 ];
 
 export default function PublicNavbar() {
+    const [cartCount, setCartCount] = useState(0);
+
+    useEffect(() => {
+        fetchCart()
+            .then((cart) => setCartCount(cart?.count ?? 0))
+            .catch(() => setCartCount(0));
+
+        return subscribeCart((nextCart) => {
+            setCartCount(nextCart?.count ?? 0);
+        });
+    }, []);
+
     return (
         <header className="sticky top-0 z-40 border-b border-slate-200 bg-white">
             <div className="mx-auto flex w-full max-w-7xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
@@ -35,8 +49,13 @@ export default function PublicNavbar() {
                     <button type="button" className="hidden p-1 transition hover:text-slate-500 md:inline-flex" aria-label="Rechercher">
                         <Search className="h-6 w-6" strokeWidth={1.7} />
                     </button>
-                    <Link href="/cart" className="p-1 transition hover:text-slate-500" aria-label="Panier">
+                    <Link href="/cart" className="relative p-1 transition hover:text-slate-500" aria-label="Panier">
                         <ShoppingCart className="h-6 w-6" strokeWidth={1.7} />
+                        {cartCount > 0 ? (
+                            <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-rose-600 px-1 text-[11px] font-semibold leading-none text-white">
+                                {cartCount}
+                            </span>
+                        ) : null}
                     </Link>
                     <button type="button" className="p-1 transition hover:text-slate-500 md:hidden" aria-label="Menu">
                         <Menu className="h-6 w-6" strokeWidth={1.7} />
