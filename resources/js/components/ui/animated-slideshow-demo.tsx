@@ -1,84 +1,57 @@
 import {
-  HoverSlider,
-  HoverSliderImage,
-  HoverSliderImageWrap,
-  TextStaggerHover,
-} from "@/components/ui/animated-slideshow"
-import { ChevronLeft } from "lucide-react"
+  ContainerAnimated,
+  ContainerStagger,
+  GalleryGrid,
+  GalleryGridCell,
+} from "@/components/ui/cta-section-with-gallery"
+import { Button } from "@/components/ui/button"
 
-const SLIDES = [
-  {
-    id: "slide-1",
-    title: "Atelier médias",
-    imageUrl: "/images/Convention 2025.jpg",
-  },
-  {
-    id: "slide-2",
-    title: "Programme de prière",
-    imageUrl: "/images/Programme 1.jpg",
-  },
-  {
-    id: "slide-3",
-    title: "Formation biblique",
-    imageUrl: "/images/image 3.jpg",
-  },
-  {
-    id: "slide-4",
-    title: "Soirée d'adoration",
-    imageUrl: "/images/Programme 2.jpg",
-  },
-  {
-    id: "slide-5",
-    title: "Impact communautaire",
-    imageUrl: "/images/image 4.jpg",
-  },
+const IMAGES = [
+  "https://images.unsplash.com/photo-1455849318743-b2233052fcff?q=80&w=2338&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1733680958774-39a0e8a64a54?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1548783307-f63adc3f200b?q=80&w=2487&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  "https://images.unsplash.com/photo-1703622377707-29bc9409aaf2?q=80&w=2400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 ]
 
-export function HoverSliderDemo() {
+export const AboutDemo = () => {
   return (
-    <HoverSlider className="relative rounded-3xl border border-slate-200 bg-[#f4f4f4] p-6 md:p-10 text-[#3d3929]">
-      <button
-        type="button"
-        aria-label="Précédent"
-        className="absolute left-0 top-1/2 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-[#161719] text-white lg:flex"
-      >
-        <ChevronLeft className="h-5 w-5" />
-      </button>
+    <section>
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-8 px-8 py-12 md:grid-cols-2">
+        <ContainerStagger>
+          <ContainerAnimated className="mb-4 block text-xs font-medium text-rose-500 md:text-sm">
+            Innovate & Grow
+          </ContainerAnimated>
+          <ContainerAnimated className="tracking-tight text-4xl font-semibold md:text-[2.4rem]">
+            Scale Your Business Through Innovation
+          </ContainerAnimated>
+          <ContainerAnimated className="my-4 text-base text-slate-700 md:my-6 md:text-lg">
+            Transform your startup&apos;s potential through innovative solutions
+            and strategic growth. We help businesses adapt, evolve, and thrive
+            in today&apos;s competitive marketplace.
+          </ContainerAnimated>
+          <ContainerAnimated>
+            <Button className="bg-rose-500">Start Scaling Today</Button>
+          </ContainerAnimated>
+        </ContainerStagger>
 
-      <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-[1fr_1.3fr] md:gap-12">
-        {/* Colonne gauche : image */}
-        <HoverSliderImageWrap
-          className="h-[340px] w-full overflow-hidden rounded-sm sm:h-[400px] md:h-[480px]"
-        >
-          {SLIDES.map((slide, index) => (
-            <HoverSliderImage
-              key={slide.id}
-              index={index}
-              imageUrl={slide.imageUrl}
-              src={slide.imageUrl}
-              alt={slide.title}
-              className="size-full object-cover"
-              loading="eager"
-              decoding="async"
-            />
+        <GalleryGrid>
+          {IMAGES.map((imageUrl, index) => (
+            <GalleryGridCell index={index} key={index}>
+              <img
+                className="size-full object-cover object-center"
+                width="100%"
+                height="100%"
+                src={imageUrl}
+                alt=""
+              />
+            </GalleryGridCell>
           ))}
-        </HoverSliderImageWrap>
-
-        {/* Colonne droite : texte */}
-        <div className="flex flex-col items-start justify-center gap-4">
-          <h3 className="text-sm font-medium capitalize tracking-wide text-[#c96442]">
-            / Nos services & événements
-          </h3>
-          {SLIDES.map((slide, index) => (
-            <TextStaggerHover
-              key={slide.id}
-              index={index}
-              className="cursor-pointer text-4xl font-bold uppercase tracking-tight text-[#260d10] md:text-5xl"
-              text={slide.title}
-            />
-          ))}
-        </div>
+        </GalleryGrid>
       </div>
-    </HoverSlider>
+    </section>
   )
+}
+
+export function HoverSliderDemo() {
+  return <AboutDemo />
 }
