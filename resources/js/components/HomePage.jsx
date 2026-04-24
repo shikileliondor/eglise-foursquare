@@ -269,13 +269,13 @@ export default function HomePage({ products = [], latestNews = [] }) {
                                                 href={route('news.show', item.slug)}
                                                 className="group block overflow-hidden rounded-2xl bg-white shadow-sm"
                                             >
-                                                <div className="aspect-[4/3] overflow-hidden bg-slate-200">
-                                                    <img
-                                                        src="/images/image 3.jpg"
-                                                        alt={item.title}
-                                                        className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                                                    />
-                                                </div>
+                                               <div className="aspect-[4/3] overflow-hidden bg-slate-200">
+    <img
+        src={item.image_url || fallbackNewsImage}
+        alt={item.title}
+        className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+    />
+</div>
                                                 <div className="p-5">
                                                     <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
                                                         {formatDate(item.published_at)}
