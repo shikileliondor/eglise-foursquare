@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\ConventionController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\IntroController;
 use App\Http\Controllers\NewsController;
@@ -30,6 +31,11 @@ Route::get('/news/{slug}', [NewsController::class, 'show'])->name('news.show');
 Route::get('/convention', [ConventionController::class, 'index'])->name('convention.index');
 
 Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+Route::get('/cart/summary', [CartController::class, 'show'])->name('cart.show');
+Route::post('/cart/items', [CartController::class, 'store'])->name('cart.items.store');
+Route::patch('/cart/items/{cartItem}', [CartController::class, 'update'])->name('cart.items.update');
+Route::delete('/cart/items/{cartItem}', [CartController::class, 'destroy'])->name('cart.items.destroy');
+Route::delete('/cart/items', [CartController::class, 'clear'])->name('cart.items.clear');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
