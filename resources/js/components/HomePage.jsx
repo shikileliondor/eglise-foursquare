@@ -5,26 +5,26 @@ const newsItems = [
     {
         title: '🎉 Convention Light Foursquare',
         description: 'Un moment puissant de louange, d’enseignement et d’unité entre les jeunes.',
-        image: '/images/608543647_122273472410024944_8392459524320287299_n.jpg',
+        image: '/images/Convention 2025.jpg',
     },
     {
         title: '📖 Formation & Impact',
         description: 'Des enseignements pratiques pour équiper une génération solide dans la foi.',
-        image: '/images/639079525_122280288938024944_3922748685152950688_n.jpg',
+        image: '/images/Programme 1.jpg',
     },
     {
         title: '🎶 Worship & Adoration',
         description: 'Une atmosphère de feu où les jeunes expriment leur amour pour Dieu à travers la musique et la danse.',
-        image: '/images/608520160_122273472464024944_5161898512522429836_n.jpg',
+        image: '/images/Programme 2.jpg',
     },
 ];
 
 
 const communityPhotos = [
-    '/images/591992006_122268300422024944_1538269245198738579_n.jpg',
-    '/images/585543874_122267074376024944_6091484358103050074_n.jpg',
-    '/images/534914343_122251830626024944_7969414786307138774_n.jpg',
-    '/images/626284850_122277919310024944_5243730919462778652_n.jpg',
+    '/images/image 6.jpg',
+    '/images/image 2.jpg',
+    '/images/image 3.jpg',
+    '/images/image 4.jpg',
 ];
 
 const visionItems = [
@@ -57,7 +57,7 @@ export default function HomePage() {
                             }}
                         >
                             <img
-                                src="/images/591992006_122268300422024944_1538269245198738579_n.jpg"
+                                src="/images/izo pro.jpg"
                                 alt="Membres en communion"
                                 className="h-full w-full object-cover"
                             />
