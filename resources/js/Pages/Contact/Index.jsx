@@ -100,12 +100,14 @@ export default function ContactIndex() {
                                 </div>
                             ) : null}
  
-                            <button
-                                type="submit"
-                                className="inline-flex items-center rounded-xl bg-amber-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-amber-600"
-                            >
-                                Envoyer
-                            </button>
+                            <div className="pt-2">
+                                <button
+                                    type="submit"
+                                    className="inline-flex w-full items-center justify-center rounded-xl bg-amber-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-amber-600 sm:w-auto"
+                                >
+                                    Envoyer le formulaire
+                                </button>
+                            </div>
                         </form>
                     </section>
                 </main>
