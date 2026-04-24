@@ -37,9 +37,9 @@ export default function ShopIndex({ products }) {
 
                 <section className="mx-auto max-w-7xl px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-12 lg:px-8">
                     <div className="mb-10 text-center">
-                        <h1 className="font-heading text-4xl font-extrabold text-zinc-700 sm:text-5xl">Elevare Exclusive</h1>
+                        <h1 className="font-heading text-4xl font-extrabold text-zinc-700 sm:text-5xl">Boutique Light</h1>
                         <p className="mx-auto mt-3 max-w-2xl text-xs text-zinc-500 sm:text-sm">
-                            Découvrez notre sélection premium, inspirée du design partagé, avec options de panier et commande rapide.
+                          Retrouvez des articles Light Foursquare pour affirmer votre identité.
                         </p>
                     </div>
 

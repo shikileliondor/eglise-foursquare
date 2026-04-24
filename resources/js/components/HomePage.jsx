@@ -92,81 +92,83 @@ export default function HomePage({ products = [], latestNews = [] }) {
       </p>
     </div>
 
-    {/* Bento grid */}
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(12, 1fr)',
-        gridTemplateRows: 'repeat(2, 200px)',
-        gap: '8px',
-      }}
-    >
-      {/* Grande — col 1-5, row 1-2 */}
-      <article className="group relative overflow-hidden bg-slate-100" style={{ gridColumn: '1 / 6', gridRow: '1 / 3' }}>
-        <img src="/images/image 1.jpg" alt=" N." className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-        <div className="absolute bottom-5 left-5">
-          <span className="mb-1 block text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Worship</span>
-          <p className="text-lg font-black uppercase text-white"></p>
-        </div>
-        <span className="absolute right-4 top-4 text-[10px] font-bold text-white/25">01</span>
-      </article>
+{/* Bento grid */}
+<div className="grid grid-cols-[1.8fr_1fr_1fr] grid-rows-2 gap-[6px] h-[280px] sm:h-[380px] md:h-[460px] lg:h-[520px]">
 
-      {/* col 6-9, row 1 */}
-      <article className="group relative overflow-hidden bg-slate-100" style={{ gridColumn: '6 / 9', gridRow: '1 / 2' }}>
-        <img src="/images/image 9.jpg" alt="Jordan K." className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-        <div className="absolute bottom-4 left-4">
-          <span className="mb-1 block text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Media</span>
-          <p className="text-sm font-black uppercase text-white"></p>
-        </div>
-        <span className="absolute right-3 top-3 text-[10px] font-bold text-white/25">02</span>
-      </article>
-
-      {/* col 9-13, row 1 */}
-      <article className="group relative overflow-hidden bg-slate-100" style={{ gridColumn: '9 / 13', gridRow: '1 / 2' }}>
-        <img src="/images/image 3.jpg" alt="Grace M." className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-        <div className="absolute bottom-4 left-4">
-          <span className="mb-1 block text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Com</span>
-          <p className="text-sm font-black uppercase text-white"></p>
-        </div>
-        <span className="absolute right-3 top-3 text-[10px] font-bold text-white/25">03</span>
-      </article>
-
-      {/* col 6-8, row 2 */}
-      <article className="group relative overflow-hidden bg-slate-100" style={{ gridColumn: '6 / 8', gridRow: '2 / 3' }}>
-        <img src="/images/image 4.jpg" alt="David T." className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-        <div className="absolute bottom-4 left-4">
-          <span className="mb-1 block text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Intercession</span>
-          <p className="text-sm font-black uppercase text-white"></p>
-        </div>
-        <span className="absolute right-3 top-3 text-[10px] font-bold text-white/25">04</span>
-      </article>
-
-      {/* col 8-10, row 2 */}
-      <article className="group relative overflow-hidden bg-slate-100" style={{ gridColumn: '8 / 10', gridRow: '2 / 3' }}>
-        <img src="/images/image 5.jpg" alt="Naomi L." className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-        <div className="absolute bottom-4 left-4">
-          <span className="mb-1 block text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Events</span>
-          <p className="text-sm font-black uppercase text-white"></p>
-        </div>
-        <span className="absolute right-3 top-3 text-[10px] font-bold text-white/25">05</span>
-      </article>
-
-      {/* col 10-13, row 2 */}
-      <article className="group relative overflow-hidden bg-slate-100" style={{ gridColumn: '10 / 13', gridRow: '2 / 3' }}>
-        <img src="/images/image 6.jpg" alt="Joel P." className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
-        <div className="absolute bottom-4 left-4">
-          <span className="mb-1 block text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Accueil</span>
-          <p className="text-sm font-black uppercase text-white"></p>
-        </div>
-        <span className="absolute right-3 top-3 text-[10px] font-bold text-white/25">06</span>
-      </article>
+  <article className="group relative overflow-hidden bg-slate-100 row-span-2">
+<img
+  src="/images/image 1.jpg"
+  alt="Sarah N."
+  className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
+/>
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+    <div className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5">
+      <span className="mb-1 block text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.25em] text-white/60">Worship</span>
+      <p className="text-sm sm:text-lg font-black uppercase text-white"></p>
     </div>
+  </article>
+
+  {/* Image 2 — col 2, row 1 */}
+  <article className="group relative overflow-hidden bg-slate-100">
+    <img
+      src="/images/image 9.jpg"
+      alt="Jordan K."
+      className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+    <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4">
+      <span className="mb-1 block text-[8px] font-bold uppercase tracking-[0.2em] text-white/60">Media</span>
+      <p className="text-xs sm:text-sm font-black uppercase text-white"></p>
+    </div>
+    <span className="absolute right-2 top-2 text-[9px] font-bold text-white/25">02</span>
+  </article>
+
+  {/* Image 3 — col 3, row 1 */}
+  <article className="group relative overflow-hidden bg-slate-100">
+    <img
+      src="/images/image 3.jpg"
+      alt="Grace M."
+      className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+    <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4">
+      <span className="mb-1 block text-[8px] font-bold uppercase tracking-[0.2em] text-white/60">Com</span>
+      <p className="text-xs sm:text-sm font-black uppercase text-white"></p>
+    </div>
+    <span className="absolute right-2 top-2 text-[9px] font-bold text-white/25">03</span>
+  </article>
+
+  {/* Image 4 — col 2, row 2 */}
+  <article className="group relative overflow-hidden bg-slate-100">
+    <img
+      src="/images/image 4.jpg"
+      alt="David T."
+      className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+    <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4">
+      <span className="mb-1 block text-[8px] font-bold uppercase tracking-[0.2em] text-white/60">Intercession</span>
+      <p className="text-xs sm:text-sm font-black uppercase text-white"></p>
+    </div>
+    <span className="absolute right-2 top-2 text-[9px] font-bold text-white/25">04</span>
+  </article>
+
+  {/* Image 5 — col 3, row 2 */}
+  <article className="group relative overflow-hidden bg-slate-100">
+    <img
+      src="/images/image 6.jpg"
+      alt="Naomi L."
+      className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+    <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4">
+      <span className="mb-1 block text-[8px] font-bold uppercase tracking-[0.2em] text-white/60">Events</span>
+      <p className="text-xs sm:text-sm font-black uppercase text-white"></p>
+    </div>
+    <span className="absolute right-2 top-2 text-[9px] font-bold text-white/25">05</span>
+  </article>
+
+</div>
 
     {/* Footer stats */}
     <div className="mt-8 flex items-center justify-between border-t border-black/8 pt-6">

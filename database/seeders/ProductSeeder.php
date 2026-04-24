@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
                 'slug' => 't-shirt-foursquare',
                 'description' => 'T-shirt officiel en coton biologique avec logo Foursquare.',
                 'price' => 5000,
-                'image' => null,
+                'image' => "/images/image 6.jpg",
                 'is_available' => true,
                 'variants' => [
                     ['label' => 'S / Noir', 'stock' => 25, 'price' => null],
