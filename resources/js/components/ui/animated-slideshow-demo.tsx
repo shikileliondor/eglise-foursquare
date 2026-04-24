@@ -47,8 +47,8 @@ export function HoverSliderDemo() {
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
-      <div className="grid items-center gap-8 lg:grid-cols-[1.3fr_0.9fr] lg:gap-12">
-        <div className="flex flex-col space-y-4 md:space-y-5">
+      <div className="grid items-center gap-8 lg:grid-cols-[1.45fr_0.75fr] lg:gap-10">
+        <div className="flex flex-col items-start space-y-4 md:space-y-5">
           {SLIDES.map((slide, index) => (
             <div key={slide.id} className="leading-none">
               <TextStaggerHover
@@ -59,7 +59,7 @@ export function HoverSliderDemo() {
             </div>
           ))}
         </div>
-        <HoverSliderImageWrap className="h-[420px] w-full max-w-[460px] justify-self-center overflow-hidden rounded-sm md:h-[520px]">
+        <HoverSliderImageWrap className="h-[360px] w-full max-w-[370px] justify-self-end overflow-hidden rounded-sm md:h-[470px] md:max-w-[400px]">
           {SLIDES.map((slide, index) => (
             <div key={slide.id}>
               <HoverSliderImage
