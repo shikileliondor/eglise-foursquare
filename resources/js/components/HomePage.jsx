@@ -87,7 +87,8 @@ export default function HomePage({ products = [], latestNews = [] }) {
         </h2>
       </div>
       <p className="hidden max-w-[240px] text-right text-sm leading-7 text-slate-400 md:block">
-        Nous mettons en lumière les talents Light Foursquare pour une nouvelle génération qui impacte.
+        {/* Nous mettons en lumière les talents Light Foursquare pour une nouvelle génération qui impacte.
+         */}Light Foursquare au service d'une génération qui impacte.
       </p>
     </div>
 
