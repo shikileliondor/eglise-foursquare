@@ -59,7 +59,7 @@ export default function HomePage() {
         <div className="min-h-screen bg-slate-50 text-slate-900">
             <PublicNavbar />
 
-            <section className="bg-[#f4f4f4] pb-8 pt-16 md:pt-20">
+            <section className="bg-[#f4f4f4] pb-8 pt-8 md:pt-12">
                 <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 lg:grid-cols-2">
                     <div className="relative mx-auto w-full max-w-[520px]">
                         <div className="absolute left-0 top-14 h-[80%] w-[82%] bg-[#ded7bf]" />

@@ -13,6 +13,7 @@ const links = [
 
 export default function PublicNavbar() {
     const [cartCount, setCartCount] = useState(0);
+    const [isVisible, setIsVisible] = useState(true);
 
     useEffect(() => {
         fetchCart()
@@ -24,8 +25,26 @@ export default function PublicNavbar() {
         });
     }, []);
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const threshold = window.innerWidth < 768 ? 64 : 96;
+            setIsVisible(window.scrollY > threshold);
+        };
+
+        handleScroll();
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
-        <header className="sticky top-0 z-40 border-b border-slate-200 bg-white">
+        <header
+            className={`fixed inset-x-0 top-0 z-40 border-b border-slate-200/80 bg-white/95 backdrop-blur transition-transform duration-300 ${
+                isVisible ? 'translate-y-0' : '-translate-y-full'
+            }`}
+        >
             <div className="mx-auto flex w-full max-w-7xl items-center gap-4 px-4 py-4 sm:px-6 lg:px-8">
                 <Link href="/" className="flex items-center gap-3">
                     <span className="inline-flex h-12 w-12 items-center justify-center rounded-full border-2 border-amber-400 bg-white font-heading text-base font-extrabold text-slate-900">
