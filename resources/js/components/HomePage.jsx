@@ -57,28 +57,28 @@ export default function HomePage() {
                     </div>
 
                     <div className="max-w-xl">
-                        <h2 className="text-5xl font-black leading-[1.1] text-black md:text-6xl">
+                        <h1 className="font-heading text-3xl font-extrabold leading-[1.15] text-black md:text-4xl lg:text-[2.65rem]">
                             Nouveau dans Light Foursquare ?<br />
                             Bienvenue dans la famille !
-                        </h2>
-                        <p className="mt-8 text-2xl leading-relaxed text-black/90">
+                        </h1>
+                        <p className="mt-6 text-base leading-7 text-black/85 md:text-lg">
                             Light Foursquare est un mouvement de jeunes chrétiens engagés, appelés à grandir ensemble
                             dans la foi, à servir avec passion et à impacter leur génération pour Christ. Ici, chaque
                             talent compte, chaque appel est important, et chaque jeune a une place dans le plan de
                             Dieu.
                         </p>
-                        <p className="mt-4 text-xl leading-relaxed text-black/90">
+                        <p className="text-spiritual mt-4 text-[1.05rem] leading-7 text-black/85">
                             Dieu t’a-t-il donné une passion, un don ou une vision ? Alors cette maison est aussi la
                             tienne.
                         </p>
 
                         <a
                             href="#"
-                            className="group mt-12 inline-flex flex-col text-xl font-bold text-black transition hover:text-[#5b4ab8]"
+                            className="group mt-10 inline-flex flex-col text-base font-semibold text-black transition hover:text-[#5b4ab8] md:text-lg"
                         >
                             <span className="inline-flex items-center gap-3">
                                 👉 Rejoins le mouvement Light Foursquare
-                                <span className="text-2xl text-[#6a58c7] transition group-hover:translate-x-1">→</span>
+                                <span className="text-xl text-[#6a58c7] transition group-hover:translate-x-1">→</span>
                             </span>
                             <span className="mt-3 h-[3px] w-full bg-gradient-to-r from-[#1f4b84] via-[#c2a43f] to-[#6a58c7]" />
                         </a>
@@ -88,7 +88,9 @@ export default function HomePage() {
 
             <section className="bg-[#f4f4f4] py-16 md:py-20">
                 <div className="mx-auto max-w-6xl px-6">
-                    <h2 className="text-4xl font-black uppercase tracking-tight text-[#260d10] md:text-5xl">🔥 Actualités</h2>
+                    <h2 className="font-heading text-3xl font-extrabold uppercase tracking-tight text-[#260d10] md:text-4xl">
+                        🔥 Actualités
+                    </h2>
 
                     <div className="mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
                         {newsItems.map((item) => (
@@ -100,8 +102,10 @@ export default function HomePage() {
                                         className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                                     />
                                 </div>
-                                <h3 className="mt-5 text-3xl font-extrabold leading-tight text-[#260d10]">{item.title}</h3>
-                                <p className="mt-3 text-lg leading-relaxed text-slate-700">{item.description}</p>
+                                <h3 className="font-heading mt-5 text-xl font-bold leading-snug text-[#260d10] md:text-2xl">
+                                    {item.title}
+                                </h3>
+                                <p className="mt-3 text-[0.98rem] leading-7 text-slate-700">{item.description}</p>
                             </article>
                         ))}
                     </div>
@@ -110,17 +114,17 @@ export default function HomePage() {
 
             <section className="bg-white py-16 md:py-20">
                 <div className="mx-auto max-w-6xl px-6">
-                    <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#260d10]">🌍 Notre vision</p>
-                    <h2 className="mt-4 text-4xl font-black uppercase leading-tight text-[#260d10] md:text-6xl">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#260d10]">🌍 Notre vision</p>
+                    <h2 className="font-heading mt-4 text-3xl font-extrabold uppercase leading-tight text-[#260d10] md:text-4xl lg:text-5xl">
                         Light Foursquare existe pour
                     </h2>
 
                     <div className="mt-12 grid gap-0 border border-slate-200 md:grid-cols-2 xl:grid-cols-4">
                         {visionItems.map((vision) => (
                             <article key={vision} className="min-h-72 border-b border-slate-200 p-8 md:border-r xl:border-b-0">
-                                <p className="text-4xl text-[#260d10]">→</p>
-                                <p className="mt-10 text-4xl text-yellow-500">◉</p>
-                                <p className="mt-8 text-3xl font-extrabold leading-tight text-[#260d10]">{vision}</p>
+                                <p className="text-3xl text-[#260d10]">→</p>
+                                <p className="mt-8 text-3xl text-yellow-500">◉</p>
+                                <p className="font-heading mt-6 text-2xl font-bold leading-snug text-[#260d10]">{vision}</p>
                             </article>
                         ))}
                     </div>
@@ -129,24 +133,24 @@ export default function HomePage() {
 
             <section className="bg-slate-50 py-16 md:py-20">
                 <div className="mx-auto max-w-6xl px-6">
-                    <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#260d10]">🛍️ Boutique Light (optionnel)</p>
-                    <h2 className="mt-4 text-4xl font-black uppercase leading-tight text-[#260d10] md:text-5xl">
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#260d10]">🛍️ Boutique Light (optionnel)</p>
+                    <h2 className="font-heading mt-4 text-3xl font-extrabold uppercase leading-tight text-[#260d10] md:text-4xl">
                         🎁 Produits & accessoires chrétiens
                     </h2>
-                    <p className="mt-5 max-w-3xl text-lg text-slate-600">
+                    <p className="mt-5 max-w-3xl text-base leading-7 text-slate-600 md:text-[1.05rem]">
                         Retrouvez des articles conçus pour accompagner votre marche avec Christ et afficher votre
                         identité en tant que jeune Light Foursquare.
                     </p>
-                    <p className="mt-4 max-w-3xl text-lg font-semibold text-slate-700">
+                    <p className="mt-4 max-w-3xl text-base font-semibold leading-7 text-slate-700 md:text-[1.05rem]">
                         ⭐ Offres spéciales : Réductions sur les événements, packs conventions et produits exclusifs
                         Light Foursquare.
                     </p>
 
                     <a
                         href="#"
-                        className="mt-8 inline-flex items-center gap-3 text-xl font-bold text-black transition hover:text-[#5b4ab8]"
+                        className="mt-8 inline-flex items-center gap-3 text-base font-semibold text-black transition hover:text-[#5b4ab8] md:text-lg"
                     >
-                        👉 Voir la boutique <span className="text-2xl text-[#6a58c7]">→</span>
+                        👉 Voir la boutique <span className="text-xl text-[#6a58c7]">→</span>
                     </a>
 
                     <div className="mt-10">
