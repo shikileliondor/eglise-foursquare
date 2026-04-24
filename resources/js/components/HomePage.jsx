@@ -67,7 +67,7 @@ const legendsSpotlight = [
     },
 ];
 
-export default function HomePage() {
+export default function HomePage({ products = [] }) {
     return (
         <div className="min-h-screen bg-slate-50 text-slate-900">
             <PublicNavbar />
@@ -221,28 +221,24 @@ export default function HomePage() {
 
             <section className="bg-slate-50 py-16 md:py-20">
                 <div className="mx-auto max-w-6xl px-6">
-                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#260d10]">🛍️ Boutique Light (optionnel)</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#260d10]">🛍️ Boutique Light</p>
                     <h2 className="font-heading mt-4 text-3xl font-extrabold uppercase leading-tight text-[#260d10] md:text-4xl">
-                        🎁 Produits & accessoires chrétiens
+                        Collection Foursquare
                     </h2>
-                    <p className="mt-5 max-w-3xl text-base leading-7 text-slate-600 md:text-[1.05rem]">
-                        Retrouvez des articles conçus pour accompagner votre marche avec Christ et afficher votre
-                        identité en tant que jeune Light Foursquare.
-                    </p>
-                    <p className="mt-4 max-w-3xl text-base font-semibold leading-7 text-slate-700 md:text-[1.05rem]">
-                        ⭐ Offres spéciales : Réductions sur les événements, packs conventions et produits exclusifs
-                        Light Foursquare.
+                    <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+                        Les produits affichés ici viennent directement de la boutique (seeders inclus) : design
+                        épuré, infos claires, navigation en slide.
                     </p>
 
                     <a
-                        href="#"
-                        className="mt-8 inline-flex items-center gap-3 text-base font-semibold text-black transition hover:text-[#5b4ab8] md:text-lg"
+                        href="/shop"
+                        className="mt-6 inline-flex items-center gap-3 text-base font-semibold text-black transition hover:text-[#5b4ab8] md:text-lg"
                     >
                         👉 Voir la boutique <span className="text-xl text-[#6a58c7]">→</span>
                     </a>
 
-                    <div className="mt-10">
-                        <OffersCarouselDemo />
+                    <div className="mt-8">
+                        <OffersCarouselDemo products={products} />
                     </div>
                 </div>
             </section>
