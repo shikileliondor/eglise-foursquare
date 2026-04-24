@@ -88,7 +88,7 @@ export default function AboutIndex() {
                                 <div className="absolute -bottom-8 -right-4 h-28 w-28 rounded-full bg-amber-500/20 blur-2xl" />
                                 <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-slate-800/70 shadow-2xl">
                                     <img
-                                        src="https://images.unsplash.com/photo-1504052434569-70ad5836ab65?auto=format&fit=crop&w=1200&q=80"
+                                        src="/images/534336857_122251521824024944_5650508535512238767_n.jpg"
                                         alt="Jeunes en moment de louange à l'église"
                                         className="h-full w-full min-h-[280px] object-cover"
                                     />
