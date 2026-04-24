@@ -2,13 +2,14 @@ import { Link } from '@inertiajs/react';
 // import { ArrowUp, Facebook, Linkedin, Twitter, Youtube } from 'lucide-react';
 
 import { ArrowUp } from 'lucide-react';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube , FaTiktok} from 'react-icons/fa';
 
 const socialLinks = [
-    { icon: FaFacebookF, href: '#', label: 'Facebook' },
-    { icon: FaTwitter, href: '#', label: 'X' },
-    { icon: FaLinkedinIn, href: '#', label: 'LinkedIn' },
-    { icon: FaYoutube, href: '#', label: 'YouTube' },
+    { icon: FaFacebookF, href: 'https://web.facebook.com/profile.php?id=61550748345489&_rdc=1&_rdr#', label: 'Facebook' },
+    { icon: FaTwitter, href: 'https://twitter.com/MouvementLIGHT', label: 'X' },
+    // { icon: FaLinkedinIn, href: 'https://www.linkedin.com/company/mouvement-light-foursquare', label: 'LinkedIn' },
+    // { icon: FaYoutube, href: 'https://www.youtube.com/@MouvementLIGHTFoursquare', label: 'YouTube' },
+    { icon: FaTiktok, href: 'https://www.tiktok.com/@light_foursquare?is_from_webapp=1&sender_device=pc', label: 'TikTok' }
 ];
 // const socialLinks = [
 //     { icon: Facebook, href: '#', label: 'Facebook' },
@@ -23,11 +24,11 @@ export default function SiteFooter() {
             <div className="mx-auto w-full max-w-7xl px-6 py-10 sm:px-8 lg:px-10">
                 <div className="grid gap-8 lg:grid-cols-12 lg:gap-8">
                     <div className="lg:col-span-6">
-                        <img
-                            src="/images/logo.jpg"
+                        {/* <img
+                            src="/images/logo sans fond.png"
                             alt="LIGHT Foursquare logo"
                             className="h-16 w-auto object-contain sm:h-20"
-                        />
+                        /> */}
                         <h2 className="font-heading mt-4 max-w-xl text-lg font-semibold uppercase leading-snug tracking-wide text-white/95 sm:text-xl">
                             Mouvement LIGHT Foursquare
                         </h2>
@@ -42,7 +43,7 @@ export default function SiteFooter() {
                             Adresse
                         </h3>
                         <p className="mt-4 text-sm leading-6 text-white/80 sm:text-base">
-                            La Maison du MASA – Plateau, rue Toussaint Louverture
+                            Foursquare Church – Plateau, rue Beyam
                             09 BP 2877 Abidjan 09, Côte d’Ivoire.
                         </p>
                     </div>
@@ -55,7 +56,8 @@ export default function SiteFooter() {
                             href="mailto:administration@masa-ci.org"
                             className="mt-4 inline-block text-sm text-white/85 underline underline-offset-4 transition hover:text-white sm:text-base"
                         >
-                            administration@masa-ci.org
+                            
+                            cocody M'badon, Abidjan, Côte d'Ivoire
                         </a>
                         <p className="font-heading mt-4 text-lg font-semibold tracking-tight text-white sm:text-xl">
                             +225 27 20 21 35 20
@@ -105,12 +107,12 @@ export default function SiteFooter() {
                             rel="noreferrer"
                             className="text-sm text-white/90 underline underline-offset-4 transition hover:text-white sm:text-base"
                         >
-                            Conçu avec professionnalisme par Yann Morel Effobi Brou
+                            Conçu par BEYAM
                         </a>
                         <a
-                            href="#top"
-                            aria-label="Retour en haut"
-                            className="inline-flex size-12 items-center justify-center bg-red-600 transition hover:bg-red-500"
+                            // href="#top"
+                            // aria-label="Retour en haut"
+                            // className="inline-flex size-12 items-center justify-center bg-red-600 transition hover:bg-red-500"
                         >
                             <ArrowUp className="size-6" />
                         </a>
