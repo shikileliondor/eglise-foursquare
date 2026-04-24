@@ -1,24 +1,7 @@
 import PublicNavbar from '@/Components/PublicNavbar';
 import { HoverSliderDemo } from '@/components/ui/animated-slideshow-demo';
 import OffersCarouselDemo from '@/components/ui/offers-carousel-demo';
-
-const newsItems = [
-    {
-        title: '🎉 Convention Light Foursquare',
-        description: 'Un moment puissant de louange, d’enseignement et d’unité entre les jeunes.',
-        image: '/images/Convention 2025.jpg',
-    },
-    {
-        title: '📖 Formation & Impact',
-        description: 'Des enseignements pratiques pour équiper une génération solide dans la foi.',
-        image: '/images/Programme 1.jpg',
-    },
-    {
-        title: '🎶 Worship & Adoration',
-        description: 'Une atmosphère de feu où les jeunes expriment leur amour pour Dieu à travers la musique et la danse.',
-        image: '/images/Programme 2.jpg',
-    },
-];
+import { Link } from '@inertiajs/react';
 
 
 const communityPhotos = [
@@ -67,7 +50,21 @@ const legendsSpotlight = [
     },
 ];
 
-export default function HomePage({ products = [] }) {
+const fallbackNewsImage = 'https://placehold.co/1200x700/E7E8DF/6D6D63?text=Actualite';
+
+function formatDate(dateString) {
+    if (!dateString) {
+        return 'Date à confirmer';
+    }
+
+    return new Date(dateString).toLocaleDateString('fr-FR', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+    });
+}
+
+export default function HomePage({ products = [], latestNews = [] }) {
     return (
         <div className="min-h-screen bg-slate-50 text-slate-900">
             <PublicNavbar />
@@ -173,22 +170,39 @@ export default function HomePage({ products = [] }) {
                     </h2>
 
                     <div className="mt-10 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-                        {newsItems.map((item) => (
-                            <article key={item.title} className="group">
+                        {latestNews.map((item) => (
+                            <Link
+                                key={item.id}
+                                href={route('news.show', item.slug)}
+                                className="group overflow-hidden rounded-2xl bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                            >
                                 <div className="aspect-[4/3] overflow-hidden bg-slate-200">
                                     <img
-                                        src={item.image}
+                                        src={item.image_url || fallbackNewsImage}
                                         alt={item.title}
                                         className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                                     />
                                 </div>
-                                <h3 className="font-heading mt-5 text-xl font-bold leading-snug text-[#260d10] md:text-2xl">
-                                    {item.title}
-                                </h3>
-                                <p className="mt-3 text-[0.98rem] leading-7 text-slate-700">{item.description}</p>
-                            </article>
+                                <div className="p-5">
+                                    <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
+                                        {formatDate(item.published_at)}
+                                    </p>
+                                    <h3 className="font-heading mt-3 text-xl font-bold leading-snug text-[#260d10] md:text-2xl">
+                                        {item.title}
+                                    </h3>
+                                    <p className="mt-4 inline-flex items-center text-sm font-semibold text-[#5b4ab8]">
+                                        Lire l&apos;actualité <span className="ml-2 text-base">→</span>
+                                    </p>
+                                </div>
+                            </Link>
                         ))}
                     </div>
+
+                    {latestNews.length === 0 ? (
+                        <div className="mt-8 rounded-2xl border border-dashed border-zinc-300 bg-white p-8 text-center text-zinc-500">
+                            Aucune actualité publiée pour le moment.
+                        </div>
+                    ) : null}
                 </div>
             </section>
 
