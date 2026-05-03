@@ -115,7 +115,7 @@ export default function PublicNavbar() {
             <div className="mx-auto flex w-full max-w-7xl items-center gap-6 px-4 py-3 sm:px-6 lg:px-8">
                 <Link href="/" className="flex items-center gap-3" aria-label="Accueil Foursquare Côte d’Ivoire">
                     <img src="/images/logo.png" alt="Logo Foursquare Côte d’Ivoire" className="h-12 w-12 rounded-full border border-[#d5dee8] object-cover" />
-                    <span className="hidden text-sm font-semibold leading-tight sm:block" style={{ color: MAIN_COLOR }}>
+                    <span className="hidden text-[13px] font-semibold leading-tight sm:block" style={{ color: MAIN_COLOR }}>
                         Foursquare
                         <br />
                         Côte d’Ivoire
@@ -131,7 +131,7 @@ export default function PublicNavbar() {
                                 <Link
                                     key={item.label}
                                     href={item.href}
-                                    className="border-b-2 px-1 py-2 text-[15px] font-medium transition"
+                                    className="border-b-2 px-1 py-2 text-[14px] font-medium transition"
                                     style={{ color: MAIN_COLOR, borderColor: active ? ACCENT_COLOR : 'transparent' }}
                                 >
                                     {item.label}
@@ -143,7 +143,7 @@ export default function PublicNavbar() {
                             <div key={item.label} className="group relative">
                                 <Link
                                     href={item.href}
-                                    className="inline-flex items-center gap-1 border-b-2 px-1 py-2 text-[15px] font-medium transition"
+                                    className="inline-flex items-center gap-1 border-b-2 px-1 py-2 text-[14px] font-medium transition"
                                     style={{ color: MAIN_COLOR, borderColor: active ? ACCENT_COLOR : 'transparent' }}
                                 >
                                     {item.label}
@@ -169,7 +169,7 @@ export default function PublicNavbar() {
                 <div className="ml-auto flex items-center gap-3">
                     <Link
                         href={joinLink.href}
-                        className="hidden rounded-lg px-4 py-2 text-sm font-semibold transition hover:brightness-95 md:inline-flex"
+                        className="hidden rounded-lg px-4 py-2 text-[13px] font-semibold transition hover:brightness-95 md:inline-flex"
                         style={{ backgroundColor: ACCENT_COLOR, color: MAIN_COLOR }}
                     >
                         {joinLink.label}
