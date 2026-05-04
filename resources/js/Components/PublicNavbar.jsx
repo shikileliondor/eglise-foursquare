@@ -57,6 +57,16 @@ const NAV_ITEMS = [
             { label: 'Louange & adoration', href: '/ministeres/louange-adoration' },
         ],
     },
+    {
+        label: 'Evénements',
+        href: '/evenements',
+        children: [
+            { label: 'Convention nationale', href: '/evenements/convention-nationale' },
+            { label: 'Programmes nationaux', href: '/evenements/programmes-nationaux' },
+            { label: 'Conférences', href: '/evenements/conférences' },
+            { label: 'Calendrier', href: '/evenements/calendrier' },
+        ],
+    },
     // { label: 'Événements', href: '/evenements' },
     {
         label: 'Ressources',
@@ -71,7 +81,7 @@ const NAV_ITEMS = [
         ],
     },
     // { label: 'Nouvelles', href: '/news' },
-    { label: 'Contact', href: '/contact' },
+    // { label: 'Contact', href: '/contact' },
 ];
 
 export default function PublicNavbar() {
@@ -259,13 +269,13 @@ export default function PublicNavbar() {
             })}
 
             {/* Bouton CTA */}
-            <Link
+            {/* <Link
                 href="/nous-rejoindre"
                 className="ml-4 shrink-0 rounded-lg px-5 py-2 text-[13px] font-bold transition hover:brightness-95"
                 style={{ backgroundColor: ACCENT_COLOR, color: MAIN_COLOR }}
             >
                 S'inscrire
-            </Link>
+            </Link> */}
         </nav>
 
         {/* Burger mobile */}
