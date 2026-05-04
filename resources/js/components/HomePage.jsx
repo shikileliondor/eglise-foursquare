@@ -41,6 +41,21 @@ export default function HomePage({ products = [], latestNews = [] }) {
         )
     }
 
+    const fadeUp = {
+        hidden: { opacity: 0, y: 16 },
+        visible: { opacity: 1, y: 0 },
+    }
+
+    const imageCascade = {
+        hidden: { opacity: 0, y: 18, scale: 0.98 },
+        visible: (index = 0) => ({
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { delay: 0.2 + index * 0.12, duration: 0.55 },
+        }),
+    }
+
     return (
         <div className="min-h-screen bg-slate-50 text-slate-900">
             <PublicNavbar />
@@ -56,21 +71,33 @@ export default function HomePage({ products = [], latestNews = [] }) {
     <div className="absolute -right-14 top-[324px] hidden h-[220px] w-[220px] rounded-full border-[10px] border-white bg-[#FFD23F] lg:block" />
     <div className="absolute -right-14 top-[483px] hidden h-[220px] w-[220px] rounded-full border-[10px] border-white bg-[#5B2C83] lg:block" />
 
-    <div className="relative mx-auto grid min-h-[620px] max-w-7xl items-start gap-8 px-4 py-10 md:px-6 lg:grid-cols-[0.98fr_1.02fr] lg:py-12">
+    <div className="relative mx-auto grid min-h-[560px] max-w-7xl items-start gap-8 px-4 py-8 sm:py-10 md:px-6 lg:min-h-[620px] lg:grid-cols-[0.98fr_1.02fr] lg:py-12">
         {/* Texte gauche */}
         <MotionSection delay={0.15}>
             <div className="max-w-[660px] pt-0 lg:pt-0">
                 {/* Logo */}
-                <div className="mb-7 flex items-start">
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeUp}
+                    transition={{ duration: 0.55, delay: 0.05 }}
+                    className="mb-7 flex items-start"
+                >
                     <img
                         src="/images/logo.png"
                         alt="Logo Église Évangélique Foursquare Côte d’Ivoire"
                         className="h-28 w-auto object-contain"
                     />
-                </div>
+                </motion.div>
 
                 {/* Titre */}
-                <h1 className="max-w-[660px] text-left text-[30px] font-black leading-[1.06] tracking-[-0.025em] text-black md:text-[38px] lg:text-[44px]">
+                <motion.h1
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeUp}
+                    transition={{ duration: 0.6, delay: 0.14 }}
+                    className="max-w-[660px] text-left text-[30px] font-black leading-[1.06] tracking-[-0.025em] text-black md:text-[34px] lg:text-[44px]"
+                >
                     <span className="block whitespace-nowrap">
                         Convention Nationale
                     </span>
@@ -83,7 +110,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
                     <span className="block text-[#5B2C83]">
                         Côte d’Ivoire
                     </span>
-                </h1>
+                </motion.h1>
 
                 {/* Mini ligne couleurs */}
                 <div className="mt-5 flex items-center gap-1.5">
@@ -93,16 +120,28 @@ export default function HomePage({ products = [], latestNews = [] }) {
                     <span className="h-[3px] w-9 bg-[#5B2C83]" />
                 </div>
 
-                <p className="mt-6 max-w-[500px] text-left text-[14px] font-medium leading-7 text-[#102033]/75 md:text-[15px]">
+                <motion.p
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeUp}
+                    transition={{ duration: 0.55, delay: 0.22 }}
+                    className="mt-6 max-w-[500px] text-left text-[14px] font-medium leading-7 text-[#102033]/75 md:text-[15px]"
+                >
                     Un temps de louange, de prière, de formation
                     <br className="hidden sm:block" />
                     et d’envoi en mission pour impacter notre nation.
-                </p>
+                </motion.p>
 
-                <div className="mt-7 flex flex-wrap items-center gap-5">
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={fadeUp}
+                    transition={{ duration: 0.55, delay: 0.3 }}
+                    className="mt-7 flex flex-wrap items-center gap-4 sm:gap-5"
+                >
                     <a
                         href="/communiques/convention-nationale-2026"
-                        className="inline-flex items-center gap-3 rounded-xl bg-[#CD1725] px-5 py-3 text-[13px] font-black text-white shadow-[0_14px_34px_rgba(205,23,37,0.24)] transition hover:-translate-y-0.5 hover:bg-[#b91322]"
+                        className="inline-flex w-full items-center justify-center gap-3 rounded-xl bg-[#CD1725] px-5 py-3 text-[13px] font-black text-white shadow-[0_14px_34px_rgba(205,23,37,0.24)] transition hover:-translate-y-0.5 hover:bg-[#b91322] sm:w-auto"
                     >
                         <span className="inline-flex h-5 w-5 items-center justify-center rounded-sm border border-white/70 text-[10px]">
                             ▣
@@ -113,12 +152,26 @@ export default function HomePage({ products = [], latestNews = [] }) {
 
                     <a
                         href="/inscription"
-                        className="inline-flex items-center gap-3 border-b-2 border-[#5B2C83] pb-2 text-[13px] font-black text-[#06233F] transition hover:text-[#CD1725]"
+                        className="inline-flex w-full items-center justify-center gap-3 border-b-2 border-[#5B2C83] pb-2 text-[13px] font-black text-[#06233F] transition hover:text-[#CD1725] sm:w-auto"
                     >
                         S’inscrire
                         <span className="text-base text-[#CD1725]">→</span>
                     </a>
-                </div>
+                </motion.div>
+
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={imageCascade}
+                    custom={0}
+                    className="mt-8 overflow-hidden rounded-[24px] border-[4px] border-white shadow-[0_12px_35px_rgba(6,35,63,0.12)] lg:hidden"
+                >
+                    <img
+                        src="/images/image 5.jpg"
+                        alt="Culte Foursquare"
+                        className="h-[240px] w-full object-cover object-[50%_30%]"
+                    />
+                </motion.div>
             </div>
         </MotionSection>
 
@@ -142,40 +195,64 @@ export default function HomePage({ products = [], latestNews = [] }) {
                 </div>
 
                 {/* Image 1 — haut gauche */}
-                <div className="group absolute left-[30px] top-[0px] z-10 h-[220px] w-[270px] overflow-hidden rounded-[26px] border-[5px] border-white shadow-[0_16px_40px_rgba(6,35,63,0.12)] transition-all duration-500 hover:scale-[1.02]">
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={imageCascade}
+                    custom={0}
+                    className="group absolute left-[30px] top-[0px] z-10 h-[220px] w-[270px] overflow-hidden rounded-[26px] border-[5px] border-white shadow-[0_16px_40px_rgba(6,35,63,0.12)] transition-all duration-500 hover:scale-[1.02]"
+                >
                     <img
                         src="/images/image 5.jpg"
                         alt="Culte Foursquare"
-                        className="h-full w-full object-cover object-[50%_22%] transition-transform duration-700 group-hover:scale-105"
+                        className="h-full w-full object-cover object-[50%_22%] transition-transform duration-700 group-hover:scale-[1.02]"
                     />
-                </div>
+                </motion.div>
 
                 {/* Image 2 — haut droite */}
-                <div className="group absolute right-[30px] top-[0px] z-20 h-[220px] w-[270px] overflow-hidden rounded-[26px] border-[5px] border-white shadow-[0_16px_40px_rgba(6,35,63,0.12)] transition-all duration-500 hover:scale-[1.02]">
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={imageCascade}
+                    custom={1}
+                    className="group absolute right-[30px] top-[0px] z-20 h-[220px] w-[270px] overflow-hidden rounded-[26px] border-[5px] border-white shadow-[0_16px_40px_rgba(6,35,63,0.12)] transition-all duration-500 hover:scale-[1.02]"
+                >
                     <img
                         src="/images/image 3.jpg"
                         alt="Étude biblique"
-                        className="h-full w-full object-cover object-[50%_28%] transition-transform duration-700 group-hover:scale-105"
+                        className="h-full w-full object-cover object-[50%_28%] transition-transform duration-700 group-hover:scale-[1.02]"
                     />
-                </div>
+                </motion.div>
 
                 {/* Image 3 — bas gauche */}
-                <div className="group absolute left-[30px] top-[280px] z-10 h-[220px] w-[270px] overflow-hidden rounded-[26px] border-[5px] border-white shadow-[0_16px_40px_rgba(6,35,63,0.12)] transition-all duration-500 hover:scale-[1.02]">
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={imageCascade}
+                    custom={2}
+                    className="group absolute left-[30px] top-[280px] z-10 h-[220px] w-[270px] overflow-hidden rounded-[26px] border-[5px] border-white shadow-[0_16px_40px_rgba(6,35,63,0.12)] transition-all duration-500 hover:scale-[1.02]"
+                >
                     <img
                         src="/images/image 6.jpg"
                         alt="Assemblée Foursquare"
-                        className="h-full w-full object-cover object-[50%_35%] transition-transform duration-700 group-hover:scale-105"
+                        className="h-full w-full object-cover object-[50%_35%] transition-transform duration-700 group-hover:scale-[1.02]"
                     />
-                </div>
+                </motion.div>
 
                 {/* Image 4 — bas droite */}
-                <div className="group absolute right-[30px] top-[280px] z-30 h-[220px] w-[270px] overflow-hidden rounded-[26px] border-[5px] border-white shadow-[0_16px_40px_rgba(6,35,63,0.12)] transition-all duration-500 hover:scale-[1.02]">
+                <motion.div
+                    initial="hidden"
+                    animate="visible"
+                    variants={imageCascade}
+                    custom={3}
+                    className="group absolute right-[30px] top-[280px] z-30 h-[220px] w-[270px] overflow-hidden rounded-[26px] border-[5px] border-white shadow-[0_16px_40px_rgba(6,35,63,0.12)] transition-all duration-500 hover:scale-[1.02]"
+                >
                     <img
                         src="/images/image 1.jpg"
                         alt="Prière et communion"
-                        className="h-full w-full object-cover object-[50%_32%] transition-transform duration-700 group-hover:scale-105"
+                        className="h-full w-full object-cover object-[50%_32%] transition-transform duration-700 group-hover:scale-[1.02]"
                     />
-                </div>
+                </motion.div>
 
                 {/* Carte Convention */}
                 {/* <div className="absolute left-[255px] top-[230px] z-40 w-[195px] rounded-[18px] bg-white px-5 py-4 shadow-[0_14px_36px_rgba(6,35,63,0.14)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(91,44,131,0.15)]">
@@ -416,7 +493,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
                                                             <img
                                                                 src={item.image_url || fallbackNewsImage}
                                                                 alt={item.title}
-                                                                className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                                                                className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
                                                             />
                                                         </div>
                                                         <div className="p-5">
@@ -494,7 +571,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
     <img
         src={item.image_url || fallbackNewsImage}
         alt={item.title}
-        className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+        className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
     />
 </div>
                                                 <div className="p-5">
