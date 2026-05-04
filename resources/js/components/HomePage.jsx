@@ -47,74 +47,76 @@ export default function HomePage({ products = [], latestNews = [] }) {
 
             {/* ─── HERO ─── */}
 <section className="relative overflow-hidden bg-[#f9fafc]">
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(92,45,145,0.08),transparent_26%),radial-gradient(circle_at_88%_60%,rgba(205,23,37,0.08),transparent_28%)]" />
-    <div className="absolute inset-x-0 bottom-0 h-[210px] bg-gradient-to-t from-[#dfe2e8]/75 to-transparent" />
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(92,45,145,0.055),transparent_24%),radial-gradient(circle_at_88%_60%,rgba(205,23,37,0.055),transparent_26%)]" />
+    <div className="absolute inset-x-0 bottom-0 h-[145px] bg-gradient-to-t from-[#dfe2e8]/55 to-transparent" />
 
-    <div className="absolute -right-24 top-8 hidden h-[350px] w-[350px] rounded-full border-[16px] border-white bg-[#CD1725] lg:block" />
-    <div className="absolute -right-28 top-[260px] hidden h-[350px] w-[350px] rounded-full border-[16px] border-white bg-[#005AA9] lg:block" />
-    <div className="absolute -right-24 bottom-[-80px] hidden h-[350px] w-[350px] rounded-full border-[16px] border-white bg-[#FFD23F] lg:block" />
-    <div className="absolute -right-32 bottom-[-240px] hidden h-[350px] w-[350px] rounded-full border-[16px] border-white bg-[#5B2C83] lg:block" />
+    {/* Formes couleurs Foursquare */}
+    <div className="absolute -right-14 top-6 hidden h-[220px] w-[220px] rounded-full border-[10px] border-white bg-[#CD1725] lg:block" />
+    <div className="absolute -right-14 top-[165px] hidden h-[220px] w-[220px] rounded-full border-[10px] border-white bg-[#005AA9] lg:block" />
+    <div className="absolute -right-14 top-[324px] hidden h-[220px] w-[220px] rounded-full border-[10px] border-white bg-[#FFD23F] lg:block" />
+    <div className="absolute -right-14 top-[483px] hidden h-[220px] w-[220px] rounded-full border-[10px] border-white bg-[#5B2C83] lg:block" />
 
-    <div className="relative mx-auto grid min-h-[650px] max-w-7xl items-center gap-10 px-4 py-12 md:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:py-14">
+    <div className="relative mx-auto grid min-h-[620px] max-w-7xl items-start gap-8 px-4 py-10 md:px-6 lg:grid-cols-[0.98fr_1.02fr] lg:py-12">
         {/* Texte gauche */}
         <MotionSection delay={0.15}>
-            <div className="max-w-[600px]">
+            <div className="max-w-[660px] pt-0 lg:pt-0">
                 {/* Logo */}
-                <div className="mb-8 flex items-start gap-4">
+                <div className="mb-7 flex items-start">
                     <img
                         src="/images/logo.png"
                         alt="Logo Église Évangélique Foursquare Côte d’Ivoire"
-                        className="h-32 w-auto object-contain"
+                        className="h-28 w-auto object-contain"
                     />
                 </div>
 
                 {/* Titre */}
-                <h1 className="text-[44px] font-black leading-[1.02] tracking-[-0.045em] text-black md:text-[62px] lg:text-[74px]">
-                    Convention Nationale
-                    <br />
-                    2026
-                    <br />
-                    <span className="text-[#CD1725]">
+                <h1 className="max-w-[660px] text-left text-[30px] font-black leading-[1.06] tracking-[-0.025em] text-black md:text-[38px] lg:text-[44px]">
+                    <span className="block whitespace-nowrap">
+                        Convention Nationale
+                    </span>
+                    <span className="block">
+                        2026
+                    </span>
+                    <span className="block whitespace-nowrap text-[#CD1725]">
                         de l’Église Foursquare
                     </span>
-                    <br />
-                    <span className="text-[#5B2C83]">
+                    <span className="block text-[#5B2C83]">
                         Côte d’Ivoire
                     </span>
                 </h1>
 
                 {/* Mini ligne couleurs */}
-                <div className="mt-6 flex items-center gap-2">
-                    <span className="h-[4px] w-12 bg-[#CD1725]" />
-                    <span className="h-[4px] w-12 bg-[#005AA9]" />
-                    <span className="h-[4px] w-12 bg-[#FFD23F]" />
-                    <span className="h-[4px] w-12 bg-[#5B2C83]" />
+                <div className="mt-5 flex items-center gap-1.5">
+                    <span className="h-[3px] w-9 bg-[#CD1725]" />
+                    <span className="h-[3px] w-9 bg-[#005AA9]" />
+                    <span className="h-[3px] w-9 bg-[#FFD23F]" />
+                    <span className="h-[3px] w-9 bg-[#5B2C83]" />
                 </div>
 
-                <p className="mt-7 max-w-[520px] text-[15px] font-medium leading-7 text-[#102033]/75 md:text-[17px]">
+                <p className="mt-6 max-w-[500px] text-left text-[14px] font-medium leading-7 text-[#102033]/75 md:text-[15px]">
                     Un temps de louange, de prière, de formation
                     <br className="hidden sm:block" />
                     et d’envoi en mission pour impacter notre nation.
                 </p>
 
-                <div className="mt-8 flex flex-wrap items-center gap-7">
+                <div className="mt-7 flex flex-wrap items-center gap-5">
                     <a
                         href="/communiques/convention-nationale-2026"
-                        className="inline-flex items-center gap-4 rounded-xl bg-[#CD1725] px-7 py-4 text-sm font-black text-white shadow-[0_16px_40px_rgba(205,23,37,0.28)] transition hover:-translate-y-0.5 hover:bg-[#b91322]"
+                        className="inline-flex items-center gap-3 rounded-xl bg-[#CD1725] px-5 py-3 text-[13px] font-black text-white shadow-[0_14px_34px_rgba(205,23,37,0.24)] transition hover:-translate-y-0.5 hover:bg-[#b91322]"
                     >
-                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-sm border border-white/70 text-[11px]">
+                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-sm border border-white/70 text-[10px]">
                             ▣
                         </span>
                         Lire le communiqué
-                        <span className="text-xl">→</span>
+                        <span className="text-base">→</span>
                     </a>
 
                     <a
                         href="/inscription"
-                        className="inline-flex items-center gap-4 border-b-2 border-[#5B2C83] pb-2 text-[15px] font-black text-[#06233F] transition hover:text-[#CD1725]"
+                        className="inline-flex items-center gap-3 border-b-2 border-[#5B2C83] pb-2 text-[13px] font-black text-[#06233F] transition hover:text-[#CD1725]"
                     >
                         S’inscrire
-                        <span className="text-xl text-[#CD1725]">→</span>
+                        <span className="text-base text-[#CD1725]">→</span>
                     </a>
                 </div>
             </div>
@@ -122,99 +124,105 @@ export default function HomePage({ products = [], latestNews = [] }) {
 
         {/* Visuel droite */}
         <MotionSection delay={0.25}>
-            <div className="relative hidden min-h-[640px] items-center justify-center lg:flex">
+            <div className="relative hidden min-h-[620px] lg:block">
+                {/* Contexte visuel subtil */}
+                <div className="absolute inset-0 z-0">
+                    <div className="absolute -left-32 top-20 h-96 w-96 rounded-full bg-gradient-to-r from-[#5B2C83]/5 to-[#CD1725]/5 blur-3xl" />
+                    <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-gradient-to-l from-[#06233F]/5 to-transparent blur-2xl" />
+                </div>
+
                 {/* Points décoratifs */}
-                <div className="absolute right-[160px] top-[52px] z-0 grid grid-cols-10 gap-3">
-                    {Array.from({ length: 50 }).map((_, index) => (
+                <div className="absolute right-[105px] top-[16px] z-0 grid grid-cols-10 gap-2.5">
+                    {Array.from({ length: 50 }).map((_, i) => (
                         <span
-                            key={index}
-                            className="h-1 w-1 rounded-full bg-[#5B2C83]/45"
+                            key={i}
+                            className="h-1 w-1 rounded-full bg-[#5B2C83]/20"
                         />
                     ))}
                 </div>
 
-                {/* Image haut centre */}
-                <div className="absolute left-[138px] top-0 z-10 h-[305px] w-[360px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
+                {/* Image 1 — haut gauche */}
+                <div className="group absolute left-[30px] top-[0px] z-10 h-[220px] w-[270px] overflow-hidden rounded-[26px] border-[5px] border-white shadow-[0_16px_40px_rgba(6,35,63,0.12)] transition-all duration-500 hover:scale-[1.02]">
                     <img
                         src="/images/image 5.jpg"
                         alt="Culte Foursquare"
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover object-[50%_22%] transition-transform duration-700 group-hover:scale-105"
                     />
                 </div>
 
-                {/* Image droite haut */}
-                <div className="absolute right-[12px] top-[106px] z-10 h-[270px] w-[285px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
+                {/* Image 2 — haut droite */}
+                <div className="group absolute right-[30px] top-[0px] z-20 h-[220px] w-[270px] overflow-hidden rounded-[26px] border-[5px] border-white shadow-[0_16px_40px_rgba(6,35,63,0.12)] transition-all duration-500 hover:scale-[1.02]">
                     <img
-                        src="/images/image 2.jpg"
-                        alt="Étude biblique Foursquare"
-                        className="h-full w-full object-cover"
+                        src="/images/image 3.jpg"
+                        alt="Étude biblique"
+                        className="h-full w-full object-cover object-[50%_28%] transition-transform duration-700 group-hover:scale-105"
                     />
                 </div>
 
-                {/* Image centre bas */}
-                <div className="absolute bottom-[88px] left-[60px] z-10 h-[295px] w-[500px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
+                {/* Image 3 — bas gauche */}
+                <div className="group absolute left-[30px] top-[280px] z-10 h-[220px] w-[270px] overflow-hidden rounded-[26px] border-[5px] border-white shadow-[0_16px_40px_rgba(6,35,63,0.12)] transition-all duration-500 hover:scale-[1.02]">
                     <img
                         src="/images/image 6.jpg"
                         alt="Assemblée Foursquare"
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover object-[50%_35%] transition-transform duration-700 group-hover:scale-105"
                     />
                 </div>
 
-                {/* Image droite bas */}
-                <div className="absolute bottom-[14px] right-[6px] z-10 h-[330px] w-[290px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
+                {/* Image 4 — bas droite */}
+                <div className="group absolute right-[30px] top-[280px] z-30 h-[220px] w-[270px] overflow-hidden rounded-[26px] border-[5px] border-white shadow-[0_16px_40px_rgba(6,35,63,0.12)] transition-all duration-500 hover:scale-[1.02]">
                     <img
                         src="/images/image 1.jpg"
                         alt="Prière et communion"
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover object-[50%_32%] transition-transform duration-700 group-hover:scale-105"
                     />
                 </div>
 
                 {/* Carte Convention */}
-                <div className="absolute left-[0px] top-[150px] z-30 w-[280px] rounded-[24px] bg-white px-7 py-6 shadow-[0_20px_55px_rgba(6,35,63,0.16)]">
-                    <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full text-[#5B2C83]">
-                        <span className="text-2xl">♙</span>
-                    </div>
-                    <p className="text-sm font-black text-[#5B2C83]">
+                {/* <div className="absolute left-[255px] top-[230px] z-40 w-[195px] rounded-[18px] bg-white px-5 py-4 shadow-[0_14px_36px_rgba(6,35,63,0.14)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(91,44,131,0.15)]">
+                    <div className="mb-2 text-xl text-[#5B2C83]">♙</div>
+                    <p className="text-xs font-black text-[#5B2C83]">
                         Convention 2026
                     </p>
-                    <p className="mt-2 text-[13px] font-medium leading-6 text-[#102033]/70">
-                        Un rassemblement national pour l’Église.
+                    <p className="mt-1 text-[11px] font-medium leading-5 text-[#102033]/70">
+                        Un rassemblement national pour l'Église.
                     </p>
-                </div>
+                </div> */}
 
                 {/* Carte 100% */}
-                <div className="absolute right-[75px] top-[58px] z-30 rounded-[20px] bg-white px-6 py-5 shadow-[0_20px_55px_rgba(6,35,63,0.16)]">
+                {/* <div className="absolute left-[320px] top-[42px] z-40 rounded-[16px] bg-white px-5 py-3 shadow-[0_14px_36px_rgba(6,35,63,0.14)] transition-all duration-300 hover:shadow-[0_20px_40px_rgba(205,23,37,0.15)]">
                     <div className="flex items-center gap-3">
-                        <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#CD1725] text-sm font-black text-[#CD1725]">
+                        <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border-2 border-[#CD1725] text-xs font-black text-[#CD1725]">
                             ✓
                         </span>
                         <div>
-                            <p className="text-base font-black text-[#06233F]">
+                            <p className="text-sm font-black text-[#06233F]">
                                 100%
                             </p>
-                            <p className="text-xs font-medium text-[#102033]/60">
+                            <p className="text-[11px] font-medium text-[#102033]/60">
                                 Foi & Mission
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
-                {/* Carte date */}
-                <div className="absolute bottom-[38px] left-[310px] z-30 w-[250px] rounded-[24px] bg-white px-6 py-5 shadow-[0_20px_55px_rgba(6,35,63,0.16)]">
-                    <div className="flex items-start gap-4">
-                        <span className="mt-1 text-2xl text-[#CD1725]">▣</span>
+                {/* Carte Date */}
+                {/* <div className="absolute left-[315px] bottom-[5px] z-40 w-[200px] rounded-[18px] bg-white px-5 py-4 shadow-[0_14px_36px_rgba(6,35,63,0.14)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(91,44,131,0.15)]">
+                    <div className="flex items-start gap-3">
+                        <span className="mt-0.5 flex-shrink-0 text-lg text-[#CD1725]">
+                            ▣
+                        </span>
                         <div>
-                            <p className="text-base font-black text-[#5B2C83]">
+                            <p className="text-sm font-black text-[#5B2C83]">
                                 2–7 Août 2026
                             </p>
-                            <p className="mt-1 text-sm font-medium leading-5 text-[#102033]/70">
+                            <p className="mt-1 text-xs font-medium leading-5 text-[#102033]/70">
                                 Abidjan,
                                 <br />
-                                Côte d’Ivoire
+                                Côte d'Ivoire
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </MotionSection>
     </div>
@@ -224,56 +232,63 @@ export default function HomePage({ products = [], latestNews = [] }) {
 </section>
 
             {/* ─── BIENVENUE ─── */}
- <MotionSection>
-    <section className="bg-[#F8F4EC] py-8 md:py-10">
-        <div className="mx-auto grid max-w-6xl gap-6 px-4 md:px-6 lg:grid-cols-[1.55fr_0.85fr]">
+                <MotionSection>
+    <section className="relative overflow-hidden bg-[#f9fafc] py-8 md:py-10">
+        {/* Décor léger */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_10%,rgba(205,23,37,0.04),transparent_26%),radial-gradient(circle_at_92%_18%,rgba(91,44,131,0.05),transparent_24%)]" />
+
+        <div className="relative mx-auto grid max-w-6xl gap-6 px-4 md:px-6 lg:grid-cols-[1.55fr_0.85fr]">
             {/* Bloc actualités */}
-            <div className="overflow-hidden rounded-sm border border-[#06233F]/10 bg-white shadow-[0_16px_45px_rgba(6,35,63,0.07)]">
-                {/* Tabs */}
-                <div className="flex items-center border-b border-[#06233F]/10 px-5">
+            <div className="overflow-hidden rounded-[24px] border border-black/5 bg-white shadow-[0_18px_50px_rgba(6,35,63,0.08)]">
+                {/* Header tabs */}
+                <div className="flex items-center border-b border-black/5 px-5">
                     {['Actualités', 'Publications', 'Événements', 'Espace presse'].map((tab, index) => (
                         <button
                             key={tab}
                             type="button"
-                            className={`relative px-4 py-4 text-xs font-bold ${
+                            className={`relative px-4 py-4 text-xs font-black transition ${
                                 index === 0
-                                    ? 'text-[#06233F]'
-                                    : 'text-[#06233F]/65 hover:text-[#06233F]'
+                                    ? 'text-[#CD1725]'
+                                    : 'text-[#07172F]/55 hover:text-[#5B2C83]'
                             }`}
                         >
                             {tab}
 
                             {index === 0 && (
-                                <span className="absolute bottom-0 left-4 right-4 h-[3px] bg-[#F4B739]" />
+                                <span className="absolute bottom-0 left-4 right-4 h-[3px] rounded-full bg-gradient-to-r from-[#CD1725] via-[#005AA9] to-[#FFD23F]" />
                             )}
                         </button>
                     ))}
                 </div>
 
                 {/* Liste */}
-                <div className="divide-y divide-[#06233F]/10 px-5">
+                <div className="divide-y divide-black/5 px-5">
                     {[
                         {
                             day: '10',
                             month: 'MAI 2026',
+                            color: '#CD1725',
                             title: 'Avis d’appel aux églises pour la Convention Nationale 2026',
                             desc: 'Date limite d’inscription : 30 juin 2026',
                         },
                         {
                             day: '03',
                             month: 'MAI 2026',
+                            color: '#005AA9',
                             title: 'Formation des responsables : Leadership et intégrité',
                             desc: 'Du 15 au 17 mai 2026 à Abidjan',
                         },
                         {
                             day: '26',
                             month: 'AVR. 2026',
+                            color: '#FFD23F',
                             title: 'Campagne nationale de prière et de jeûne',
                             desc: 'Du 1er au 31 mai 2026 — Un mois pour notre nation',
                         },
                         {
                             day: '18',
                             month: 'AVR. 2026',
+                            color: '#5B2C83',
                             title: "Nouvelles implantations d’églises en 2026",
                             desc: '5 nouvelles œuvres lancées en Côte d’Ivoire',
                         },
@@ -281,37 +296,40 @@ export default function HomePage({ products = [], latestNews = [] }) {
                         <a
                             key={item.title}
                             href="/actualites"
-                            className="group grid grid-cols-[58px_1fr_20px] items-center gap-4 py-4"
+                            className="group grid grid-cols-[58px_1fr_22px] items-center gap-4 py-4"
                         >
                             <div className="text-center">
-                                <div className="font-serif text-2xl font-bold leading-none text-[#06233F]">
+                                <div
+                                    className="font-serif text-2xl font-black leading-none"
+                                    style={{ color: item.color }}
+                                >
                                     {item.day}
                                 </div>
-                                <div className="mt-1 text-[9px] font-bold uppercase tracking-wide text-[#06233F]/55">
+                                <div className="mt-1 text-[9px] font-black uppercase tracking-wide text-[#07172F]/45">
                                     {item.month}
                                 </div>
                             </div>
 
                             <div>
-                                <h3 className="text-[13px] font-black leading-snug text-[#06233F] transition group-hover:text-[#C58A12] md:text-sm">
+                                <h3 className="text-[13px] font-black leading-snug text-[#07172F] transition group-hover:text-[#CD1725] md:text-sm">
                                     {item.title}
                                 </h3>
-                                <p className="mt-1 text-xs font-medium text-[#06233F]/55">
+                                <p className="mt-1 text-xs font-medium text-[#07172F]/55">
                                     {item.desc}
                                 </p>
                             </div>
 
-                            <span className="text-lg text-[#06233F]/45 transition group-hover:translate-x-1 group-hover:text-[#C58A12]">
+                            <span className="text-xl text-[#07172F]/35 transition group-hover:translate-x-1 group-hover:text-[#5B2C83]">
                                 ›
                             </span>
                         </a>
                     ))}
                 </div>
 
-                <div className="border-t border-[#06233F]/10 px-5 py-4">
+                <div className="border-t border-black/5 px-5 py-4">
                     <a
                         href="/actualites"
-                        className="inline-flex items-center gap-2 text-xs font-bold text-[#C58A12] hover:text-[#06233F]"
+                        className="inline-flex items-center gap-2 text-xs font-black text-[#CD1725] transition hover:text-[#5B2C83]"
                     >
                         Voir toutes les actualités
                         <span>→</span>
@@ -320,36 +338,46 @@ export default function HomePage({ products = [], latestNews = [] }) {
             </div>
 
             {/* Message du président */}
-            <div className="overflow-hidden rounded-sm border border-[#06233F]/10 bg-white shadow-[0_16px_45px_rgba(6,35,63,0.07)]">
+            <div className="overflow-hidden rounded-[24px] border border-black/5 bg-white shadow-[0_18px_50px_rgba(6,35,63,0.08)]">
                 <div className="px-5 pt-5 text-center">
-                    <h2 className="text-xs font-black text-[#06233F]">
+                    <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#CD1725]">
+                        Président national
+                    </p>
+                    {/* <h2 className="mt-1 text-sm font-black text-[#07172F]">
                         Message du Président national
-                    </h2>
+                    </h2> */}
                 </div>
 
-                <div className="relative mx-auto mt-4 flex h-[240px] items-end justify-center px-5">
-                    <div className="absolute bottom-0 h-[190px] w-[190px] rounded-full bg-[#F8F4EC]" />
+                <div className="relative mx-auto mt-4 flex h-[230px] items-end justify-center px-5">
+                    <div className="absolute bottom-0 h-[185px] w-[185px] rounded-full bg-gradient-to-br from-[#CD1725]/10 via-[#FFD23F]/20 to-[#5B2C83]/10" />
 
                     <img
-                        src="/images/president-national.png"
+                        src="/images/image 5.jpg"
                         alt="Président national de l'Église Foursquare Côte d'Ivoire"
-                        className="relative z-10 h-[225px] w-auto object-contain"
+                        className="relative z-10 h-[220px] w-auto object-contain"
                     />
                 </div>
 
-                <div className="bg-[#06233F] px-6 py-5 text-white">
-                    <div className="text-3xl font-serif leading-none text-[#F4B739]">“</div>
+                <div className="bg-[#07172F] px-6 py-5 text-white">
+                    <div className="flex items-center gap-1">
+                        <span className="h-1.5 w-8 rounded-full bg-[#CD1725]" />
+                        <span className="h-1.5 w-8 rounded-full bg-[#005AA9]" />
+                        <span className="h-1.5 w-8 rounded-full bg-[#FFD23F]" />
+                        <span className="h-1.5 w-8 rounded-full bg-[#5B2C83]" />
+                    </div>
 
-                    <p className="-mt-2 text-[13px] font-bold leading-5">
+                    <div className="mt-4 text-3xl font-serif leading-none text-[#FFD23F]">“</div>
+
+                    <p className="-mt-2 text-[13px] font-bold leading-5 text-white/95">
                         Bâtissons des églises fortes, des familles transformées
                         et des vies qui impactent leur génération.
                     </p>
 
                     <div className="mt-4">
-                        <p className="text-xs font-black uppercase text-[#F4B739]">
-                            Pasteur Jean-Marc Kouassi
+                        <p className="text-xs font-black uppercase text-[#FFD23F]">
+                            Reverend Docteur Apotre Gnepe Marius
                         </p>
-                        <p className="mt-1 text-[11px] font-medium text-white/75">
+                        <p className="mt-1 text-[11px] font-medium text-white/70">
                             Président National
                         </p>
                     </div>
