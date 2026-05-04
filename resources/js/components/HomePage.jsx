@@ -46,87 +46,86 @@ export default function HomePage({ products = [], latestNews = [] }) {
             <PublicNavbar />
 
             {/* ─── HERO ─── */}
-            <section className="relative overflow-hidden bg-white pb-16 pt-12 md:pb-20 md:pt-16">
-                <div className="absolute left-0 right-0 top-0 h-[3px] bg-gradient-to-r from-[#c96442] via-[#f89b21] to-transparent" />
-                <div className="relative mx-auto max-w-7xl px-4 md:px-6">
+<section className="relative overflow-hidden bg-white">
+    {/* Fond blanc premium + lumière dorée */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(244,183,57,0.20),transparent_28%),linear-gradient(110deg,#ffffff_0%,#ffffff_58%,#F8F4EC_100%)]" />
 
-                    <MotionSection>
-                        <div className="mb-10 flex items-end justify-between border-b border-black/8 pb-8">
-                            <div>
-                                <p className="mb-2 text-xs font-bold uppercase tracking-[0.3em] text-[#c96442]">
-                                    — Light Foursquare
-                                </p>
-                                <h2 className="font-heading text-4xl font-black uppercase leading-[0.92] tracking-tight text-slate-900 md:text-6xl">
-                                    Living God's <br />
-                                    <span className="text-[#c96442]">Holy Truth</span>
-                                </h2>
-                            </div>
-                            <p className="hidden max-w-[240px] text-right text-sm leading-7 text-slate-400 md:block">
-                                Light Foursquare au service d'une génération qui impacte.
-                            </p>
-                        </div>
-                    </MotionSection>
+    {/* Arcs dorés discrets derrière la carte */}
+    <div className="pointer-events-none absolute right-[-120px] top-[-180px] h-[620px] w-[620px] rounded-full border border-[#F4B739]/20" />
+    <div className="pointer-events-none absolute right-[-80px] top-[-140px] h-[540px] w-[540px] rounded-full border border-[#F4B739]/15" />
+    <div className="pointer-events-none absolute right-[-40px] top-[-100px] h-[460px] w-[460px] rounded-full border border-[#F4B739]/10" />
 
-                    <MotionSection delay={0.15}>
-                        <div className="grid h-[280px] grid-cols-[1.8fr_1fr_1fr] grid-rows-2 gap-[6px] sm:h-[380px] md:h-[460px] lg:h-[520px]">
+    {/* Silhouette urbaine très discrète */}
+    <div
+        className="absolute bottom-0 right-0 h-[190px] w-[70%] opacity-[0.16]"
+        style={{
+            backgroundImage: "url('/images/hero-city.png')",
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'bottom right',
+        }}
+    />
 
-                            <article className="group relative row-span-2 overflow-hidden bg-slate-100">
-                                <img src="/images/image 1.jpg" alt="Worship" className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                                <div className="absolute bottom-3 left-3 sm:bottom-5 sm:left-5">
-                                    <span className="mb-1 block text-[8px] font-bold uppercase tracking-[0.25em] text-white/60 sm:text-[9px]">Worship</span>
-                                </div>
-                            </article>
+    <div className="relative mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-4 py-16 md:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
+        <MotionSection delay={0.15}>
+            <div className="max-w-[720px]">
+                <p className="mb-5 text-xs font-semibold uppercase tracking-[0.32em] text-[#C58A12] md:text-sm">
+                    Église Foursquare Côte d’Ivoire
+                </p>
 
-                            <article className="group relative overflow-hidden bg-slate-100">
-                                <img src="/images/image 9.jpg" alt="Media" className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                                <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4">
-                                    <span className="mb-1 block text-[8px] font-bold uppercase tracking-[0.2em] text-white/60">Media</span>
-                                </div>
-                                <span className="absolute right-2 top-2 text-[9px] font-bold text-white/25">02</span>
-                            </article>
+                <div className="mb-9 h-[3px] w-16 bg-[#F4B739]" />
 
-                            <article className="group relative overflow-hidden bg-slate-100">
-                                <img src="/images/image 3.jpg" alt="Com" className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                                <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4">
-                                    <span className="mb-1 block text-[8px] font-bold uppercase tracking-[0.2em] text-white/60">Com</span>
-                                </div>
-                                <span className="absolute right-2 top-2 text-[9px] font-bold text-white/25">03</span>
-                            </article>
+                <h1 className="font-serif text-[42px] font-bold leading-[1.03] tracking-[-0.045em] text-[#06233F] md:text-[62px] lg:text-[76px]">
+                    Convention Nationale 2026
+                    <br />
+                    <span className="text-[#D49A19]">
+                        de l’Église Foursquare
+                    </span>
+                    <br />
+                    <span className="text-[#D49A19]">
+                        Côte d’Ivoire
+                    </span>
+                </h1>
 
-                            <article className="group relative overflow-hidden bg-slate-100">
-                                <img src="/images/image 4.jpg" alt="Intercession" className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                                <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4">
-                                    <span className="mb-1 block text-[8px] font-bold uppercase tracking-[0.2em] text-white/60">Intercession</span>
-                                </div>
-                                <span className="absolute right-2 top-2 text-[9px] font-bold text-white/25">04</span>
-                            </article>
+                <p className="mt-8 max-w-[640px] text-[17px] font-medium leading-8 text-[#102033]/75 md:text-[20px]">
+                    Un temps de louange, de prière, de formation
+                    <br className="hidden sm:block" />
+                    et d’envoi en mission pour impacter notre nation.
+                </p>
 
-                            <article className="group relative overflow-hidden bg-slate-100">
-                                <img src="/images/image 6.jpg" alt="Events" className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-105" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                                <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4">
-                                    <span className="mb-1 block text-[8px] font-bold uppercase tracking-[0.2em] text-white/60">Events</span>
-                                </div>
-                                <span className="absolute right-2 top-2 text-[9px] font-bold text-white/25">05</span>
-                            </article>
+                <a
+                    href="/communiques/convention-nationale-2026"
+                    className="mt-9 inline-flex items-center gap-5 border-b-2 border-[#F4B739] pb-2 font-serif text-[20px] font-bold text-[#06233F] transition hover:text-[#C58A12]"
+                >
+                    Lire le communiqué
+                    <span className="text-3xl font-light text-[#D49A19]">→</span>
+                </a>
 
-                        </div>
-                    </MotionSection>
-
-                    <MotionSection delay={0.2}>
-                        {/* <div className="mt-8 flex items-center justify-end border-t border-black/8 pt-6">
-                            <Link href={route('about')} className="group flex items-center gap-3 border border-slate-900 px-6 py-3 text-xs font-bold uppercase tracking-widest text-slate-900 transition hover:bg-slate-900 hover:text-white">
-                                Rejoindre <span className="transition group-hover:translate-x-1">→</span>
-                            </Link>
-                        </div> */}
-                    </MotionSection>
-
+                <div className="mt-12 flex items-center gap-4">
+                    <span className="h-4 w-4 rounded-full bg-[#F4B739]" />
+                    <span className="h-4 w-4 rounded-full bg-[#06233F]/14" />
+                    <span className="h-4 w-4 rounded-full bg-[#06233F]/14" />
+                    <span className="h-4 w-4 rounded-full bg-[#06233F]/14" />
                 </div>
-            </section>
+            </div>
+        </MotionSection>
+
+        <MotionSection delay={0.25}>
+            <div className="relative hidden min-h-[430px] items-center justify-center lg:flex">
+                <div className="absolute h-[360px] w-[360px] rounded-full bg-[#F4B739]/20 blur-3xl" />
+
+                <img
+                    src="/images/afiche.jpg"
+                    alt="Côte d’Ivoire - Église Foursquare"
+                    className="relative z-10 w-[420px] max-w-full object-contain drop-shadow-[0_35px_65px_rgba(180,120,20,0.28)] xl:w-[500px]"
+                />
+            </div>
+        </MotionSection>
+    </div>
+
+    {/* Ligne or en bas */}
+    <div className="relative h-2 bg-[#F4B739]" />
+</section>
 
             {/* ─── BIENVENUE ─── */}
             <MotionSection>
