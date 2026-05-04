@@ -46,26 +46,14 @@ export default function HomePage({ products = [], latestNews = [] }) {
             <PublicNavbar />
 
             {/* ─── HERO ─── */}
-<section className="relative overflow-hidden bg-white">
-    {/* Fond général */}
+<section className="relative overflow-hidden bg-[#f9fafc]">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(92,45,145,0.08),transparent_26%),radial-gradient(circle_at_88%_60%,rgba(205,23,37,0.08),transparent_28%)]" />
+    <div className="absolute inset-x-0 bottom-0 h-[210px] bg-gradient-to-t from-[#dfe2e8]/75 to-transparent" />
 
-    {/* Silhouette ville bas */}
-    <div
-        className="absolute bottom-0 left-0 h-[210px] w-full opacity-[0.13]"
-        style={{
-            backgroundImage: "url('/images/hero-city.png')",
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'bottom center',
-        }}
-    />
-
-    {/* Formes couleurs Foursquare à droite */}
-    <div className="absolute -right-24 top-8 hidden h-[360px] w-[360px] rounded-full bg-[#CD1725] lg:block" />
-    <div className="absolute -right-28 top-[270px] hidden h-[360px] w-[360px] rounded-full bg-[#005AA9] lg:block" />
-    <div className="absolute -right-24 bottom-[-60px] hidden h-[360px] w-[360px] rounded-full bg-[#FFD23F] lg:block" />
-    <div className="absolute -right-32 bottom-[-220px] hidden h-[360px] w-[360px] rounded-full bg-[#5B2C83] lg:block" />
+    <div className="absolute -right-24 top-8 hidden h-[350px] w-[350px] rounded-full border-[16px] border-white bg-[#CD1725] lg:block" />
+    <div className="absolute -right-28 top-[260px] hidden h-[350px] w-[350px] rounded-full border-[16px] border-white bg-[#005AA9] lg:block" />
+    <div className="absolute -right-24 bottom-[-80px] hidden h-[350px] w-[350px] rounded-full border-[16px] border-white bg-[#FFD23F] lg:block" />
+    <div className="absolute -right-32 bottom-[-240px] hidden h-[350px] w-[350px] rounded-full border-[16px] border-white bg-[#5B2C83] lg:block" />
 
     <div className="relative mx-auto grid min-h-[650px] max-w-7xl items-center gap-10 px-4 py-12 md:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:py-14">
         {/* Texte gauche */}
@@ -76,12 +64,12 @@ export default function HomePage({ products = [], latestNews = [] }) {
                     <img
                         src="/images/logo.png"
                         alt="Logo Église Évangélique Foursquare Côte d’Ivoire"
-                        className="h-28 w-auto object-contain"
+                        className="h-32 w-auto object-contain"
                     />
                 </div>
 
                 {/* Titre */}
-                <h1 className="text-[42px] font-black leading-[1.02] tracking-[-0.04em] text-black md:text-[58px] lg:text-[64px]">
+                <h1 className="text-[44px] font-black leading-[1.02] tracking-[-0.045em] text-black md:text-[62px] lg:text-[74px]">
                     Convention Nationale
                     <br />
                     2026
@@ -97,10 +85,10 @@ export default function HomePage({ products = [], latestNews = [] }) {
 
                 {/* Mini ligne couleurs */}
                 <div className="mt-6 flex items-center gap-2">
-                    <span className="h-[3px] w-10 bg-[#CD1725]" />
-                    <span className="h-[3px] w-10 bg-[#005AA9]" />
-                    <span className="h-[3px] w-10 bg-[#FFD23F]" />
-                    <span className="h-[3px] w-10 bg-[#5B2C83]" />
+                    <span className="h-[4px] w-12 bg-[#CD1725]" />
+                    <span className="h-[4px] w-12 bg-[#005AA9]" />
+                    <span className="h-[4px] w-12 bg-[#FFD23F]" />
+                    <span className="h-[4px] w-12 bg-[#5B2C83]" />
                 </div>
 
                 <p className="mt-7 max-w-[520px] text-[15px] font-medium leading-7 text-[#102033]/75 md:text-[17px]">
@@ -134,7 +122,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
 
         {/* Visuel droite */}
         <MotionSection delay={0.25}>
-            <div className="relative hidden min-h-[560px] items-center justify-center lg:flex">
+            <div className="relative hidden min-h-[640px] items-center justify-center lg:flex">
                 {/* Points décoratifs */}
                 <div className="absolute right-[160px] top-[52px] z-0 grid grid-cols-10 gap-3">
                     {Array.from({ length: 50 }).map((_, index) => (
@@ -146,43 +134,43 @@ export default function HomePage({ products = [], latestNews = [] }) {
                 </div>
 
                 {/* Image haut centre */}
-                <div className="absolute left-[165px] top-0 z-10 h-[285px] w-[310px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
+                <div className="absolute left-[138px] top-0 z-10 h-[305px] w-[360px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
                     <img
-                        src="/images/hero-worship.jpg"
+                        src="/images/image 5.jpg"
                         alt="Culte Foursquare"
                         className="h-full w-full object-cover"
                     />
                 </div>
 
                 {/* Image droite haut */}
-                <div className="absolute right-[18px] top-[102px] z-10 h-[250px] w-[245px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
+                <div className="absolute right-[12px] top-[106px] z-10 h-[270px] w-[285px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
                     <img
-                        src="/images/hero-study.jpg"
+                        src="/images/image 2.jpg"
                         alt="Étude biblique Foursquare"
                         className="h-full w-full object-cover"
                     />
                 </div>
 
                 {/* Image centre bas */}
-                <div className="absolute bottom-[72px] left-[90px] z-10 h-[270px] w-[420px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
+                <div className="absolute bottom-[88px] left-[60px] z-10 h-[295px] w-[500px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
                     <img
-                        src="/images/hero-community.jpg"
+                        src="/images/image 6.jpg"
                         alt="Assemblée Foursquare"
                         className="h-full w-full object-cover"
                     />
                 </div>
 
                 {/* Image droite bas */}
-                <div className="absolute bottom-[0px] right-[10px] z-10 h-[310px] w-[250px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
+                <div className="absolute bottom-[14px] right-[6px] z-10 h-[330px] w-[290px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
                     <img
-                        src="/images/hero-prayer.jpg"
+                        src="/images/image 1.jpg"
                         alt="Prière et communion"
                         className="h-full w-full object-cover"
                     />
                 </div>
 
                 {/* Carte Convention */}
-                <div className="absolute left-[20px] top-[150px] z-30 w-[230px] rounded-2xl bg-white px-6 py-5 shadow-[0_20px_55px_rgba(6,35,63,0.16)]">
+                <div className="absolute left-[0px] top-[150px] z-30 w-[280px] rounded-[24px] bg-white px-7 py-6 shadow-[0_20px_55px_rgba(6,35,63,0.16)]">
                     <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full text-[#5B2C83]">
                         <span className="text-2xl">♙</span>
                     </div>
@@ -195,7 +183,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
                 </div>
 
                 {/* Carte 100% */}
-                <div className="absolute right-[85px] top-[72px] z-30 rounded-2xl bg-white px-6 py-5 shadow-[0_20px_55px_rgba(6,35,63,0.16)]">
+                <div className="absolute right-[75px] top-[58px] z-30 rounded-[20px] bg-white px-6 py-5 shadow-[0_20px_55px_rgba(6,35,63,0.16)]">
                     <div className="flex items-center gap-3">
                         <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#CD1725] text-sm font-black text-[#CD1725]">
                             ✓
@@ -212,7 +200,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
                 </div>
 
                 {/* Carte date */}
-                <div className="absolute bottom-[42px] left-[360px] z-30 w-[230px] rounded-2xl bg-white px-6 py-5 shadow-[0_20px_55px_rgba(6,35,63,0.16)]">
+                <div className="absolute bottom-[38px] left-[310px] z-30 w-[250px] rounded-[24px] bg-white px-6 py-5 shadow-[0_20px_55px_rgba(6,35,63,0.16)]">
                     <div className="flex items-start gap-4">
                         <span className="mt-1 text-2xl text-[#CD1725]">▣</span>
                         <div>
