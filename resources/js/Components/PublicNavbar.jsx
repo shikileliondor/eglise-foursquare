@@ -84,11 +84,29 @@ const NAV_ITEMS = [
     // { label: 'Contact', href: '/contact' },
 ];
 
-export default function PublicNavbar() {
+export default function PublicNavbar({ alwaysVisible = false }) {
     const { url } = usePage();
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [openMobileSection, setOpenMobileSection] = useState(null);
+
+    const [hasScrolled, setHasScrolled] = useState(alwaysVisible);
+
+    useEffect(() => {
+        if (alwaysVisible) {
+            setHasScrolled(true);
+            return;
+        }
+
+        const onScroll = () => {
+            setHasScrolled(window.scrollY > 10);
+        };
+
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        return () => window.removeEventListener('scroll', onScroll);
+    }, [alwaysVisible]);
 
     useEffect(() => {
         const onEscape = (e) => {
@@ -121,7 +139,13 @@ export default function PublicNavbar() {
     };
 
     return (
-        <header className="sticky top-0 z-50">
+        <header
+            className={`fixed inset-x-0 top-0 z-50 transform transition-all duration-300 ease-out ${
+                hasScrolled
+                    ? 'translate-y-0 opacity-100 pointer-events-auto'
+                    : '-translate-y-full opacity-0 pointer-events-none'
+            }`}
+        >
             {/* ── Barre supérieure ──────────────────────────────────────── */}
             <div style={{ backgroundColor: MAIN_COLOR }} className="hidden lg:block">
                 <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-1.5 sm:px-6 lg:px-8">
