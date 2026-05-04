@@ -1,17 +1,35 @@
 import { Link, usePage } from '@inertiajs/react';
-import { ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
+import { BookOpen, ChevronDown, ChevronRight, Menu, X } from 'lucide-react';
+import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { useEffect, useMemo, useState } from 'react';
 
-const NAVIGATION_ITEMS = [
+const MAIN_COLOR = '#06233F';
+const ACCENT_COLOR = '#F4B739';
+
+const TOP_LINKS = [
+    { label: 'Versets du jour', href: '/versets-du-jour', icon: BookOpen },
+    { label: 'Nous rejoindre', href: '/nous-rejoindre' },
+    { label: 'Nous soutenir', href: '/nous-soutenir' },
+    { label: 'Média', href: '/ressources/galerie-media' },
+];
+
+const SOCIAL_LINKS = [
+    { name: 'Instagram', href: '#', icon: FaInstagram },
+    { name: 'Facebook', href: '#', icon: FaFacebookF },
+    { name: 'Youtube', href: '#', icon: FaYoutube },
+];
+
+// ─── Navigation principale ─────────────────────────────────────────────────
+const NAV_ITEMS = [
     { label: 'Accueil', href: '/' },
     {
-        label: 'Notre Église',
+        label: 'Notre Eglise',
         href: '/notre-eglise',
         children: [
             { label: 'Histoire', href: '/notre-eglise/histoire' },
             { label: 'Vision nationale', href: '/notre-eglise/vision-nationale' },
             { label: 'Le Quadruple Évangile', href: '/notre-eglise/quadruple-evangile' },
-            { label: 'Début de l’Église en Côte d’Ivoire', href: '/notre-eglise/debut-en-cote-divoire' },
+            { label: "Début de l'Église en Côte d'Ivoire", href: '/notre-eglise/debut-en-cote-divoire' },
             { label: 'Confession de foi', href: '/notre-eglise/confession-de-foi' },
         ],
     },
@@ -22,9 +40,9 @@ const NAVIGATION_ITEMS = [
             { label: 'Présidence nationale', href: '/notre-eglise/presidence-nationale' },
             { label: 'Bureau national', href: '/organisation/bureau-national' },
             { label: 'Départements', href: '/organisation/departements' },
-            { label: 'Comités nationaux', href: '/organisation/comites-nationaux' },
             { label: 'Districts', href: '/organisation/districts' },
-            { label: 'Églises locales', href: '/organisation/eglises-locales' },
+            { label: 'Comités nationaux', href: '/organisation/comites-nationaux' },
+            { label: 'Eglise locales', href: '/organisation/eglises-locales' },
             { label: 'Pasteurs & responsables', href: '/organisation/pasteurs-responsables' },
         ],
     },
@@ -36,23 +54,10 @@ const NAVIGATION_ITEMS = [
             { label: 'FORME', href: '/ministeres/forme' },
             { label: 'Life Church Biblique', href: '/ministeres/life-church-biblique' },
             { label: 'École de mission', href: '/ministeres/ecole-de-mission' },
-            { label: 'Jeunesse', href: '/ministeres/jeunesse' },
-            { label: 'Femmes', href: '/ministeres/femmes' },
-            { label: 'Hommes', href: '/ministeres/hommes' },
-            { label: 'Enfants', href: '/ministeres/enfants' },
             { label: 'Louange & adoration', href: '/ministeres/louange-adoration' },
         ],
     },
-    {
-        label: 'Événements',
-        href: '/evenements',
-        children: [
-            { label: 'Convention nationale', href: '/evenements/convention-nationale' },
-            { label: 'Programmes nationaux', href: '/evenements/programmes-nationaux' },
-            { label: 'Conférences', href: '/evenements/conferences' },
-            { label: 'Calendrier', href: '/evenements/calendrier' },
-        ],
-    },
+    // { label: 'Événements', href: '/evenements' },
     {
         label: 'Ressources',
         href: '/ressources',
@@ -65,22 +70,19 @@ const NAVIGATION_ITEMS = [
             { label: 'Boutique', href: '/ressources/boutique' },
         ],
     },
-    { label: 'Actualités', href: '/news' },
+    // { label: 'Nouvelles', href: '/news' },
     { label: 'Contact', href: '/contact' },
 ];
 
-const joinLink = { label: 'Nous rejoindre', href: '/nous-rejoindre' };
-const MAIN_COLOR = '#06233F';
-const ACCENT_COLOR = '#F4B739';
-
 export default function PublicNavbar() {
     const { url } = usePage();
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [openMobileSection, setOpenMobileSection] = useState(null);
 
     useEffect(() => {
-        const onEscape = (event) => {
-            if (event.key === 'Escape') {
+        const onEscape = (e) => {
+            if (e.key === 'Escape') {
                 setIsMenuOpen(false);
                 setOpenMobileSection(null);
             }
@@ -96,14 +98,12 @@ export default function PublicNavbar() {
         setOpenMobileSection(null);
     }, [url]);
 
-    const normalizedUrl = useMemo(() => (url.endsWith('/') && url !== '/' ? url.slice(0, -1) : url), [url]);
+    const normalizedUrl = useMemo(() => {
+        return url.endsWith('/') && url !== '/' ? url.slice(0, -1) : url;
+    }, [url]);
 
     const isLinkActive = (href, children = []) => {
-        if (normalizedUrl === href) {
-            return true;
-        }
-
-        return children.some(({ href: childHref }) => normalizedUrl === childHref);
+        return normalizedUrl === href || children.some(({ href: childHref }) => normalizedUrl === childHref);
     };
 
     const toggleMobileSection = (label) => {
@@ -111,95 +111,239 @@ export default function PublicNavbar() {
     };
 
     return (
-        <header className="sticky top-0 z-50 border-b border-[#d5dee8] bg-white shadow-sm">
-            <div className="mx-auto flex w-full max-w-7xl items-center gap-6 px-4 py-3 sm:px-6 lg:px-8">
-                <Link href="/" className="flex items-center gap-3" aria-label="Accueil Foursquare Côte d’Ivoire">
-                    <img src="/images/logo.png" alt="Logo Foursquare Côte d’Ivoire" className="h-12 w-12 rounded-full border border-[#d5dee8] object-cover" />
-                    {/* <span className="hidden text-[13px] font-semibold leading-tight sm:block" style={{ color: MAIN_COLOR }}>
-                        Foursquare
-                        <br />
-                        Côte d’Ivoire
-                    </span> */}
-                </Link>
+        <header className="sticky top-0 z-50">
+            {/* ── Barre supérieure ──────────────────────────────────────── */}
+            <div style={{ backgroundColor: MAIN_COLOR }} className="hidden lg:block">
+                <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-1.5 sm:px-6 lg:px-8">
+                    {/* Liens gauche */}
+                    <div className="flex items-center gap-1 text-[12px] text-white/80">
+                        {TOP_LINKS.map((link, index) => {
+                            const Icon = link.icon;
 
-                <nav className="hidden flex-1 items-center justify-center gap-7 lg:flex">
-                    {NAVIGATION_ITEMS.map((item) => {
-                        const active = isLinkActive(item.href, item.children);
-
-                        if (!item.children) {
                             return (
-                                <Link
-                                    key={item.label}
-                                    href={item.href}
-                                    className="border-b-2 px-1 py-2 text-[14px] font-medium transition"
-                                    style={{ color: MAIN_COLOR, borderColor: active ? ACCENT_COLOR : 'transparent' }}
-                                >
-                                    {item.label}
-                                </Link>
+                                <span key={link.href} className="flex items-center">
+                                    {index !== 0 && (
+                                        <span className="mx-2.5 select-none text-white/25">|</span>
+                                    )}
+
+                                    <Link
+                                        href={link.href}
+                                        className="flex items-center gap-1.5 transition hover:text-white"
+                                    >
+                                        {Icon && (
+                                            <Icon
+                                                className="h-3.5 w-3.5"
+                                                style={{ color: ACCENT_COLOR }}
+                                            />
+                                        )}
+
+                                        {link.label}
+                                    </Link>
+                                </span>
                             );
-                        }
+                        })}
+                    </div>
 
-                        return (
-                            <div key={item.label} className="group relative">
-                                <Link
-                                    href={item.href}
-                                    className="inline-flex items-center gap-1 border-b-2 px-1 py-2 text-[14px] font-medium transition"
-                                    style={{ color: MAIN_COLOR, borderColor: active ? ACCENT_COLOR : 'transparent' }}
-                                >
-                                    {item.label}
-                                    <ChevronDown className="h-4 w-4" />
-                                </Link>
-                                <div className="invisible absolute left-0 top-full mt-2 w-72 rounded-xl border border-[#d5dee8] bg-white p-2 opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100">
-                                    {item.children.map((child) => (
-                                        <Link
-                                            key={child.href}
-                                            href={child.href}
-                                            className="block rounded-lg px-3 py-2 text-sm transition hover:bg-[#f4f8fc]"
-                                            style={{ color: MAIN_COLOR }}
-                                        >
-                                            {child.label}
-                                        </Link>
-                                    ))}
-                                </div>
-                            </div>
-                        );
-                    })}
-                </nav>
+                    {/* Icônes sociales + sélecteur de langue */}
+                    <div className="flex items-center gap-3">
+                        {SOCIAL_LINKS.map(({ icon: Icon, href, name }) => (
+                            <a
+                                key={name}
+                                href={href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={name}
+                                className="text-white/70 transition hover:text-white"
+                            >
+                                <Icon className="h-3.5 w-3.5" />
+                            </a>
+                        ))}
 
-                <div className="ml-auto flex items-center gap-3">
-                    <Link
-                        href={joinLink.href}
-                        className="hidden rounded-lg px-4 py-2 text-[13px] font-semibold transition hover:brightness-95 md:inline-flex"
-                        style={{ backgroundColor: ACCENT_COLOR, color: MAIN_COLOR }}
-                    >
-                        {joinLink.label}
-                    </Link>
-                    <button
-                        type="button"
-                        onClick={() => setIsMenuOpen((prev) => !prev)}
-                        className="rounded-md border border-[#d5dee8] p-2 lg:hidden"
-                        aria-label="Ouvrir le menu"
-                        aria-expanded={isMenuOpen}
-                        aria-controls="mobile-main-menu"
-                        style={{ color: MAIN_COLOR }}
-                    >
-                        {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-                    </button>
+                        <span className="select-none text-white/25">|</span>
+
+                        <button
+                            type="button"
+                            className="flex items-center gap-1 text-[12px] text-white/80 transition hover:text-white"
+                        >
+                            FR <ChevronDown className="h-3 w-3" />
+                        </button>
+                    </div>
                 </div>
             </div>
 
+            {/* ── Barre principale ──────────────────────────────────────── */}
+            <div className="border-b border-[#d5dee8] bg-white shadow-sm">
+    <div className="mx-auto flex w-full max-w-7xl items-center gap-4 px-4 py-2.5 sm:px-6 lg:px-8">
+        {/* Logo + identité */}
+        <Link
+            href="/"
+            className="flex shrink-0 items-center gap-3"
+            aria-label="Accueil Foursquare Côte d'Ivoire"
+        >
+            <div className="h-14 w-14 overflow-visible">
+                <img
+                    src="/images/logo.png"
+                    alt="Logo Foursquare Côte d'Ivoire"
+                    className="h-14 w-14 scale-[3.0] object-contain"
+                />
+            </div>
+
+            <div className="hidden flex-col sm:flex">
+                {/* <span
+                    className="text-[15px] font-bold leading-snug"
+                    style={{ color: MAIN_COLOR }}
+                >
+                    Foursquare
+                    <br />
+                    Côte d'Ivoire
+                </span>
+
+                <span className="mt-0.5 text-[8.5px] font-medium uppercase tracking-wide text-gray-400">
+                    Jésus sauve, guérit, baptise
+                    <br />
+                    et revient bientôt
+                </span> */}
+            </div>
+        </Link>
+
+        {/* Navigation desktop */}
+        <nav className="hidden flex-1 items-center justify-end gap-0.5 lg:flex">
+            {NAV_ITEMS.map((item) => {
+                const active = isLinkActive(item.href, item.children);
+
+                if (!item.children) {
+                    return (
+                        <Link
+                            key={item.label}
+                            href={item.href}
+                            className="border-b-2 px-2.5 py-2 text-[12.5px] font-semibold uppercase tracking-wide transition"
+                            style={{
+                                color: active ? ACCENT_COLOR : MAIN_COLOR,
+                                borderColor: active ? ACCENT_COLOR : 'transparent',
+                            }}
+                        >
+                            {item.label}
+                        </Link>
+                    );
+                }
+
+                return (
+                    <div key={item.label} className="group relative">
+                        <Link
+                            href={item.href}
+                            className="inline-flex items-center gap-0.5 border-b-2 px-2.5 py-2 text-[12.5px] font-semibold uppercase tracking-wide transition"
+                            style={{
+                                color: active ? ACCENT_COLOR : MAIN_COLOR,
+                                borderColor: active ? ACCENT_COLOR : 'transparent',
+                            }}
+                        >
+                            {item.label}
+                            <ChevronDown className="h-3.5 w-3.5" />
+                        </Link>
+
+                        {/* Dropdown */}
+                        <div className="invisible absolute left-0 top-full mt-1 w-64 rounded-xl border border-[#d5dee8] bg-white p-2 opacity-0 shadow-xl transition-all duration-150 group-hover:visible group-hover:opacity-100">
+                            {item.children.map((child) => (
+                                <Link
+                                    key={child.href}
+                                    href={child.href}
+                                    className="block rounded-lg px-3 py-2 text-[13px] font-medium transition hover:bg-[#f4f8fc]"
+                                    style={{ color: MAIN_COLOR }}
+                                >
+                                    {child.label}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                );
+            })}
+
+            {/* Bouton CTA */}
+            <Link
+                href="/nous-rejoindre"
+                className="ml-4 shrink-0 rounded-lg px-5 py-2 text-[13px] font-bold transition hover:brightness-95"
+                style={{ backgroundColor: ACCENT_COLOR, color: MAIN_COLOR }}
+            >
+                S'inscrire
+            </Link>
+        </nav>
+
+        {/* Burger mobile */}
+        <div className="ml-auto flex items-center gap-3 lg:hidden">
+            <Link
+                href="/nous-rejoindre"
+                className="hidden rounded-lg px-4 py-2 text-[13px] font-bold transition hover:brightness-95 md:inline-flex"
+                style={{ backgroundColor: ACCENT_COLOR, color: MAIN_COLOR }}
+            >
+                S'inscrire
+            </Link>
+
+            <button
+                type="button"
+                onClick={() => setIsMenuOpen((previous) => !previous)}
+                className="rounded-md border border-[#d5dee8] p-2"
+                aria-label="Ouvrir le menu"
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-menu"
+                style={{ color: MAIN_COLOR }}
+            >
+                {isMenuOpen ? (
+                    <X className="h-5 w-5" />
+                ) : (
+                    <Menu className="h-5 w-5" />
+                )}
+            </button>
+        </div>
+    </div>
+</div>
+
+            {/* ── Menu mobile ───────────────────────────────────────────── */}
             {isMenuOpen && (
-                <div id="mobile-main-menu" className="border-t border-[#d5dee8] bg-white px-4 py-4 lg:hidden">
+                <div
+                    id="mobile-menu"
+                    className="border-t border-[#d5dee8] bg-white px-4 py-4 lg:hidden"
+                >
+                    {/* Liens rapides visibles sur mobile */}
+                    <div
+                        className="mb-3 flex flex-wrap gap-x-4 gap-y-1.5 rounded-lg px-3 py-2.5 text-[12px]"
+                        style={{ backgroundColor: MAIN_COLOR }}
+                    >
+                        {TOP_LINKS.map((link) => {
+                            const Icon = link.icon;
+
+                            return (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    className="flex items-center gap-1.5 text-white/80 transition hover:text-white"
+                                >
+                                    {Icon && (
+                                        <Icon
+                                            className="h-3 w-3"
+                                            style={{ color: ACCENT_COLOR }}
+                                        />
+                                    )}
+
+                                    {link.label}
+                                </Link>
+                            );
+                        })}
+                    </div>
+
                     <nav className="flex flex-col gap-1">
-                        {NAVIGATION_ITEMS.map((item) => {
+                        {NAV_ITEMS.map((item) => {
                             const active = isLinkActive(item.href, item.children);
+
                             if (!item.children) {
                                 return (
                                     <Link
                                         key={item.href}
                                         href={item.href}
-                                        className="rounded-lg px-3 py-2 text-sm font-medium"
-                                        style={{ color: MAIN_COLOR, backgroundColor: active ? '#fff8e6' : 'transparent' }}
+                                        className="rounded-lg px-3 py-2 text-sm font-semibold uppercase tracking-wide"
+                                        style={{
+                                            color: MAIN_COLOR,
+                                            backgroundColor: active ? '#fff8e6' : 'transparent',
+                                        }}
                                     >
                                         {item.label}
                                     </Link>
@@ -209,23 +353,35 @@ export default function PublicNavbar() {
                             const isOpen = openMobileSection === item.label;
 
                             return (
-                                <div key={item.label} className="rounded-lg border border-[#e5ebf2]">
+                                <div
+                                    key={item.label}
+                                    className="overflow-hidden rounded-lg border border-[#e5ebf2]"
+                                >
                                     <button
                                         type="button"
-                                        className="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-medium"
-                                        style={{ color: MAIN_COLOR, backgroundColor: active ? '#fff8e6' : 'transparent' }}
+                                        className="flex w-full items-center justify-between px-3 py-2 text-left text-sm font-semibold uppercase tracking-wide"
+                                        style={{
+                                            color: MAIN_COLOR,
+                                            backgroundColor: active ? '#fff8e6' : 'transparent',
+                                        }}
                                         onClick={() => toggleMobileSection(item.label)}
                                     >
                                         {item.label}
-                                        {isOpen ? <ChevronDown className="h-4 w-4" /> : <ChevronRight className="h-4 w-4" />}
+
+                                        {isOpen ? (
+                                            <ChevronDown className="h-4 w-4" />
+                                        ) : (
+                                            <ChevronRight className="h-4 w-4" />
+                                        )}
                                     </button>
+
                                     {isOpen && (
                                         <div className="border-t border-[#e5ebf2] px-2 py-2">
                                             {item.children.map((child) => (
                                                 <Link
                                                     key={child.href}
                                                     href={child.href}
-                                                    className="block rounded-md px-2 py-2 text-sm"
+                                                    className="block rounded-md px-3 py-2 text-sm transition hover:bg-[#f4f8fc]"
                                                     style={{ color: MAIN_COLOR }}
                                                 >
                                                     {child.label}
@@ -236,12 +392,13 @@ export default function PublicNavbar() {
                                 </div>
                             );
                         })}
+
                         <Link
-                            href={joinLink.href}
-                            className="mt-3 inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-semibold"
+                            href="/nous-rejoindre"
+                            className="mt-3 flex items-center justify-center rounded-lg px-4 py-2.5 text-sm font-bold"
                             style={{ backgroundColor: ACCENT_COLOR, color: MAIN_COLOR }}
                         >
-                            {joinLink.label}
+                            S'inscrire
                         </Link>
                     </nav>
                 </div>
