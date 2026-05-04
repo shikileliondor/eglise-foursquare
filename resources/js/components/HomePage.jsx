@@ -464,137 +464,175 @@ export default function HomePage({ products = [], latestNews = [] }) {
     </section>
 </MotionSection>
             {/* ─── ACTUALITÉS ─── */}
-            <MotionSection>
-                <section className="bg-[#f4f4f4] py-16 md:py-20">
-                    <div className="mx-auto max-w-6xl px-6">
-                        <h2 className="font-heading text-3xl font-extrabold uppercase tracking-tight text-[#260d10] md:text-4xl">
-                            Actualités
-                        </h2>
+<MotionSection>
+    <section className="bg-[#F8F4EC] py-8 md:py-10">
+        <div className="mx-auto grid max-w-6xl gap-6 px-4 md:px-6 lg:grid-cols-3">
+            {/* Chiffres clés */}
+            <div className="rounded-md border border-[#06233F]/5 bg-[#FBF7EF] p-6 shadow-[0_12px_35px_rgba(6,35,63,0.06)]">
+                <h2 className="mb-6 text-base font-black text-[#06233F]">
+                    Chiffres clés
+                </h2>
 
-                        {latestNews.length === 0 ? (
-                            <div className="mt-8 rounded-2xl border border-dashed border-zinc-300 bg-white p-8 text-center text-zinc-500">
-                                Aucune actualité publiée pour le moment.
+                <div className="space-y-5">
+                    {[
+                        {
+                            icon: '⌂',
+                            value: '512',
+                            label: 'Églises locales',
+                        },
+                        {
+                            icon: '♙',
+                            value: '48',
+                            label: 'Districts',
+                        },
+                        {
+                            icon: '♧',
+                            value: '12 450',
+                            label: 'Membres',
+                        },
+                        {
+                            icon: '✦',
+                            value: '320',
+                            label: 'Missionnaires',
+                        },
+                        {
+                            icon: '♙',
+                            value: '45',
+                            label: 'Œuvres sociales',
+                        },
+                    ].map((item) => (
+                        <div
+                            key={item.label}
+                            className="flex items-center gap-5"
+                        >
+                            <span className="flex h-7 w-7 shrink-0 items-center justify-center text-2xl leading-none text-[#06233F]/80">
+                                {item.icon}
+                            </span>
+
+                            <p className="text-[14px] font-medium text-[#2B2B2B]">
+                                <span className="mr-1 font-black text-[#2B2B2B]">
+                                    {item.value}
+                                </span>
+                                {item.label}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Prochains rendez-vous */}
+            <div className="rounded-md border border-[#06233F]/5 bg-[#FBF7EF] p-6 shadow-[0_12px_35px_rgba(6,35,63,0.06)]">
+                <h2 className="mb-6 text-base font-black text-[#06233F]">
+                    Prochains rendez-vous
+                </h2>
+
+                <div className="space-y-5">
+                    {[
+                        {
+                            day: '15',
+                            month: 'MAI',
+                            title: 'Formation des responsables',
+                            desc: '15 – 17 mai 2026 | Abidjan',
+                        },
+                        {
+                            day: '01',
+                            month: 'JUIN',
+                            title: 'Convention Nationale 2026',
+                            desc: '1er – 7 juin 2026 | Yamoussoukro',
+                        },
+                        {
+                            day: '20',
+                            month: 'JUIN',
+                            title: 'Journée des Enfants Foursquare',
+                            desc: "20 juin 2026 | Partout en Côte d’Ivoire",
+                        },
+                    ].map((event) => (
+                        <a
+                            key={event.title}
+                            href="/evenements"
+                            className="group flex items-start gap-4"
+                        >
+                            <div className="flex h-[52px] w-[52px] shrink-0 flex-col items-center justify-center rounded-md border-2 border-[#E7B84D] bg-white text-center">
+                                <span className="text-lg font-black leading-none text-[#C58A12]">
+                                    {event.day}
+                                </span>
+                                <span className="mt-1 text-[9px] font-black uppercase text-[#06233F]/55">
+                                    {event.month}
+                                </span>
                             </div>
-                        ) : (
-                            <>
-                                <div className="mt-10 md:hidden">
-                                    <div className="overflow-hidden rounded-2xl">
-                                        <div
-                                            className="flex transition-transform duration-300 ease-out"
-                                            style={{ transform: `translateX(-${activeNewsIndex * 100}%)` }}
-                                        >
-                                            {latestNews.map((item) => (
-                                                <div key={item.id} className="w-full shrink-0">
-                                                    <Link
-                                                        href={route('news.show', item.slug)}
-                                                        className="group block overflow-hidden rounded-2xl bg-white shadow-sm"
-                                                    >
-                                                        <div className="aspect-[4/3] overflow-hidden bg-slate-200">
-                                                            <img
-                                                                src={item.image_url || fallbackNewsImage}
-                                                                alt={item.title}
-                                                                className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-                                                            />
-                                                        </div>
-                                                        <div className="p-5">
-                                                            <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
-                                                                {formatDate(item.published_at)}
-                                                            </p>
-                                                            <h3 className="font-heading mt-3 text-xl font-bold leading-snug text-[#260d10]">
-                                                                {item.title}
-                                                            </h3>
-                                                            <p className="mt-4 inline-flex items-center text-sm font-semibold text-[#5b4ab8]">
-                                                                Lire l&apos;actualité <span className="ml-2 text-base">→</span>
-                                                            </p>
-                                                        </div>
-                                                    </Link>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
 
-                                    {latestNews.length > 1 && (
-                                        <div className="mt-5 flex items-center justify-between gap-4">
-                                            <button
-                                                type="button"
-                                                onClick={goToPreviousNews}
-                                                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#260d10]/20 bg-white text-xl text-[#260d10] transition hover:border-[#260d10] hover:bg-[#260d10] hover:text-white"
-                                                aria-label="Actualité précédente"
-                                            >
-                                                ←
-                                            </button>
+                            <div className="pt-1">
+                                <h3 className="text-[14px] font-black leading-snug text-[#06233F] transition group-hover:text-[#C58A12]">
+                                    {event.title}
+                                </h3>
 
-                                            <div className="flex items-center gap-2">
-                                                {latestNews.map((item, index) => (
-                                                    <span
-                                                        key={item.id}
-                                                        className={`h-2.5 w-2.5 rounded-full transition ${
-                                                            index === activeNewsIndex ? 'bg-[#260d10]' : 'bg-[#260d10]/20'
-                                                        }`}
-                                                    />
-                                                ))}
-                                            </div>
+                                <p className="mt-1 text-xs font-medium text-[#06233F]/55">
+                                    {event.desc}
+                                </p>
+                            </div>
+                        </a>
+                    ))}
+                </div>
 
-                                            <button
-                                                type="button"
-                                                onClick={goToNextNews}
-                                                className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#260d10]/20 bg-white text-xl text-[#260d10] transition hover:border-[#260d10] hover:bg-[#260d10] hover:text-white"
-                                                aria-label="Actualité suivante"
-                                            >
-                                                →
-                                            </button>
-                                        </div>
-                                    )}
-                                </div>
+                <a
+                    href="/evenements"
+                    className="mt-6 inline-flex items-center gap-2 text-sm font-black text-[#C58A12] transition hover:text-[#06233F]"
+                >
+                    Voir tous les événements
+                    <span>→</span>
+                </a>
+            </div>
 
-                                <motion.div
-                                    className="mt-10 hidden gap-8 md:grid md:grid-cols-2 xl:grid-cols-3"
-                                    variants={staggerContainer}
-                                    initial="initial"
-                                    whileInView="animate"
-                                    viewport={{ once: true, margin: '-60px' }}
-                                >
-                                    {latestNews.map((item, index) => (
-                                        <motion.div
-                                            key={item.id}
-                                            variants={staggerItem}
-                                            {...hoverLift}
-                                            className={`max-w-[22rem] ${
-                                                index % 2 === 0 ? 'mr-auto' : 'ml-auto'
-                                            } md:max-w-none md:mx-0`}
-                                        >
-                                            <Link
-                                                href={route('news.show', item.slug)}
-                                                className="group block overflow-hidden rounded-2xl bg-white shadow-sm"
-                                            >
-                                               <div className="aspect-[4/3] overflow-hidden bg-slate-200">
-    <img
-        src={item.image_url || fallbackNewsImage}
-        alt={item.title}
-        className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]"
-    />
-</div>
-                                                <div className="p-5">
-                                                    <p className="text-xs uppercase tracking-[0.18em] text-slate-500">
-                                                        {formatDate(item.published_at)}
-                                                    </p>
-                                                    <h3 className="font-heading mt-3 text-xl font-bold leading-snug text-[#260d10] md:text-2xl">
-                                                        {item.title}
-                                                    </h3>
-                                                    <p className="mt-4 inline-flex items-center text-sm font-semibold text-[#5b4ab8]">
-                                                        Lire l&apos;actualité <span className="ml-2 text-base">→</span>
-                                                    </p>
-                                                </div>
-                                            </Link>
-                                        </motion.div>
-                                    ))}
-                                </motion.div>
-                            </>
-                        )}
-                    </div>
-                </section>
-            </MotionSection>
+            {/* Voir aussi */}
+            <div className="rounded-md border border-[#06233F]/5 bg-[#FBF7EF] p-6 shadow-[0_12px_35px_rgba(6,35,63,0.06)]">
+                <h2 className="mb-6 text-base font-black text-[#06233F]">
+                    Voir aussi
+                </h2>
 
+                <div className="space-y-1">
+                    {[
+                        {
+                            label: 'Devenir membre',
+                            href: '/nous-rejoindre',
+                        },
+                        {
+                            label: 'Trouver une église',
+                            href: '/eglises-locales',
+                        },
+                        // {
+                        //     label: 'Demande de prière',
+                        //     href: '/demande-de-priere',
+                        // },
+                        {
+                            label: 'Faire un don',
+                            href: '/nous-soutenir',
+                        },
+                        // {
+                        //     label: 'Offres d’emploi',
+                        //     href: '/offres-emploi',
+                        // },
+                        {
+                            label: 'Boutique & ressources',
+                            href: '/ressources/boutique',
+                        },
+                    ].map((link) => (
+                        <a
+                            key={link.label}
+                            href={link.href}
+                            className="group flex items-center justify-between py-2.5 text-[14px] font-medium text-[#2B2B2B] transition hover:text-[#C58A12]"
+                        >
+                            <span>{link.label}</span>
+
+                            <span className="text-xl leading-none text-[#2B2B2B]/75 transition group-hover:translate-x-1 group-hover:text-[#C58A12]">
+                                ›
+                            </span>
+                        </a>
+                    ))}
+                </div>
+            </div>
+        </div>
+    </section>
+</MotionSection>
             {/* ─── HOVER SLIDER ─── */}
             <MotionSection>
                 <section className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] py-16 md:py-20">
