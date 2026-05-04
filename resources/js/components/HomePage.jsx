@@ -46,62 +46,193 @@ export default function HomePage({ products = [], latestNews = [] }) {
             <PublicNavbar />
 
             {/* ─── HERO ─── */}
-            <section className="relative overflow-hidden bg-white">
-    {/* Bannière 16:9 sans texte */}
-   <div
-    className="absolute inset-0"
-    style={{
-        backgroundImage: "url('/images/bannière.png')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center 10%',
-        backgroundRepeat: 'no-repeat',
-    }}
-/>
+<section className="relative overflow-hidden bg-white">
+    {/* Fond général */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_18%,rgba(92,45,145,0.08),transparent_26%),radial-gradient(circle_at_88%_60%,rgba(205,23,37,0.08),transparent_28%)]" />
 
-    {/* Voile léger pour garder le texte lisible */}
-    <div className="absolute inset-0 bg-gradient-to-r from-white via-white/92 to-white/15" />
+    {/* Silhouette ville bas */}
+    <div
+        className="absolute bottom-0 left-0 h-[210px] w-full opacity-[0.13]"
+        style={{
+            backgroundImage: "url('/images/hero-city.png')",
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'bottom center',
+        }}
+    />
 
-    {/* Contenu */}
-    <div className="relative mx-auto grid min-h-[460px] max-w-7xl items-center px-4 py-12 md:px-6 lg:py-14">
+    {/* Formes couleurs Foursquare à droite */}
+    <div className="absolute -right-24 top-8 hidden h-[360px] w-[360px] rounded-full bg-[#CD1725] lg:block" />
+    <div className="absolute -right-28 top-[270px] hidden h-[360px] w-[360px] rounded-full bg-[#005AA9] lg:block" />
+    <div className="absolute -right-24 bottom-[-60px] hidden h-[360px] w-[360px] rounded-full bg-[#FFD23F] lg:block" />
+    <div className="absolute -right-32 bottom-[-220px] hidden h-[360px] w-[360px] rounded-full bg-[#5B2C83] lg:block" />
+
+    <div className="relative mx-auto grid min-h-[650px] max-w-7xl items-center gap-10 px-4 py-12 md:px-6 lg:grid-cols-[0.92fr_1.08fr] lg:py-14">
+        {/* Texte gauche */}
         <MotionSection delay={0.15}>
-            <div className="max-w-[560px]">
-                <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#C58A12] md:text-xs">
-                    Église Foursquare Côte d’Ivoire
-                </p>
+            <div className="max-w-[600px]">
+                {/* Logo */}
+                <div className="mb-8 flex items-start gap-4">
+                    <img
+                        src="/images/logo.png"
+                        alt="Logo Église Évangélique Foursquare Côte d’Ivoire"
+                        className="h-28 w-auto object-contain"
+                    />
+                </div>
 
-                <div className="mb-6 h-[2px] w-12 bg-[#F4B739]" />
-
-                <h1 className="font-serif text-[32px] font-bold leading-[1.08] tracking-[-0.035em] text-[#06233F] md:text-[44px] lg:text-[52px]">
-                    Convention Nationale 2026
+                {/* Titre */}
+                <h1 className="text-[42px] font-black leading-[1.02] tracking-[-0.04em] text-black md:text-[58px] lg:text-[64px]">
+                    Convention Nationale
                     <br />
-                    <span className="text-[#D49A19]">
+                    2026
+                    <br />
+                    <span className="text-[#CD1725]">
                         de l’Église Foursquare
                     </span>
                     <br />
-                    <span className="text-[#D49A19]">
+                    <span className="text-[#5B2C83]">
                         Côte d’Ivoire
                     </span>
                 </h1>
 
-                <p className="mt-5 max-w-[460px] text-[14px] font-medium leading-7 text-[#102033]/70 md:text-[16px]">
+                {/* Mini ligne couleurs */}
+                <div className="mt-6 flex items-center gap-2">
+                    <span className="h-[3px] w-10 bg-[#CD1725]" />
+                    <span className="h-[3px] w-10 bg-[#005AA9]" />
+                    <span className="h-[3px] w-10 bg-[#FFD23F]" />
+                    <span className="h-[3px] w-10 bg-[#5B2C83]" />
+                </div>
+
+                <p className="mt-7 max-w-[520px] text-[15px] font-medium leading-7 text-[#102033]/75 md:text-[17px]">
                     Un temps de louange, de prière, de formation
                     <br className="hidden sm:block" />
                     et d’envoi en mission pour impacter notre nation.
                 </p>
 
-                <a
-                    href="/communiques/convention-nationale-2026"
-                    className="mt-6 inline-flex items-center gap-3 border-b-2 border-[#F4B739] pb-1.5 font-serif text-[16px] font-bold text-[#06233F] transition hover:text-[#C58A12] md:text-[18px]"
-                >
-                    Lire le communiqué
-                    <span className="text-2xl font-light text-[#D49A19]">→</span>
-                </a>
+                <div className="mt-8 flex flex-wrap items-center gap-7">
+                    <a
+                        href="/communiques/convention-nationale-2026"
+                        className="inline-flex items-center gap-4 rounded-xl bg-[#CD1725] px-7 py-4 text-sm font-black text-white shadow-[0_16px_40px_rgba(205,23,37,0.28)] transition hover:-translate-y-0.5 hover:bg-[#b91322]"
+                    >
+                        <span className="inline-flex h-5 w-5 items-center justify-center rounded-sm border border-white/70 text-[11px]">
+                            ▣
+                        </span>
+                        Lire le communiqué
+                        <span className="text-xl">→</span>
+                    </a>
+
+                    <a
+                        href="/inscription"
+                        className="inline-flex items-center gap-4 border-b-2 border-[#5B2C83] pb-2 text-[15px] font-black text-[#06233F] transition hover:text-[#CD1725]"
+                    >
+                        S’inscrire
+                        <span className="text-xl text-[#CD1725]">→</span>
+                    </a>
+                </div>
+            </div>
+        </MotionSection>
+
+        {/* Visuel droite */}
+        <MotionSection delay={0.25}>
+            <div className="relative hidden min-h-[560px] items-center justify-center lg:flex">
+                {/* Points décoratifs */}
+                <div className="absolute right-[160px] top-[52px] z-0 grid grid-cols-10 gap-3">
+                    {Array.from({ length: 50 }).map((_, index) => (
+                        <span
+                            key={index}
+                            className="h-1 w-1 rounded-full bg-[#5B2C83]/45"
+                        />
+                    ))}
+                </div>
+
+                {/* Image haut centre */}
+                <div className="absolute left-[165px] top-0 z-10 h-[285px] w-[310px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
+                    <img
+                        src="/images/hero-worship.jpg"
+                        alt="Culte Foursquare"
+                        className="h-full w-full object-cover"
+                    />
+                </div>
+
+                {/* Image droite haut */}
+                <div className="absolute right-[18px] top-[102px] z-10 h-[250px] w-[245px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
+                    <img
+                        src="/images/hero-study.jpg"
+                        alt="Étude biblique Foursquare"
+                        className="h-full w-full object-cover"
+                    />
+                </div>
+
+                {/* Image centre bas */}
+                <div className="absolute bottom-[72px] left-[90px] z-10 h-[270px] w-[420px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
+                    <img
+                        src="/images/hero-community.jpg"
+                        alt="Assemblée Foursquare"
+                        className="h-full w-full object-cover"
+                    />
+                </div>
+
+                {/* Image droite bas */}
+                <div className="absolute bottom-[0px] right-[10px] z-10 h-[310px] w-[250px] overflow-hidden rounded-[34px] border-[6px] border-white shadow-[0_24px_70px_rgba(6,35,63,0.16)]">
+                    <img
+                        src="/images/hero-prayer.jpg"
+                        alt="Prière et communion"
+                        className="h-full w-full object-cover"
+                    />
+                </div>
+
+                {/* Carte Convention */}
+                <div className="absolute left-[20px] top-[150px] z-30 w-[230px] rounded-2xl bg-white px-6 py-5 shadow-[0_20px_55px_rgba(6,35,63,0.16)]">
+                    <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full text-[#5B2C83]">
+                        <span className="text-2xl">♙</span>
+                    </div>
+                    <p className="text-sm font-black text-[#5B2C83]">
+                        Convention 2026
+                    </p>
+                    <p className="mt-2 text-[13px] font-medium leading-6 text-[#102033]/70">
+                        Un rassemblement national pour l’Église.
+                    </p>
+                </div>
+
+                {/* Carte 100% */}
+                <div className="absolute right-[85px] top-[72px] z-30 rounded-2xl bg-white px-6 py-5 shadow-[0_20px_55px_rgba(6,35,63,0.16)]">
+                    <div className="flex items-center gap-3">
+                        <span className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#CD1725] text-sm font-black text-[#CD1725]">
+                            ✓
+                        </span>
+                        <div>
+                            <p className="text-base font-black text-[#06233F]">
+                                100%
+                            </p>
+                            <p className="text-xs font-medium text-[#102033]/60">
+                                Foi & Mission
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Carte date */}
+                <div className="absolute bottom-[42px] left-[360px] z-30 w-[230px] rounded-2xl bg-white px-6 py-5 shadow-[0_20px_55px_rgba(6,35,63,0.16)]">
+                    <div className="flex items-start gap-4">
+                        <span className="mt-1 text-2xl text-[#CD1725]">▣</span>
+                        <div>
+                            <p className="text-base font-black text-[#5B2C83]">
+                                2–7 Août 2026
+                            </p>
+                            <p className="mt-1 text-sm font-medium leading-5 text-[#102033]/70">
+                                Abidjan,
+                                <br />
+                                Côte d’Ivoire
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </MotionSection>
     </div>
 
-    {/* Ligne or en bas */}
-    <div className="relative h-2 bg-[#F4B739]" />
+    {/* Ligne bas Foursquare */}
+    <div className="relative h-2 bg-gradient-to-r from-[#CD1725] via-[#005AA9] via-[#FFD23F] to-[#5B2C83]" />
 </section>
 
             {/* ─── BIENVENUE ─── */}
