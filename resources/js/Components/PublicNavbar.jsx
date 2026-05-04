@@ -115,11 +115,11 @@ export default function PublicNavbar() {
             <div className="mx-auto flex w-full max-w-7xl items-center gap-6 px-4 py-3 sm:px-6 lg:px-8">
                 <Link href="/" className="flex items-center gap-3" aria-label="Accueil Foursquare Côte d’Ivoire">
                     <img src="/images/logo.png" alt="Logo Foursquare Côte d’Ivoire" className="h-12 w-12 rounded-full border border-[#d5dee8] object-cover" />
-                    <span className="hidden text-[13px] font-semibold leading-tight sm:block" style={{ color: MAIN_COLOR }}>
+                    {/* <span className="hidden text-[13px] font-semibold leading-tight sm:block" style={{ color: MAIN_COLOR }}>
                         Foursquare
                         <br />
                         Côte d’Ivoire
-                    </span>
+                    </span> */}
                 </Link>
 
                 <nav className="hidden flex-1 items-center justify-center gap-7 lg:flex">
