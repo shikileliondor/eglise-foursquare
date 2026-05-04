@@ -46,36 +46,32 @@ export default function HomePage({ products = [], latestNews = [] }) {
             <PublicNavbar />
 
             {/* ─── HERO ─── */}
-<section className="relative overflow-hidden bg-white">
-    {/* Fond blanc premium + lumière dorée */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_28%,rgba(244,183,57,0.20),transparent_28%),linear-gradient(110deg,#ffffff_0%,#ffffff_58%,#F8F4EC_100%)]" />
+            <section className="relative overflow-hidden bg-white">
+    {/* Bannière 16:9 sans texte */}
+   <div
+    className="absolute inset-0"
+    style={{
+        backgroundImage: "url('/images/bannière.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 10%',
+        backgroundRepeat: 'no-repeat',
+    }}
+/>
 
-    {/* Arcs dorés discrets derrière la carte */}
-    <div className="pointer-events-none absolute right-[-120px] top-[-180px] h-[620px] w-[620px] rounded-full border border-[#F4B739]/20" />
-    <div className="pointer-events-none absolute right-[-80px] top-[-140px] h-[540px] w-[540px] rounded-full border border-[#F4B739]/15" />
-    <div className="pointer-events-none absolute right-[-40px] top-[-100px] h-[460px] w-[460px] rounded-full border border-[#F4B739]/10" />
+    {/* Voile léger pour garder le texte lisible */}
+    <div className="absolute inset-0 bg-gradient-to-r from-white via-white/92 to-white/15" />
 
-    {/* Silhouette urbaine très discrète */}
-    <div
-        className="absolute bottom-0 right-0 h-[190px] w-[70%] opacity-[0.16]"
-        style={{
-            backgroundImage: "url('/images/hero-city.png')",
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'bottom right',
-        }}
-    />
-
-    <div className="relative mx-auto grid min-h-[560px] max-w-7xl items-center gap-10 px-4 py-16 md:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
+    {/* Contenu */}
+    <div className="relative mx-auto grid min-h-[460px] max-w-7xl items-center px-4 py-12 md:px-6 lg:py-14">
         <MotionSection delay={0.15}>
-            <div className="max-w-[720px]">
-                <p className="mb-5 text-xs font-semibold uppercase tracking-[0.32em] text-[#C58A12] md:text-sm">
+            <div className="max-w-[560px]">
+                <p className="mb-4 text-[10px] font-semibold uppercase tracking-[0.28em] text-[#C58A12] md:text-xs">
                     Église Foursquare Côte d’Ivoire
                 </p>
 
-                <div className="mb-9 h-[3px] w-16 bg-[#F4B739]" />
+                <div className="mb-6 h-[2px] w-12 bg-[#F4B739]" />
 
-                <h1 className="font-serif text-[42px] font-bold leading-[1.03] tracking-[-0.045em] text-[#06233F] md:text-[62px] lg:text-[76px]">
+                <h1 className="font-serif text-[32px] font-bold leading-[1.08] tracking-[-0.035em] text-[#06233F] md:text-[44px] lg:text-[52px]">
                     Convention Nationale 2026
                     <br />
                     <span className="text-[#D49A19]">
@@ -87,7 +83,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
                     </span>
                 </h1>
 
-                <p className="mt-8 max-w-[640px] text-[17px] font-medium leading-8 text-[#102033]/75 md:text-[20px]">
+                <p className="mt-5 max-w-[460px] text-[14px] font-medium leading-7 text-[#102033]/70 md:text-[16px]">
                     Un temps de louange, de prière, de formation
                     <br className="hidden sm:block" />
                     et d’envoi en mission pour impacter notre nation.
@@ -95,30 +91,11 @@ export default function HomePage({ products = [], latestNews = [] }) {
 
                 <a
                     href="/communiques/convention-nationale-2026"
-                    className="mt-9 inline-flex items-center gap-5 border-b-2 border-[#F4B739] pb-2 font-serif text-[20px] font-bold text-[#06233F] transition hover:text-[#C58A12]"
+                    className="mt-6 inline-flex items-center gap-3 border-b-2 border-[#F4B739] pb-1.5 font-serif text-[16px] font-bold text-[#06233F] transition hover:text-[#C58A12] md:text-[18px]"
                 >
                     Lire le communiqué
-                    <span className="text-3xl font-light text-[#D49A19]">→</span>
+                    <span className="text-2xl font-light text-[#D49A19]">→</span>
                 </a>
-
-                <div className="mt-12 flex items-center gap-4">
-                    <span className="h-4 w-4 rounded-full bg-[#F4B739]" />
-                    <span className="h-4 w-4 rounded-full bg-[#06233F]/14" />
-                    <span className="h-4 w-4 rounded-full bg-[#06233F]/14" />
-                    <span className="h-4 w-4 rounded-full bg-[#06233F]/14" />
-                </div>
-            </div>
-        </MotionSection>
-
-        <MotionSection delay={0.25}>
-            <div className="relative hidden min-h-[430px] items-center justify-center lg:flex">
-                <div className="absolute h-[360px] w-[360px] rounded-full bg-[#F4B739]/20 blur-3xl" />
-
-                <img
-                    src="/images/afiche.jpg"
-                    alt="Côte d’Ivoire - Église Foursquare"
-                    className="relative z-10 w-[420px] max-w-full object-contain drop-shadow-[0_35px_65px_rgba(180,120,20,0.28)] xl:w-[500px]"
-                />
             </div>
         </MotionSection>
     </div>
@@ -128,42 +105,140 @@ export default function HomePage({ products = [], latestNews = [] }) {
 </section>
 
             {/* ─── BIENVENUE ─── */}
-            <MotionSection>
-                <section className="bg-[#f4f4f4] pb-8 pt-8 md:pt-12">
-                    <div className="mx-auto grid max-w-6xl items-center gap-10 px-6 lg:grid-cols-2">
-                        <div className="relative mx-auto w-full max-w-[520px]">
-                            <div className="absolute left-0 top-14 h-[80%] w-[82%] bg-[#ded7bf]" />
-                            <div
-                                className="absolute right-0 top-0 h-64 w-72 bg-gradient-to-b from-[#eb7036] via-[#f4d767] to-[#e9ca64] [clip-path:polygon(20%_0%,100%_0%,100%_100%,0%_100%,0%_30%)]"
-                            />
-                            <div
-                                className="relative mx-auto aspect-[4/5] w-[78%] overflow-hidden [clip-path:polygon(28%_3%,78%_0%,98%_20%,91%_66%,57%_95%,25%_88%,8%_63%,0%_47%,8%_29%)]"
-                            >
-                                <img src="/images/izo pro.jpg" alt="Membres en communion" className="h-full w-full object-cover" />
-                            </div>
-                        </div>
-                        <div className="max-w-xl">
-                            <h1 className="font-heading text-3xl font-extrabold leading-[1.15] text-black md:text-4xl lg:text-[2.65rem]">
-                                Bienvenue dans la famille Light !
-                            </h1>
-                            <p className="mt-6 text-base leading-7 text-black/85 md:text-lg">
-                                Light Foursquare rassemble les jeunes chrétiens appelés à grandir dans la foi, servir avec passion et impacter leur génération pour Christ.
-                            </p>
-                            <p className="mt-4 text-[1.05rem] leading-7 text-black/85">
-                                Dieu t'a-t-il donné une passion, un don ou une vision ? Alors cette maison est aussi la tienne.
-                            </p>
-                            <Link href={route('about')} className="group mt-10 inline-flex flex-col text-base font-semibold text-black transition hover:text-[#5b4ab8] md:text-lg">
-                                <span className="inline-flex items-center gap-3">
-                                    Rejoins le mouvement Light Foursquare
-                                    <span className="text-xl text-[#6a58c7] transition group-hover:translate-x-1">→</span>
-                                </span>
-                                <span className="mt-3 h-[3px] w-full bg-gradient-to-r from-[#1f4b84] via-[#c2a43f] to-[#6a58c7]" />
-                            </Link>
-                        </div>
-                    </div>
-                </section>
-            </MotionSection>
+ <MotionSection>
+    <section className="bg-[#F8F4EC] py-8 md:py-10">
+        <div className="mx-auto grid max-w-6xl gap-6 px-4 md:px-6 lg:grid-cols-[1.55fr_0.85fr]">
+            {/* Bloc actualités */}
+            <div className="overflow-hidden rounded-sm border border-[#06233F]/10 bg-white shadow-[0_16px_45px_rgba(6,35,63,0.07)]">
+                {/* Tabs */}
+                <div className="flex items-center border-b border-[#06233F]/10 px-5">
+                    {['Actualités', 'Publications', 'Événements', 'Espace presse'].map((tab, index) => (
+                        <button
+                            key={tab}
+                            type="button"
+                            className={`relative px-4 py-4 text-xs font-bold ${
+                                index === 0
+                                    ? 'text-[#06233F]'
+                                    : 'text-[#06233F]/65 hover:text-[#06233F]'
+                            }`}
+                        >
+                            {tab}
 
+                            {index === 0 && (
+                                <span className="absolute bottom-0 left-4 right-4 h-[3px] bg-[#F4B739]" />
+                            )}
+                        </button>
+                    ))}
+                </div>
+
+                {/* Liste */}
+                <div className="divide-y divide-[#06233F]/10 px-5">
+                    {[
+                        {
+                            day: '10',
+                            month: 'MAI 2026',
+                            title: 'Avis d’appel aux églises pour la Convention Nationale 2026',
+                            desc: 'Date limite d’inscription : 30 juin 2026',
+                        },
+                        {
+                            day: '03',
+                            month: 'MAI 2026',
+                            title: 'Formation des responsables : Leadership et intégrité',
+                            desc: 'Du 15 au 17 mai 2026 à Abidjan',
+                        },
+                        {
+                            day: '26',
+                            month: 'AVR. 2026',
+                            title: 'Campagne nationale de prière et de jeûne',
+                            desc: 'Du 1er au 31 mai 2026 — Un mois pour notre nation',
+                        },
+                        {
+                            day: '18',
+                            month: 'AVR. 2026',
+                            title: "Nouvelles implantations d’églises en 2026",
+                            desc: '5 nouvelles œuvres lancées en Côte d’Ivoire',
+                        },
+                    ].map((item) => (
+                        <a
+                            key={item.title}
+                            href="/actualites"
+                            className="group grid grid-cols-[58px_1fr_20px] items-center gap-4 py-4"
+                        >
+                            <div className="text-center">
+                                <div className="font-serif text-2xl font-bold leading-none text-[#06233F]">
+                                    {item.day}
+                                </div>
+                                <div className="mt-1 text-[9px] font-bold uppercase tracking-wide text-[#06233F]/55">
+                                    {item.month}
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 className="text-[13px] font-black leading-snug text-[#06233F] transition group-hover:text-[#C58A12] md:text-sm">
+                                    {item.title}
+                                </h3>
+                                <p className="mt-1 text-xs font-medium text-[#06233F]/55">
+                                    {item.desc}
+                                </p>
+                            </div>
+
+                            <span className="text-lg text-[#06233F]/45 transition group-hover:translate-x-1 group-hover:text-[#C58A12]">
+                                ›
+                            </span>
+                        </a>
+                    ))}
+                </div>
+
+                <div className="border-t border-[#06233F]/10 px-5 py-4">
+                    <a
+                        href="/actualites"
+                        className="inline-flex items-center gap-2 text-xs font-bold text-[#C58A12] hover:text-[#06233F]"
+                    >
+                        Voir toutes les actualités
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+
+            {/* Message du président */}
+            <div className="overflow-hidden rounded-sm border border-[#06233F]/10 bg-white shadow-[0_16px_45px_rgba(6,35,63,0.07)]">
+                <div className="px-5 pt-5 text-center">
+                    <h2 className="text-xs font-black text-[#06233F]">
+                        Message du Président national
+                    </h2>
+                </div>
+
+                <div className="relative mx-auto mt-4 flex h-[240px] items-end justify-center px-5">
+                    <div className="absolute bottom-0 h-[190px] w-[190px] rounded-full bg-[#F8F4EC]" />
+
+                    <img
+                        src="/images/president-national.png"
+                        alt="Président national de l'Église Foursquare Côte d'Ivoire"
+                        className="relative z-10 h-[225px] w-auto object-contain"
+                    />
+                </div>
+
+                <div className="bg-[#06233F] px-6 py-5 text-white">
+                    <div className="text-3xl font-serif leading-none text-[#F4B739]">“</div>
+
+                    <p className="-mt-2 text-[13px] font-bold leading-5">
+                        Bâtissons des églises fortes, des familles transformées
+                        et des vies qui impactent leur génération.
+                    </p>
+
+                    <div className="mt-4">
+                        <p className="text-xs font-black uppercase text-[#F4B739]">
+                            Pasteur Jean-Marc Kouassi
+                        </p>
+                        <p className="mt-1 text-[11px] font-medium text-white/75">
+                            Président National
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</MotionSection>
             {/* ─── ACTUALITÉS ─── */}
             <MotionSection>
                 <section className="bg-[#f4f4f4] py-16 md:py-20">
