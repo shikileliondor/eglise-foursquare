@@ -1,121 +1,100 @@
 import { Link } from '@inertiajs/react';
-// import { ArrowUp, Facebook, Linkedin, Twitter, Youtube } from 'lucide-react';
-
 import { ArrowUp } from 'lucide-react';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaYoutube , FaTiktok} from 'react-icons/fa';
+import { FaFacebookF, FaTiktok } from 'react-icons/fa';
+
+const footerLinks = [
+    { label: 'À propos de nous', href: '/a-propos' },
+    { label: 'Nos croyances', href: '/nos-croyances' },
+    { label: 'Ministères', href: '/ministeres' },
+    { label: 'Églises locales', href: '/eglises-locales' },
+    { label: 'Ressources', href: '/ressources' },
+    { label: 'Médias', href: '/medias' },
+    { label: 'Nous soutenir', href: '/nous-soutenir' },
+    { label: 'FAQ', href: '/faq' },
+    { label: 'Contact', href: '/contact' },
+];
 
 const socialLinks = [
-    { icon: FaFacebookF, href: 'https://web.facebook.com/profile.php?id=61550748345489&_rdc=1&_rdr#', label: 'Facebook' },
-    { icon: FaTwitter, href: 'https://twitter.com/MouvementLIGHT', label: 'X' },
-    // { icon: FaLinkedinIn, href: 'https://www.linkedin.com/company/mouvement-light-foursquare', label: 'LinkedIn' },
-    // { icon: FaYoutube, href: 'https://www.youtube.com/@MouvementLIGHTFoursquare', label: 'YouTube' },
-    { icon: FaTiktok, href: 'https://www.tiktok.com/@light_foursquare?is_from_webapp=1&sender_device=pc', label: 'TikTok' }
+    {
+        icon: FaFacebookF,
+        href: 'https://web.facebook.com/profile.php?id=61550748345489&_rdc=1&_rdr#',
+        label: 'Facebook',
+    },
+    {
+        icon: FaTiktok,
+        href: 'https://www.tiktok.com/@light_foursquare?is_from_webapp=1&sender_device=pc',
+        label: 'TikTok',
+    },
 ];
-// const socialLinks = [
-//     { icon: Facebook, href: '#', label: 'Facebook' },
-//     { icon: Twitter, href: '#', label: 'X' },
-//     { icon: Linkedin, href: '#', label: 'LinkedIn' },
-//     { icon: Youtube, href: '#', label: 'YouTube' },
-// ];
 
 export default function SiteFooter() {
     return (
-        <footer className="mt-auto bg-[#3b0004] text-white">
-            <div className="mx-auto w-full max-w-7xl px-6 py-10 sm:px-8 lg:px-10">
-                <div className="grid gap-8 lg:grid-cols-12 lg:gap-8">
-                    <div className="lg:col-span-6">
-                        {/* <img
-                            src="/images/logo sans fond.png"
-                            alt="LIGHT Foursquare logo"
-                            className="h-16 w-auto object-contain sm:h-20"
-                        /> */}
-                        <h2 className="font-heading mt-4 max-w-xl text-lg font-semibold uppercase leading-snug tracking-wide text-white/95 sm:text-xl">
-                            Mouvement LIGHT Foursquare
-                        </h2>
-                        <p className="mt-3 max-w-2xl text-sm leading-6 text-white/80 sm:text-base">
-                            Une communauté engagée pour partager la vérité biblique, servir avec
-                            amour et impacter durablement les vies.
-                        </p>
-                    </div>
+        <footer className="mt-auto bg-[#062b49] text-white">
+            <div className="mx-auto flex w-full max-w-7xl flex-col gap-5 px-6 py-5 sm:px-8 lg:px-10">
+                <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+                    <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[13px] font-medium text-white/85">
+                        {footerLinks.map((link, index) => (
+                            <li key={link.label} className="flex items-center gap-4">
+                                <Link
+                                    href={link.href}
+                                    className="transition duration-300 hover:text-[#f2b233]"
+                                >
+                                    {link.label}
+                                </Link>
 
-                    <div className="lg:col-span-3">
-                        <h3 className="font-heading text-lg font-semibold text-white/95 sm:text-xl">
-                            Adresse
-                        </h3>
-                        <p className="mt-4 text-sm leading-6 text-white/80 sm:text-base">
-                            Foursquare Church – Plateau, rue Beyam
-                            09 BP 2877 Abidjan 09, Côte d’Ivoire.
-                        </p>
-                    </div>
-
-                    <div className="lg:col-span-3">
-                        <h3 className="font-heading text-lg font-semibold text-white/95 sm:text-xl">
-                            Contact
-                        </h3>
-                        <a
-                            href="mailto:administration@masa-ci.org"
-                            className="mt-4 inline-block text-sm text-white/85 underline underline-offset-4 transition hover:text-white sm:text-base"
-                        >
-                            
-                            cocody M'badon, Abidjan, Côte d'Ivoire
-                        </a>
-                        <p className="font-heading mt-4 text-lg font-semibold tracking-tight text-white sm:text-xl">
-                            +225 27 20 21 35 20
-                        </p>
-                    </div>
-                </div>
-
-                <div className="mt-8 flex flex-wrap items-center gap-3">
-                    {socialLinks.map(({ icon: Icon, href, label }) => (
-                        <a
-                            key={label}
-                            href={href}
-                            aria-label={label}
-                            className="inline-flex size-11 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/20"
-                        >
-                            <Icon className="size-5" />
-                        </a>
-                    ))}
-                </div>
-
-                <div className="mt-10 flex flex-col gap-5 border-t border-white/10 pt-6 text-sm text-white/80 sm:text-base md:flex-row md:items-center md:justify-between">
-                    <ul className="flex flex-wrap items-center gap-6">
-                        <li>
-                            <Link href="/news" className="transition hover:text-white">
-                                Actualités
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/convention" className="transition hover:text-white">
-                                Agenda
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/contact" className="transition hover:text-white">
-                                Contactez-nous
-                            </Link>
-                        </li>
+                                {index < footerLinks.length - 1 && (
+                                    <span className="hidden h-3 w-px bg-white/25 sm:inline-block" />
+                                )}
+                            </li>
+                        ))}
                     </ul>
 
                     <div className="flex items-center gap-4">
-                        <p className="text-sm text-white/80 sm:text-base">
-                            LIGHT Foursquare © 2026. Tous droits réservés.
+                        <span className="text-[13px] font-semibold text-white/85">
+                            Suivez-nous
+                        </span>
+
+                        <div className="flex items-center gap-3">
+                            {socialLinks.map(({ icon: Icon, href, label }) => (
+                                <a
+                                    key={label}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    aria-label={label}
+                                    className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white/10 text-white transition duration-300 hover:bg-[#f2b233] hover:text-[#062b49]"
+                                >
+                                    <Icon className="h-4 w-4" />
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="border-t border-white/10 pt-4">
+                    <div className="flex flex-col gap-4 text-[13px] text-white/75 md:flex-row md:items-center md:justify-between">
+                        <p>
+                            © 2026 Mouvement LIGHT Foursquare. Tous droits réservés.
                         </p>
-                        <a
-                            href="https://www.linkedin.com/in/yann-morel-effobi-brou-5474782a1/"
-                            target="_blank"
-                            rel="noreferrer"
-                            className="text-sm text-white/90 underline underline-offset-4 transition hover:text-white sm:text-base"
-                        >
-                            Conçu par BEYAM
-                        </a>
-                        <a
-                            // href="#top"
-                            // aria-label="Retour en haut"
-                            // className="inline-flex size-12 items-center justify-center bg-red-600 transition hover:bg-red-500"
-                        >
-                            <ArrowUp className="size-6" />
-                        </a>
+
+                        <div className="flex items-center gap-4">
+                            <a
+                                href="https://www.linkedin.com/in/yann-morel-effobi-brou-5474782a1/"
+                                target="_blank"
+                                rel="noreferrer"
+                                className="font-medium text-white/85 underline underline-offset-4 transition duration-300 hover:text-[#f2b233]"
+                            >
+                                Conçu par BEYAM
+                            </a>
+
+                            <a
+                                href="#top"
+                                aria-label="Retour en haut"
+                                className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 transition duration-300 hover:bg-[#f2b233] hover:text-[#062b49]"
+                            >
+                                <ArrowUp className="h-4 w-4" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

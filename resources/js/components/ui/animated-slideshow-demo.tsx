@@ -19,7 +19,7 @@ export const AboutDemo = () => {
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-6 px-6 py-8 md:grid-cols-2 md:gap-8 md:px-8 md:py-10">
         <ContainerStagger>
           <ContainerAnimated className="mb-2 block text-xs font-semibold uppercase tracking-[0.14em] text-rose-500 md:text-sm">
-            Light Convention 2026
+           Église Évangélique Foursquare Côte d’Ivoire
           </ContainerAnimated>
           <ContainerAnimated className="max-w-xl text-base font-normal leading-relaxed text-slate-700 md:text-lg">
             Grandir dans la foi, marcher dans la lumière. Un temps fort de prière, d’adoration et de communion fraternelle pour raviver notre foi et avancer ensemble dans la présence de Dieu.
