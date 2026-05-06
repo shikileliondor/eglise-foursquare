@@ -22,26 +22,26 @@ export default function NewsIndex({ news }) {
         <>
             <Head title="Actualités" />
 
-            <div className="min-h-screen bg-[#f5f5f3] text-zinc-800">
+            <div className="min-h-screen overflow-x-hidden bg-[#f5f5f3] text-zinc-800">
                 <PublicNavbar />
 
-                <section className="mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 lg:px-8">
+                <section className="mx-auto max-w-7xl px-4 pb-12 pt-24 sm:px-6 md:pb-16 lg:px-8">
                     <div className="mb-10 text-center">
                         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#bd7f6f]">Journal Light Foursquare</p>
-                        <h1 className="mt-3 font-serif text-5xl font-semibold text-zinc-700">Nos actualités</h1>
+                        <h1 className="mt-3 font-serif text-3xl font-semibold text-zinc-700 sm:text-4xl md:text-5xl">Nos actualités</h1>
                         <p className="mx-auto mt-3 max-w-2xl text-sm text-zinc-500">
                             Suivez les nouveautés, événements et annonces de la communauté avec une mise en page fidèle à l&apos;identité du site.
                         </p>
                     </div>
 
-                    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
                         {entries.map((item) => (
                             <article key={item.id} className="overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md">
-                                <img src={item.image_url || fallbackImage} alt={item.title} className="h-56 w-full object-cover" />
+                                <img src={item.image_url || fallbackImage} alt={item.title} className="h-48 w-full max-w-full object-cover sm:h-56" />
 
-                                <div className="p-6">
+                                <div className="p-4 sm:p-6">
                                     <p className="text-xs uppercase tracking-[0.18em] text-zinc-400">{formatDate(item.published_at)}</p>
-                                    <h2 className="mt-3 line-clamp-2 text-2xl font-semibold text-zinc-800">{item.title}</h2>
+                                    <h2 className="mt-3 line-clamp-2 text-xl font-semibold text-zinc-800 sm:text-2xl">{item.title}</h2>
                                     <p className="mt-3 line-clamp-3 text-sm text-zinc-600">{item.excerpt}</p>
 
                                     <Link

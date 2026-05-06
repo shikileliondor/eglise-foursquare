@@ -81,7 +81,7 @@ const NAV_ITEMS = [
         ],
     },
     // { label: 'Nouvelles', href: '/news' },
-    // { label: 'Contact', href: '/contact' },
+    { label: 'Contact', href: '/contact' },
 ];
 
 export default function PublicNavbar({ alwaysVisible = false }) {
@@ -140,7 +140,7 @@ export default function PublicNavbar({ alwaysVisible = false }) {
 
     return (
         <header
-            className={`fixed inset-x-0 top-0 z-50 transform transition-all duration-300 ease-out ${
+            className={`fixed inset-x-0 top-0 z-50 w-full transform transition-all duration-300 ease-out ${
                 hasScrolled
                     ? 'translate-y-0 opacity-100 pointer-events-auto'
                     : '-translate-y-full opacity-0 pointer-events-none'
@@ -207,139 +207,139 @@ export default function PublicNavbar({ alwaysVisible = false }) {
 
             {/* ── Barre principale ──────────────────────────────────────── */}
             <div className="border-b border-[#d5dee8] bg-white shadow-sm">
-    <div className="mx-auto flex w-full max-w-7xl items-center gap-4 px-4 py-2.5 sm:px-6 lg:px-8">
-        {/* Logo + identité */}
-        <Link
-            href="/"
-            className="flex shrink-0 items-center gap-3"
-            aria-label="Accueil Foursquare Côte d'Ivoire"
-        >
-            <div className="h-14 w-14 overflow-visible">
-                <img
-                    src="/images/logo.png"
-                    alt="Logo Foursquare Côte d'Ivoire"
-                    className="h-14 w-14 scale-[3.0] object-contain"
-                />
-            </div>
-
-            <div className="hidden flex-col sm:flex">
-                {/* <span
-                    className="text-[15px] font-bold leading-snug"
-                    style={{ color: MAIN_COLOR }}
-                >
-                    Foursquare
-                    <br />
-                    Côte d'Ivoire
-                </span>
-
-                <span className="mt-0.5 text-[8.5px] font-medium uppercase tracking-wide text-gray-400">
-                    Jésus sauve, guérit, baptise
-                    <br />
-                    et revient bientôt
-                </span> */}
-            </div>
-        </Link>
-
-        {/* Navigation desktop */}
-        <nav className="hidden flex-1 items-center justify-end gap-0.5 lg:flex">
-            {NAV_ITEMS.map((item) => {
-                const active = isLinkActive(item.href, item.children);
-
-                if (!item.children) {
-                    return (
-                        <Link
-                            key={item.label}
-                            href={item.href}
-                            className="border-b-2 px-2.5 py-2 text-[12.5px] font-semibold uppercase tracking-wide transition"
-                            style={{
-                                color: active ? ACCENT_COLOR : MAIN_COLOR,
-                                borderColor: active ? ACCENT_COLOR : 'transparent',
-                            }}
-                        >
-                            {item.label}
-                        </Link>
-                    );
-                }
-
-                return (
-                    <div key={item.label} className="group relative">
-                        <Link
-                            href={item.href}
-                            className="inline-flex items-center gap-0.5 border-b-2 px-2.5 py-2 text-[12.5px] font-semibold uppercase tracking-wide transition"
-                            style={{
-                                color: active ? ACCENT_COLOR : MAIN_COLOR,
-                                borderColor: active ? ACCENT_COLOR : 'transparent',
-                            }}
-                        >
-                            {item.label}
-                            <ChevronDown className="h-3.5 w-3.5" />
-                        </Link>
-
-                        {/* Dropdown */}
-                        <div className="invisible absolute left-0 top-full mt-1 w-64 rounded-xl border border-[#d5dee8] bg-white p-2 opacity-0 shadow-xl transition-all duration-150 group-hover:visible group-hover:opacity-100">
-                            {item.children.map((child) => (
-                                <Link
-                                    key={child.href}
-                                    href={child.href}
-                                    className="block rounded-lg px-3 py-2 text-[13px] font-medium transition hover:bg-[#f4f8fc]"
-                                    style={{ color: MAIN_COLOR }}
-                                >
-                                    {child.label}
-                                </Link>
-                            ))}
+                <div className="mx-auto flex w-full max-w-7xl items-center gap-3 px-4 py-2 sm:px-6 lg:gap-4 lg:px-8 lg:py-2.5">
+                    {/* Logo + identité */}
+                    <Link
+                        href="/"
+                        className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3"
+                        aria-label="Accueil Foursquare Côte d'Ivoire"
+                    >
+                        <div className="h-11 w-11 shrink-0 overflow-hidden sm:h-12 sm:w-12 lg:h-14 lg:w-14">
+                            <img
+                                src="/images/logo.png"
+                                alt="Logo Foursquare Côte d'Ivoire"
+                                className="h-full w-full object-contain"
+                            />
                         </div>
+
+                        <div className="hidden flex-col sm:flex">
+                            {/* <span
+                                className="text-[15px] font-bold leading-snug"
+                                style={{ color: MAIN_COLOR }}
+                            >
+                                Foursquare
+                                <br />
+                                Côte d'Ivoire
+                            </span>
+
+                            <span className="mt-0.5 text-[8.5px] font-medium uppercase tracking-wide text-gray-400">
+                                Jésus sauve, guérit, baptise
+                                <br />
+                                et revient bientôt
+                            </span> */}
+                        </div>
+                    </Link>
+
+                    {/* Navigation desktop */}
+                    <nav className="hidden min-w-0 flex-1 items-center justify-end gap-0.5 lg:flex">
+                        {NAV_ITEMS.map((item) => {
+                            const active = isLinkActive(item.href, item.children);
+
+                            if (!item.children) {
+                                return (
+                                    <Link
+                                        key={item.label}
+                                        href={item.href}
+                                        className="border-b-2 px-2.5 py-2 text-[12.5px] font-semibold uppercase tracking-wide transition"
+                                        style={{
+                                            color: active ? ACCENT_COLOR : MAIN_COLOR,
+                                            borderColor: active ? ACCENT_COLOR : 'transparent',
+                                        }}
+                                    >
+                                        {item.label}
+                                    </Link>
+                                );
+                            }
+
+                            return (
+                                <div key={item.label} className="group relative">
+                                    <Link
+                                        href={item.href}
+                                        className="inline-flex items-center gap-0.5 border-b-2 px-2.5 py-2 text-[12.5px] font-semibold uppercase tracking-wide transition"
+                                        style={{
+                                            color: active ? ACCENT_COLOR : MAIN_COLOR,
+                                            borderColor: active ? ACCENT_COLOR : 'transparent',
+                                        }}
+                                    >
+                                        {item.label}
+                                        <ChevronDown className="h-3.5 w-3.5" />
+                                    </Link>
+
+                                    {/* Dropdown */}
+                                    <div className="invisible absolute left-0 top-full mt-1 w-64 rounded-xl border border-[#d5dee8] bg-white p-2 opacity-0 shadow-xl transition-all duration-150 group-hover:visible group-hover:opacity-100">
+                                        {item.children.map((child) => (
+                                            <Link
+                                                key={child.href}
+                                                href={child.href}
+                                                className="block rounded-lg px-3 py-2 text-[13px] font-medium transition hover:bg-[#f4f8fc]"
+                                                style={{ color: MAIN_COLOR }}
+                                            >
+                                                {child.label}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </div>
+                            );
+                        })}
+
+                        {/* Bouton CTA */}
+                        {/* <Link
+                            href="/nous-rejoindre"
+                            className="ml-4 shrink-0 rounded-lg px-5 py-2 text-[13px] font-bold transition hover:brightness-95"
+                            style={{ backgroundColor: ACCENT_COLOR, color: MAIN_COLOR }}
+                        >
+                            S'inscrire
+                        </Link> */}
+                    </nav>
+
+                    {/* Burger mobile */}
+                    <div className="ml-auto flex items-center gap-3 lg:hidden">
+                        <Link
+                            href="/nous-rejoindre"
+                            className="hidden rounded-lg px-4 py-2 text-[13px] font-bold transition hover:brightness-95 md:inline-flex"
+                            style={{ backgroundColor: ACCENT_COLOR, color: MAIN_COLOR }}
+                        >
+                            S'inscrire
+                        </Link>
+
+                        <button
+                            type="button"
+                            onClick={() => setIsMenuOpen((previous) => !previous)}
+                            className="rounded-md border border-[#d5dee8] p-2 transition hover:bg-[#f4f8fc]"
+                            aria-label="Ouvrir le menu"
+                            aria-expanded={isMenuOpen}
+                            aria-controls="mobile-menu"
+                            style={{ color: MAIN_COLOR }}
+                        >
+                            {isMenuOpen ? (
+                                <X className="h-5 w-5" />
+                            ) : (
+                                <Menu className="h-5 w-5" />
+                            )}
+                        </button>
                     </div>
-                );
-            })}
-
-            {/* Bouton CTA */}
-            {/* <Link
-                href="/nous-rejoindre"
-                className="ml-4 shrink-0 rounded-lg px-5 py-2 text-[13px] font-bold transition hover:brightness-95"
-                style={{ backgroundColor: ACCENT_COLOR, color: MAIN_COLOR }}
-            >
-                S'inscrire
-            </Link> */}
-        </nav>
-
-        {/* Burger mobile */}
-        <div className="ml-auto flex items-center gap-3 lg:hidden">
-            <Link
-                href="/nous-rejoindre"
-                className="hidden rounded-lg px-4 py-2 text-[13px] font-bold transition hover:brightness-95 md:inline-flex"
-                style={{ backgroundColor: ACCENT_COLOR, color: MAIN_COLOR }}
-            >
-                S'inscrire
-            </Link>
-
-            <button
-                type="button"
-                onClick={() => setIsMenuOpen((previous) => !previous)}
-                className="rounded-md border border-[#d5dee8] p-2"
-                aria-label="Ouvrir le menu"
-                aria-expanded={isMenuOpen}
-                aria-controls="mobile-menu"
-                style={{ color: MAIN_COLOR }}
-            >
-                {isMenuOpen ? (
-                    <X className="h-5 w-5" />
-                ) : (
-                    <Menu className="h-5 w-5" />
-                )}
-            </button>
-        </div>
-    </div>
-</div>
+                </div>
+            </div>
 
             {/* ── Menu mobile ───────────────────────────────────────────── */}
             {isMenuOpen && (
                 <div
                     id="mobile-menu"
-                    className="border-t border-[#d5dee8] bg-white px-4 py-4 lg:hidden"
+                    className="max-h-[calc(100vh-64px)] overflow-y-auto border-t border-[#d5dee8] bg-white px-4 py-4 shadow-xl lg:hidden"
                 >
                     {/* Liens rapides visibles sur mobile */}
                     <div
-                        className="mb-3 flex flex-wrap gap-x-4 gap-y-1.5 rounded-lg px-3 py-2.5 text-[12px]"
+                        className="mb-3 grid grid-cols-2 gap-x-3 gap-y-1.5 rounded-lg px-3 py-2.5 text-[12px] sm:flex sm:flex-wrap sm:gap-x-4"
                         style={{ backgroundColor: MAIN_COLOR }}
                     >
                         {TOP_LINKS.map((link) => {

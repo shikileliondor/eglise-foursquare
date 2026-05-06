@@ -25,22 +25,22 @@ export default function NewsShow({ news }) {
         <>
             <Head title={news.title} />
 
-            <div className="min-h-screen bg-[#f5f5f3] text-zinc-800">
+            <div className="min-h-screen overflow-x-hidden bg-[#f5f5f3] text-zinc-800">
                 <PublicNavbar />
 
-                <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+                <section className="mx-auto max-w-6xl px-4 pb-10 pt-24 sm:px-6 lg:px-8">
                     <Link href={route('news.index')} className="mb-8 inline-flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900">
                         <ChevronLeft className="h-4 w-4" />
                         Retour aux actualités
                     </Link>
 
                     <article className="overflow-hidden rounded-3xl bg-white shadow-sm">
-                        <img src={selectedPhoto || fallbackImage} alt={news.title} className="h-[420px] w-full object-cover" />
+                        <img src={selectedPhoto || fallbackImage} alt={news.title} className="h-[240px] w-full max-w-full object-cover sm:h-[340px] lg:h-[420px]" />
 
                         <div className="space-y-5 p-6 sm:p-10">
                             <p className="text-xs uppercase tracking-[0.18em] text-zinc-400">{formatDate(news.published_at)}</p>
-                            <h1 className="text-3xl font-semibold text-zinc-800 sm:text-4xl">{news.title}</h1>
-                            <p className="whitespace-pre-line text-base leading-8 text-zinc-600">{news.content}</p>
+                            <h1 className="text-2xl font-semibold leading-tight text-zinc-800 sm:text-3xl md:text-4xl">{news.title}</h1>
+                            <p className="whitespace-pre-line break-words text-sm leading-7 text-zinc-600 sm:text-base sm:leading-8">{news.content}</p>
 
                             <div>
                                 <h2 className="mb-3 text-lg font-semibold text-zinc-800">Photos de l&apos;actualité</h2>
