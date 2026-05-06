@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 
 import IntroScreen from '@/components/IntroScreen';
 
-const INTRO_TEXT_DURATION_MS = 2200;
-const INTRO_WAIT_BEFORE_EXIT_MS = 500;
-const INTRO_EXIT_DURATION_MS = 800;
+const INTRO_TEXT_DURATION_MS = 1700;
+const INTRO_WAIT_BEFORE_EXIT_MS = 350;
+const INTRO_EXIT_DURATION_MS = 450;
 
 export default function IntroIndex() {
     const [showIntro, setShowIntro] = useState(true);
