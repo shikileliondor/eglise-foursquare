@@ -5,13 +5,27 @@
 @tailwind utilities;
 
 @layer base {
+    :root {
+        --app-zoom: 1.1;
+    }
+
     html {
-        font-size: 90%;
+        font-size: 100%;
         overflow-x: hidden;
     }
 
     body {
+        zoom: var(--app-zoom);
         @apply overflow-x-hidden font-sans text-[15px] leading-7 text-slate-900 md:text-base;
+    }
+
+    @supports not (zoom: 1) {
+        body {
+            transform: scale(var(--app-zoom));
+            transform-origin: top left;
+            width: calc(100% / var(--app-zoom));
+            min-height: calc(100vh / var(--app-zoom));
+        }
     }
 
     h1,
