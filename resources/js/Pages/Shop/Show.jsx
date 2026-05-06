@@ -43,10 +43,10 @@ export default function ShopShow({ product, otherProducts = [], whatsappPhone = 
         <>
             <Head title={product.name} />
 
-            <div className="min-h-screen bg-[#f5f5f3] text-zinc-800">
+            <div className="min-h-screen overflow-x-hidden bg-[#f5f5f3] text-zinc-800">
                 <PublicNavbar />
 
-                <section className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
+                <section className="mx-auto max-w-6xl px-4 pb-10 pt-24 sm:px-6 lg:px-8">
                     <div className="mb-8 flex items-center justify-between">
                         <Link href={route('shop.index')} className="inline-flex items-center gap-2 text-sm text-zinc-600 hover:text-zinc-900">
                             <ChevronLeft className="h-4 w-4" />
@@ -54,14 +54,14 @@ export default function ShopShow({ product, otherProducts = [], whatsappPhone = 
                         </Link>
                     </div>
 
-                    <div className="grid gap-8 rounded-3xl bg-white p-6 shadow-sm lg:grid-cols-2 lg:p-10">
-                        <div className="rounded-3xl bg-[#e6e7de] p-8">
+                    <div className="grid grid-cols-1 gap-6 rounded-3xl bg-white p-4 shadow-sm sm:p-6 lg:grid-cols-2 lg:gap-8 lg:p-10">
+                        <div className="rounded-3xl bg-[#e6e7de] p-4 sm:p-8">
                             <img src={product.image_url || defaultImage} alt={product.name} className="mx-auto w-full max-w-lg object-contain" />
                         </div>
 
                         <div>
                             <p className="text-sm font-bold uppercase tracking-wide text-[#bd7f6f]">{product.name}</p>
-                            <h1 className="mt-2 text-3xl font-semibold text-zinc-800">{product.description || product.name}</h1>
+                            <h1 className="mt-2 text-2xl font-semibold leading-tight text-zinc-800 sm:text-3xl">{product.description || product.name}</h1>
 
                             <p className="mt-6 text-3xl font-bold text-zinc-700">{formatPrice(currentPrice)}</p>
 

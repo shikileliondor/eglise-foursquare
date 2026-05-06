@@ -91,7 +91,7 @@ export default function CartPanel({ open, onClose, cart }) {
             ) : null}
 
             <aside
-                className={`fixed right-0 top-0 z-50 h-full w-full max-w-md transform border-l border-zinc-200 bg-white p-6 shadow-xl transition-transform duration-300 ${
+                className={`fixed right-0 top-0 z-50 h-full w-full max-w-md transform overflow-y-auto border-l border-zinc-200 bg-white p-4 shadow-xl transition-transform duration-300 sm:p-6 ${
                     open ? 'translate-x-0' : 'translate-x-full'
                 } ${open ? 'pointer-events-auto' : 'pointer-events-none'}`}
             >
@@ -102,7 +102,7 @@ export default function CartPanel({ open, onClose, cart }) {
                     </button>
                 </div>
 
-                <div className="max-h-[42vh] space-y-3 overflow-y-auto pr-1">
+                <div className="max-h-[45vh] space-y-3 overflow-y-auto pr-1 sm:max-h-[42vh]">
                     {items.length === 0 ? (
                         <p className="rounded-2xl border border-dashed border-zinc-300 px-4 py-6 text-center text-sm text-zinc-500">
                             Aucun article pour le moment.

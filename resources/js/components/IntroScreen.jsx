@@ -48,24 +48,24 @@ export default function IntroScreen() {
             animate={{ y: 0 }}
             // Exit transition: whole intro slides up to reveal homepage.
             exit={{ y: '-100%', transition: { duration: 0.8, ease: 'easeInOut' } }}
-            className="fixed inset-0 z-50 flex h-screen items-center justify-center bg-white"
+            className="fixed inset-0 z-50 flex min-h-[100svh] items-center justify-center overflow-hidden bg-white px-4"
         >
             <div className="text-center">
                 <AnimatedLetters
                     text="LIGHT"
-                    className="font-chewy bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 bg-clip-text text-6xl font-extrabold tracking-[0.18em] text-transparent md:text-8xl"
+                    className="font-chewy bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 bg-clip-text text-5xl font-extrabold tracking-[0.12em] text-transparent sm:text-6xl md:text-8xl md:tracking-[0.18em]"
                     delay={0}
                 />
 
                 <AnimatedLetters
                     text="FOURSQUARE"
-                    className="font-chewy mt-4 text-3xl font-bold tracking-[0.22em] text-blue-600 md:text-5xl"
+                    className="font-chewy mt-4 text-2xl font-bold tracking-[0.12em] text-blue-600 sm:text-3xl md:text-5xl md:tracking-[0.22em]"
                     delay={0.5}
                 />
 
                 <AnimatedLetters
                     text="Living in God’s Holy Truth"
-                    className="font-chewy mt-6 text-xs uppercase tracking-[0.45em] text-gray-500 md:text-sm"
+                    className="font-chewy mt-6 text-[10px] uppercase tracking-[0.2em] text-gray-500 sm:text-xs md:text-sm md:tracking-[0.45em]"
                     delay={1.05}
                 />
             </div>

@@ -32,7 +32,7 @@ export default function IntroSplash({ show = true, onComplete }) {
                         className="pointer-events-none absolute h-[44vmin] w-[44vmin] rounded-full bg-gradient-to-r from-amber-300/35 via-orange-300/30 to-sky-400/35 blur-3xl"
                     />
 
-                    <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-6 text-center">
+                    <div className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-4 text-center sm:px-6">
                         <div className="relative overflow-hidden py-4">
                             <motion.span
                                 initial={{ x: '-130%', rotate: -8, opacity: 0.8 }}
@@ -45,7 +45,7 @@ export default function IntroSplash({ show = true, onComplete }) {
                                 initial={{ clipPath: 'inset(0 100% 0 0)', opacity: 0.15 }}
                                 animate={{ clipPath: 'inset(0 0% 0 0)', opacity: 1 }}
                                 transition={{ duration: 1.15, ease: [0.22, 1, 0.36, 1], delay: 0.32 }}
-                                className="relative z-20 text-6xl font-black uppercase tracking-[0.14em] text-transparent drop-shadow-[0_0_40px_rgba(255,198,84,0.3)] sm:text-7xl md:text-8xl lg:text-9xl"
+                                className="relative z-20 text-5xl font-black uppercase tracking-[0.08em] text-transparent drop-shadow-[0_0_40px_rgba(255,198,84,0.3)] sm:text-7xl sm:tracking-[0.14em] md:text-8xl lg:text-9xl"
                                 style={{
                                     backgroundImage:
                                         'linear-gradient(95deg, #FFE38A 0%, #FFB247 34%, #FF7C3D 56%, #66B8FF 100%)',
@@ -61,7 +61,7 @@ export default function IntroSplash({ show = true, onComplete }) {
                             initial={{ opacity: 0, y: 12 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.7, delay: 1.05, ease: 'easeOut' }}
-                            className="mt-5 text-xs font-medium uppercase tracking-[0.28em] text-slate-100/90 sm:text-sm"
+                            className="mt-5 text-[10px] font-medium uppercase tracking-[0.18em] text-slate-100/90 sm:text-sm sm:tracking-[0.28em]"
                         >
                             Living In God&apos;s Holy Truth
                         </motion.p>

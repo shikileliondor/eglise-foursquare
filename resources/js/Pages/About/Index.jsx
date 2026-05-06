@@ -27,7 +27,7 @@ export default function AboutIndex() {
         <>
             <Head title="À propos" />
 
-            <div className="min-h-screen bg-white text-slate-900">
+            <div className="min-h-screen overflow-x-hidden bg-white text-slate-900">
                 <PublicNavbar />
 
                 <main className="bg-white">
@@ -38,9 +38,9 @@ export default function AboutIndex() {
                         className="relative overflow-hidden border-b border-slate-200"
                     >
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(251,146,60,0.12),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(79,70,229,0.12),transparent_42%)]" />
-                        <div className="relative mx-auto max-w-6xl px-6 pb-20 pt-16 text-center md:pb-24 md:pt-24">
+                        <div className="relative mx-auto max-w-6xl px-4 pb-12 pt-24 text-center sm:px-6 md:pb-20 md:pt-28">
                             <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#c96442]">Light Foursquare</p>
-                            <h1 className="font-heading mt-5 text-4xl font-black uppercase leading-[0.95] tracking-tight text-[#260d10] sm:text-5xl md:text-6xl">
+                            <h1 className="font-heading mt-5 text-3xl font-black uppercase leading-tight tracking-tight text-[#260d10] sm:text-5xl md:text-6xl">
                                 À propos  de  Light
                             </h1>
                             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
@@ -50,8 +50,8 @@ export default function AboutIndex() {
                         </div>
                     </motion.section>
 
-                    <section className="py-16 md:py-20">
-                        <div className="mx-auto grid max-w-6xl gap-10 px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+                    <section className="py-10 md:py-16 lg:py-20">
+                        <div className="mx-auto grid max-w-6xl gap-8 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-10">
                             <motion.div
                                 initial={{ opacity: 0, x: -34 }}
                                 whileInView={{ opacity: 1, x: 0 }}
@@ -113,7 +113,7 @@ export default function AboutIndex() {
                         viewport={{ once: true, amount: 0.2 }}
                         className="border-y border-slate-200 bg-[#f8fafc] py-16 md:py-20"
                     >
-                        <div className="mx-auto max-w-4xl px-6 text-center">
+                        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
                             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#6a58c7]">Vision</p>
                             <p className="font-heading mx-auto mt-6 max-w-3xl text-2xl font-semibold leading-snug text-[#260d10] md:text-4xl">
                                 Former des jeunes leaders chrétiens capables d’influencer leur génération par la Parole,
@@ -122,8 +122,8 @@ export default function AboutIndex() {
                         </div>
                     </motion.section>
 
-                    <section className="py-16 md:py-20">
-                        <div className="mx-auto max-w-6xl px-6">
+                    <section className="py-10 md:py-16 lg:py-20">
+                        <div className="mx-auto max-w-6xl px-4 sm:px-6">
                             <motion.div
                                 variants={sectionReveal}
                                 initial="hidden"
