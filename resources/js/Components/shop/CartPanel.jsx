@@ -66,7 +66,7 @@ export default function CartPanel({ open, onClose, cart }) {
             setFeedback({ type: 'success', message: 'Commande enregistrée. Redirection WhatsApp...' });
 
             if (data?.whatsapp_url) {
-                window.location.href = data.whatsapp_url;
+                window.open(data.whatsapp_url, "_blank", "noopener,noreferrer");
             }
         } catch (error) {
             const firstMessage = Object.values(error?.response?.data?.errors ?? {})?.[0]?.[0];
