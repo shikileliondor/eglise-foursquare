@@ -99,7 +99,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
     }
 
     return (
-        <div className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-900">
+        <div className="min-h-screen bg-slate-50 text-slate-900">
             <PublicNavbar />
 
             {/* HERO - La grosse section du haut avec les images qui bougent */}
@@ -114,7 +114,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
                 <div className="absolute -right-14 top-[324px] hidden h-[220px] w-[220px] rounded-full border-[10px] border-white bg-[#FFD23F] lg:block" />
                 <div className="absolute -right-14 top-[483px] hidden h-[220px] w-[220px] rounded-full border-[10px] border-white bg-[#5B2C83] lg:block" />
 
-                <div className="relative mx-auto grid min-h-[520px] max-w-7xl grid-cols-1 items-start gap-8 px-4 py-8 sm:min-h-[560px] sm:py-10 md:px-6 lg:min-h-[620px] lg:grid-cols-[0.98fr_1.02fr] lg:py-12">
+                <div className="relative mx-auto grid min-h-[560px] max-w-7xl items-start gap-8 px-4 py-8 sm:py-10 md:px-6 lg:min-h-[620px] lg:grid-cols-[0.98fr_1.02fr] lg:py-12">
                     
                     {/* Partie gauche - le texte */}
                     <MotionSection delay={0.15}>
@@ -125,12 +125,12 @@ export default function HomePage({ products = [], latestNews = [] }) {
                                 animate="visible"
                                 variants={fadeUp}
                                 transition={{ duration: 0.55, delay: 0.05 }}
-                                className="mb-5 flex items-start sm:mb-7"
+                                className="mb-7 flex items-start"
                             >
                                 <img
                                     src="/images/logo.png"
                                     alt="Logo Église Évangélique Foursquare Côte d’Ivoire"
-                                    className="h-20 max-w-full object-contain sm:h-24 lg:h-28"
+                                    className="h-28 w-auto object-contain"
                                 />
                             </motion.div>
 
@@ -140,11 +140,11 @@ export default function HomePage({ products = [], latestNews = [] }) {
                                 animate="visible"
                                 variants={fadeUp}
                                 transition={{ duration: 0.6, delay: 0.14 }}
-                                className="max-w-[660px] text-left text-3xl font-black leading-[1.08] tracking-[-0.025em] text-black sm:text-4xl md:text-[40px] lg:text-[44px]"
+                                className="max-w-[660px] text-left text-[30px] font-black leading-[1.06] tracking-[-0.025em] text-black md:text-[34px] lg:text-[44px]"
                             >
-                                <span className="block">Convention Nationale</span>
+                                <span className="block whitespace-nowrap">Convention Nationale</span>
                                 <span className="block">2026</span>
-                                <span className="block text-[#CD1725]">de l’Église Foursquare</span>
+                                <span className="block whitespace-nowrap text-[#CD1725]">de l’Église Foursquare</span>
                                 <span className="block text-[#5B2C83]">Côte d’Ivoire</span>
                             </motion.h1>
 
@@ -205,7 +205,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
                                 <img
                                     src="/images/image 5.jpg"
                                     alt="Culte Foursquare"
-                                    className="h-[220px] w-full max-w-full object-cover object-[50%_30%] sm:h-[280px]"
+                                    className="h-[240px] w-full object-cover object-[50%_30%]"
                                 />
                             </motion.div>
                         </div>
@@ -302,12 +302,12 @@ export default function HomePage({ products = [], latestNews = [] }) {
                         {/* Bloc des actualités */}
                         <div className="overflow-hidden rounded-[24px] border border-black/5 bg-white shadow-[0_18px_50px_rgba(6,35,63,0.08)]">
                             {/* Les onglets */}
-                            <div className="flex items-center overflow-x-auto border-b border-black/5 px-3 [scrollbar-width:none] sm:px-5 [&::-webkit-scrollbar]:hidden">
+                            <div className="flex items-center border-b border-black/5 px-5">
                                 {['Actualités', 'Publications', 'Événements', 'Espace presse'].map((tab, index) => (
                                     <button
                                         key={tab}
                                         type="button"
-                                        className={`relative shrink-0 px-3 py-4 text-[11px] font-black transition sm:px-4 sm:text-xs ${
+                                        className={`relative px-4 py-4 text-xs font-black transition ${
                                             index === 0 ? 'text-[#CD1725]' : 'text-[#07172F]/55 hover:text-[#5B2C83]'
                                         }`}
                                     >
@@ -320,17 +320,17 @@ export default function HomePage({ products = [], latestNews = [] }) {
                             </div>
 
                             {/* La liste des actualités */}
-                            <div className="divide-y divide-black/5 px-3 sm:px-5">
+                            <div className="divide-y divide-black/5 px-5">
                                 {[
                                     { day: '10', month: 'MAI 2026', color: '#CD1725', title: 'Avis d’appel aux églises pour la Convention Nationale 2026', desc: 'Date limite d’inscription : 30 juin 2026' },
                                     { day: '03', month: 'MAI 2026', color: '#005AA9', title: 'Formation des responsables : Leadership et intégrité', desc: 'Du 15 au 17 mai 2026 à Abidjan' },
                                     { day: '26', month: 'AVR. 2026', color: '#FFD23F', title: 'Campagne nationale de prière et de jeûne', desc: 'Du 1er au 31 mai 2026 — Un mois pour notre nation' },
                                     { day: '18', month: 'AVR. 2026', color: '#5B2C83', title: "Nouvelles implantations d’églises en 2026", desc: '5 nouvelles œuvres lancées en Côte d’Ivoire' },
                                 ].map((item) => (
-                                    <a key={item.title} href="/actualites" className="group grid grid-cols-[44px_minmax(0,1fr)_18px] items-center gap-3 py-4 sm:grid-cols-[58px_minmax(0,1fr)_22px] sm:gap-4">
+                                    <a key={item.title} href="/actualites" className="group grid grid-cols-[58px_1fr_22px] items-center gap-4 py-4">
                                         <div className="text-center">
-                                            <div className="font-serif text-xl font-black leading-none sm:text-2xl" style={{ color: item.color }}>{item.day}</div>
-                                            <div className="mt-1 text-[8px] font-black uppercase tracking-wide text-[#07172F]/45 sm:text-[9px]">{item.month}</div>
+                                            <div className="font-serif text-2xl font-black leading-none" style={{ color: item.color }}>{item.day}</div>
+                                            <div className="mt-1 text-[9px] font-black uppercase tracking-wide text-[#07172F]/45">{item.month}</div>
                                         </div>
                                         <div>
                                             <h3 className="text-[13px] font-black leading-snug text-[#07172F] transition group-hover:text-[#CD1725] md:text-sm">{item.title}</h3>
@@ -354,12 +354,12 @@ export default function HomePage({ products = [], latestNews = [] }) {
                                 <p className="text-[10px] font-black uppercase tracking-[0.22em] text-[#CD1725]">Président national</p>
                             </div>
 
-                            <div className="relative mx-auto mt-4 flex h-[200px] items-end justify-center px-5 sm:h-[230px]">
-                                <div className="absolute bottom-0 h-[165px] w-[165px] rounded-full sm:h-[185px] sm:w-[185px] bg-gradient-to-br from-[#CD1725]/10 via-[#FFD23F]/20 to-[#5B2C83]/10" />
-                                <img src="/images/image 5.jpg" alt="Président national" className="relative z-10 h-[195px] max-w-full object-contain sm:h-[220px]" />
+                            <div className="relative mx-auto mt-4 flex h-[230px] items-end justify-center px-5">
+                                <div className="absolute bottom-0 h-[185px] w-[185px] rounded-full bg-gradient-to-br from-[#CD1725]/10 via-[#FFD23F]/20 to-[#5B2C83]/10" />
+                                <img src="/images/image 5.jpg" alt="Président national" className="relative z-10 h-[220px] w-auto object-contain" />
                             </div>
 
-                            <div className="bg-[#07172F] px-5 py-5 text-white sm:px-6">
+                            <div className="bg-[#07172F] px-6 py-5 text-white">
                                 <div className="flex items-center gap-1">
                                     <span className="h-1.5 w-8 rounded-full bg-[#CD1725]" />
                                     <span className="h-1.5 w-8 rounded-full bg-[#005AA9]" />
@@ -456,8 +456,8 @@ export default function HomePage({ products = [], latestNews = [] }) {
 
             {/* SLIDER ANIMÉ - le composant HoverSlider */}
             <MotionSection>
-                <section className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] py-10 md:py-16 lg:py-20">
-                    <div className="mx-auto max-w-6xl px-4 sm:px-6">
+                <section className="bg-[linear-gradient(180deg,#ffffff_0%,#f8fafc_100%)] py-16 md:py-20">
+                    <div className="mx-auto max-w-6xl px-6">
                         <HoverSliderDemo />
                     </div>
                 </section>
@@ -465,8 +465,8 @@ export default function HomePage({ products = [], latestNews = [] }) {
 
             {/* NOS ESPACES À DÉCOUVRIR - les grandes cartes images */}
             <MotionSection>
-                <section className="bg-[#f4f4f4] py-10 md:py-16 lg:py-20">
-                    <div className="mx-auto max-w-6xl px-4 sm:px-6">
+                <section className="bg-[#f4f4f4] py-16 md:py-20">
+                    <div className="mx-auto max-w-6xl px-6">
                         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#260d10]">Moments Light</p>
                         <h2 className="font-heading mt-4 text-3xl font-extrabold uppercase leading-tight text-[#260d10] md:text-4xl">Nos espaces à découvrir</h2>
 
@@ -503,11 +503,11 @@ export default function HomePage({ products = [], latestNews = [] }) {
                                                 : 'absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent'
                                         } />
                                         <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/10 to-transparent" />
-                                        <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-6">
+                                        <div className="absolute inset-0 flex flex-col justify-end p-6">
                                             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#f2b233] shadow-md">
                                                 <Icon size={24} strokeWidth={2.1} />
                                             </div>
-                                            <h3 className="whitespace-pre-line font-heading text-xl font-extrabold leading-[1.05] text-white sm:text-2xl drop-shadow-[0_3px_10px_rgba(0,0,0,0.65)]">{card.title}</h3>
+                                            <h3 className="whitespace-pre-line font-heading text-2xl font-extrabold leading-[1.05] text-white drop-shadow-[0_3px_10px_rgba(0,0,0,0.65)]">{card.title}</h3>
                                             <p className="mt-3 max-w-[92%] text-sm font-medium leading-snug text-white/95 drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]">{card.description}</p>
                                             <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#f2b233] drop-shadow-[0_2px_6px_rgba(0,0,0,0.65)] transition-all duration-300 group-hover:translate-x-1">
                                                 {card.cta} <span aria-hidden="true">→</span>
@@ -522,8 +522,8 @@ export default function HomePage({ products = [], latestNews = [] }) {
             </MotionSection>
              {/* BOUTIQUE */}
             <MotionSection>
-                <section className="bg-slate-50 py-10 md:py-16 lg:py-20">
-                    <div className="mx-auto max-w-6xl px-4 sm:px-6">
+                <section className="bg-slate-50 py-16 md:py-20">
+                    <div className="mx-auto max-w-6xl px-6">
                         <h2 className="font-heading mt-4 text-3xl font-extrabold uppercase leading-tight text-[#260d10] md:text-4xl">foursquare gi</h2>
                         <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
                             Retrouvez des articles exclusifs Light Foursquare pour affirmer votre identité en tant que jeune chrétien engagé.
@@ -541,7 +541,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
             {/* PIED DE PAGE - AVIS OFFICIEL + MINISTÈRES */}
             <MotionSection>
                 <section className="bg-[#f4f4f4] pb-12">
-                    <div className="mx-auto max-w-6xl px-4 sm:px-6">
+                    <div className="mx-auto max-w-6xl px-6">
                         {/* Bande jaune d'avis officiel */}
                         {/* <motion.div
                             variants={staggerItem}
@@ -576,7 +576,7 @@ export default function HomePage({ products = [], latestNews = [] }) {
                             <div className="mt-8 grid grid-cols-2 items-center gap-x-8 gap-y-7 md:grid-cols-3 lg:grid-cols-6">
                                 {ministryLogos.map((item) => (
                                     <div key={item.name} className="flex min-h-[58px] items-center justify-center">
-                                        <img src={item.image} alt={item.name} className="max-h-12 max-w-[150px] object-contain" loading="lazy" />
+                                        <img src={item.image} alt={item.name} className="max-h-16 max-w-[150px] object-contain" loading="lazy" />
                                     </div>
                                 ))}
                             </div>
@@ -585,26 +585,26 @@ export default function HomePage({ products = [], latestNews = [] }) {
 
                     {/* NEWSLETTER */}
                     <div className="mt-10 bg-[#eee8dd] py-7">
-                        <div className="mx-auto flex max-w-6xl flex-col gap-5 px-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
-                            <form className="flex w-full max-w-3xl flex-col overflow-hidden bg-white shadow-sm sm:flex-row">
-                                <label htmlFor="newsletter-email" className="flex min-h-[58px] items-center border-b border-[#e7dfd4] px-4 text-sm font-bold text-[#260d10] sm:w-[310px] sm:border-b-0 sm:border-r sm:px-6">
+                        <div className="mx-auto flex max-w-6xl flex-col gap-5 px-6 lg:flex-row lg:items-center lg:justify-between">
+                            <form className="flex w-full max-w-3xl flex-col bg-white shadow-sm sm:flex-row">
+                                <label htmlFor="newsletter-email" className="flex min-h-[58px] items-center border-b border-[#e7dfd4] px-6 text-sm font-bold text-[#260d10] sm:w-[310px] sm:border-b-0 sm:border-r">
                                     Recevoir les actualités de l’Église
                                 </label>
-                                <div className="flex min-w-0 flex-1 items-center">
+                                <div className="flex flex-1 items-center">
                                     <input
                                         id="newsletter-email"
                                         type="email"
                                         placeholder="Votre e-mail"
-                                        className="h-[58px] min-w-0 flex-1 border-none bg-white px-4 text-sm text-[#260d10] outline-none placeholder:text-[#7b7166] focus:ring-0 sm:px-6"
+                                        className="h-[58px] flex-1 border-none bg-white px-6 text-sm text-[#260d10] outline-none placeholder:text-[#7b7166] focus:ring-0"
                                     />
-                                    <button type="submit" aria-label="S’inscrire à la newsletter" className="flex h-[58px] w-14 shrink-0 items-center justify-center sm:w-16 text-[#260d10] transition duration-300 hover:bg-[#f2b233] hover:text-white">
+                                    <button type="submit" aria-label="S’inscrire à la newsletter" className="flex h-[58px] w-16 items-center justify-center text-[#260d10] transition duration-300 hover:bg-[#f2b233] hover:text-white">
                                         <Send size={20} />
                                     </button>
                                 </div>
                             </form>
                             <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                                 <span className="text-sm font-semibold text-[#260d10]">Plus d’informations ?</span>
-                                <a href="#contact" className="inline-flex min-h-[54px] w-full items-center justify-center bg-[#f2b233] px-8 sm:w-auto sm:px-10 text-sm font-extrabold uppercase text-[#260d10] transition duration-300 hover:bg-[#d99a1c]">
+                                <a href="#contact" className="inline-flex min-h-[54px] items-center justify-center bg-[#f2b233] px-10 text-sm font-extrabold uppercase text-[#260d10] transition duration-300 hover:bg-[#d99a1c]">
                                     Contact
                                 </a>
                             </div>
