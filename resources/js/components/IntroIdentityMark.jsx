@@ -3,59 +3,44 @@ import { motion } from 'framer-motion';
 const LOGO_TRANSITION = { duration: 0.65, ease: [0.22, 1, 0.36, 1] };
 const TEXT_TRANSITION = { duration: 0.7, ease: [0.22, 1, 0.36, 1] };
 
-export default function IntroIdentityMark({ idPrefix = 'intro' }) {
-    const textClasses = 'fill-[#0f2f5f] text-[18px] font-bold uppercase tracking-[0.18em] sm:text-[20px]';
-    const topCurveId = `${idPrefix}-top-curve`;
-    const bottomCurveId = `${idPrefix}-bottom-curve`;
+export default function IntroIdentityMark() {
+    const textClasses = 'text-[#0f2f5f] text-[clamp(0.68rem,2.6vw,1.25rem)] font-bold uppercase leading-tight tracking-[0.14em] sm:tracking-[0.18em]';
 
     return (
         <div
-            className="relative h-[min(82vw,420px)] w-[min(82vw,420px)] max-h-[72svh] max-w-[72svh]"
+            className="grid w-full max-w-5xl grid-cols-[minmax(0,1fr)_clamp(6.5rem,22vw,10rem)_minmax(0,1fr)] items-center gap-3 px-2 text-center sm:gap-6 sm:px-6 md:gap-10"
             aria-label="Je suis Foursquare, je suis missionnaire"
         >
-            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 360 360" role="img" aria-hidden="true">
-                <defs>
-                    <path id={topCurveId} d="M 56 180 A 124 124 0 0 1 304 180" />
-                    <path id={bottomCurveId} d="M 56 214 A 124 124 0 0 0 304 214" />
-                </defs>
-
-                <motion.text
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ ...TEXT_TRANSITION, delay: 0.55 }}
-                    className={textClasses}
-                    textAnchor="middle"
-                >
-                    <textPath href={`#${topCurveId}`} startOffset="50%">
-                        JE SUIS FOURSQUARE
-                    </textPath>
-                </motion.text>
-
-                <motion.text
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ ...TEXT_TRANSITION, delay: 1.05 }}
-                    className={textClasses}
-                    textAnchor="middle"
-                >
-                    <textPath href={`#${bottomCurveId}`} startOffset="50%">
-                        JE SUIS MISSIONNAIRE
-                    </textPath>
-                </motion.text>
-            </svg>
+            <motion.p
+                initial={{ opacity: 0, x: -24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ ...TEXT_TRANSITION, delay: 0.55 }}
+                className={`${textClasses} justify-self-end text-right`}
+            >
+                JE SUIS FOURSQUARE
+            </motion.p>
 
             <motion.div
                 initial={{ opacity: 0, scale: 0.94 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={LOGO_TRANSITION}
-                className="absolute inset-0 flex items-center justify-center"
+                className="flex aspect-square w-full items-center justify-center justify-self-center"
             >
                 <img
                     src="/images/logo.png"
                     alt="Logo officiel Foursquare Côte d’Ivoire"
-                    className="h-[34%] w-[34%] max-h-36 max-w-36 object-contain sm:h-[36%] sm:w-[36%]"
+                    className="h-full w-full object-contain"
                 />
             </motion.div>
+
+            <motion.p
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ ...TEXT_TRANSITION, delay: 1.05 }}
+                className={`${textClasses} justify-self-start text-left`}
+            >
+                JE SUIS MISSIONNAIRE
+            </motion.p>
         </div>
     );
 }
