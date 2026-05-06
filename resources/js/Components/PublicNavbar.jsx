@@ -211,14 +211,14 @@ export default function PublicNavbar({ alwaysVisible = false }) {
                     {/* Logo + identité */}
                     <Link
                         href="/"
-                        className="flex min-w-0 shrink-0 items-center gap-2 sm:gap-3"
+                        className="flex min-w-0 shrink items-center gap-2 sm:gap-3"
                         aria-label="Accueil Foursquare Côte d'Ivoire"
                     >
-                        <div className="h-11 w-11 shrink-0 overflow-hidden sm:h-12 sm:w-12 lg:h-14 lg:w-14">
+                        <div className="h-12 w-[min(11rem,calc(100vw-5.75rem))] shrink overflow-hidden sm:h-14 sm:w-48 lg:h-16 lg:w-56">
                             <img
                                 src="/images/logo.png"
                                 alt="Logo Foursquare Côte d'Ivoire"
-                                className="h-full w-full object-contain"
+                                className="h-full w-full object-contain object-left"
                             />
                         </div>
 
