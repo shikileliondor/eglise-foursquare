@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --brand-blue: #225ca3;
+    --brand-blue-dark: #123b68;
+    --brand-gold: #fbb51b;
+    --brand-surface: #f7f7f5;
+}
+
 @layer base {
     html {
         font-size: 110%;
@@ -11,7 +18,9 @@
     }
 
     body {
-        @apply overflow-x-hidden font-sans text-[15px] leading-7 text-slate-900 md:text-base;
+        @apply overflow-x-hidden font-sans text-[15px] leading-7 md:text-base;
+        color: var(--brand-blue-dark);
+        background: var(--brand-surface);
     }
 
     h1,
@@ -25,6 +34,200 @@
 }
 
 @layer utilities {
+    .convention-pattern {
+        background-color: #fafafa;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='390' viewBox='0 0 560 390'%3E%3Cg fill='none' stroke='%23ececea' stroke-width='26' stroke-linecap='round' opacity='.72'%3E%3Cpath d='M-35 64C35 16 99 31 133 83s84 69 145 21 132-56 191-3 95 38 129 4'/%3E%3Cpath d='M-54 246c72-68 145-66 194-7s102 71 161 20 129-64 197-13 104 35 132 4'/%3E%3Cpath d='M56-48c-4 72 22 119 75 142s70 76 43 135-18 111 42 145'/%3E%3Cpath d='M391-49c-31 65-17 118 36 151s65 80 28 132-30 105 24 145'/%3E%3C/g%3E%3C/svg%3E");
+        background-position: center top;
+        background-size: 560px 390px;
+        animation: convention-pattern-drift 28s ease-in-out infinite alternate;
+    }
+
+    .hero-logo-float {
+        animation: hero-logo-float 5s ease-in-out infinite;
+    }
+
+    .hero-color-orb {
+        animation: hero-orb-float 6s ease-in-out infinite;
+        will-change: transform;
+    }
+
+    .hero-color-orb-delay-1 {
+        animation-delay: -1.5s;
+    }
+
+    .hero-color-orb-delay-2 {
+        animation-delay: -3s;
+    }
+
+    .hero-color-orb-delay-3 {
+        animation-delay: -4.5s;
+    }
+
+    .hero-color-line {
+        animation: hero-line-pulse 2.8s ease-in-out infinite;
+        transform-origin: left center;
+    }
+
+    .hero-color-line:nth-child(2) {
+        animation-delay: .18s;
+    }
+
+    .hero-color-line:nth-child(3) {
+        animation-delay: .36s;
+    }
+
+    .hero-color-line:nth-child(4) {
+        animation-delay: .54s;
+    }
+
+    .hero-theme-glow {
+        animation: hero-theme-glow 3.4s ease-in-out infinite;
+    }
+
+    .hero-cta-shine {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-cta-shine::after {
+        position: absolute;
+        top: -70%;
+        left: -45%;
+        width: 28%;
+        height: 240%;
+        content: '';
+        background: linear-gradient(90deg, transparent, rgb(255 255 255 / 45%), transparent);
+        transform: rotate(18deg);
+        animation: hero-button-shine 3.8s ease-in-out infinite;
+    }
+
+    .whatsapp-float {
+        animation: whatsapp-float 3.2s ease-in-out infinite;
+        will-change: translate;
+    }
+
+    .hero-image-motion {
+        animation: hero-image-breathe 7s ease-in-out infinite;
+        will-change: transform;
+    }
+
+    .hero-image-motion-delay-1 {
+        animation-delay: -1.75s;
+    }
+
+    .hero-image-motion-delay-2 {
+        animation-delay: -3.5s;
+    }
+
+    .hero-image-motion-delay-3 {
+        animation-delay: -5.25s;
+    }
+
+    @keyframes hero-image-breathe {
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.045);
+        }
+    }
+
+    @keyframes convention-pattern-drift {
+        from {
+            background-position: center top;
+        }
+
+        to {
+            background-position: 36px 20px;
+        }
+    }
+
+    @keyframes hero-logo-float {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-7px);
+        }
+    }
+
+    @keyframes hero-orb-float {
+        0%,
+        100% {
+            transform: translate3d(0, 0, 0) scale(1);
+        }
+
+        50% {
+            transform: translate3d(-10px, -12px, 0) scale(1.035);
+        }
+    }
+
+    @keyframes hero-line-pulse {
+        0%,
+        100% {
+            opacity: .7;
+            transform: scaleX(.72);
+        }
+
+        50% {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+    }
+
+    @keyframes hero-theme-glow {
+        0%,
+        100% {
+            filter: drop-shadow(0 8px 18px rgb(0 90 169 / 12%));
+        }
+
+        50% {
+            filter: drop-shadow(0 12px 25px rgb(255 210 63 / 30%));
+        }
+    }
+
+    @keyframes hero-button-shine {
+        0%,
+        52% {
+            left: -45%;
+        }
+
+        78%,
+        100% {
+            left: 125%;
+        }
+    }
+
+    @keyframes whatsapp-float {
+        0%,
+        100% {
+            translate: 0 0;
+            box-shadow: 0 10px 24px rgb(37 211 102 / 32%);
+        }
+
+        50% {
+            translate: 0 -9px;
+            box-shadow: 0 17px 30px rgb(37 211 102 / 42%);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .convention-pattern,
+        .hero-logo-float,
+        .hero-color-orb,
+        .hero-color-line,
+        .hero-theme-glow,
+        .hero-cta-shine::after,
+        .whatsapp-float,
+        .hero-image-motion {
+            animation: none;
+        }
+    }
+
     .font-chewy {
         font-family: 'Chewy', cursive;
     }

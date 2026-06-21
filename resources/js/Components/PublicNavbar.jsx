@@ -22,65 +22,10 @@ const SOCIAL_LINKS = [
 // ─── Navigation principale ─────────────────────────────────────────────────
 const NAV_ITEMS = [
     { label: 'Accueil', href: '/' },
-    {
-        label: 'Notre Eglise',
-        href: '/notre-eglise',
-        children: [
-            { label: 'Histoire', href: '/notre-eglise/histoire' },
-            { label: 'Vision nationale', href: '/notre-eglise/vision-nationale' },
-            { label: 'Le Quadruple Évangile', href: '/notre-eglise/quadruple-evangile' },
-            { label: "Début de l'Église en Côte d'Ivoire", href: '/notre-eglise/debut-en-cote-divoire' },
-            { label: 'Confession de foi', href: '/notre-eglise/confession-de-foi' },
-        ],
-    },
-    {
-        label: 'Organisation',
-        href: '/organisation',
-        children: [
-            { label: 'Présidence nationale', href: '/notre-eglise/presidence-nationale' },
-            { label: 'Bureau national', href: '/organisation/bureau-national' },
-            { label: 'Départements', href: '/organisation/departements' },
-            { label: 'Districts', href: '/organisation/districts' },
-            { label: 'Comités nationaux', href: '/organisation/comites-nationaux' },
-            { label: 'Eglise locales', href: '/organisation/eglises-locales' },
-            { label: 'Pasteurs & responsables', href: '/organisation/pasteurs-responsables' },
-        ],
-    },
-    {
-        label: 'Ministères',
-        href: '/ministeres',
-        children: [
-            { label: 'FORCE', href: '/ministeres/force' },
-            { label: 'FORME', href: '/ministeres/forme' },
-            { label: 'Life Church Biblique', href: '/ministeres/life-church-biblique' },
-            { label: 'École de mission', href: '/ministeres/ecole-de-mission' },
-            { label: 'Louange & adoration', href: '/ministeres/louange-adoration' },
-        ],
-    },
-    {
-        label: 'Evénements',
-        href: '/evenements',
-        children: [
-            { label: 'Convention nationale', href: '/evenements/convention-nationale' },
-            { label: 'Programmes nationaux', href: '/evenements/programmes-nationaux' },
-            { label: 'Conférences', href: '/evenements/conférences' },
-            { label: 'Calendrier', href: '/evenements/calendrier' },
-        ],
-    },
-    // { label: 'Événements', href: '/evenements' },
-    {
-        label: 'Ressources',
-        href: '/ressources',
-        children: [
-            { label: 'Messages', href: '/ressources/messages' },
-            { label: 'Enseignements', href: '/ressources/enseignements' },
-            { label: 'Communiqués', href: '/ressources/communiques' },
-            { label: 'Documents officiels', href: '/ressources/documents-officiels' },
-            { label: 'Galerie média', href: '/ressources/galerie-media' },
-            { label: 'Boutique', href: '/ressources/boutique' },
-        ],
-    },
-    // { label: 'Nouvelles', href: '/news' },
+    { label: 'La Convention', href: '/convention' },
+    { label: 'Programme', href: '/convention#programme' },
+    { label: 'Boutique officielle', href: '/shop' },
+    { label: 'Infos pratiques', href: '/convention#infos-pratiques' },
     { label: 'Contact', href: '/contact' },
 ];
 
@@ -126,6 +71,18 @@ export default function PublicNavbar({ alwaysVisible = false }) {
         setOpenMobileSection(null);
     }, [url]);
 
+    useEffect(() => {
+        const previousOverflow = document.body.style.overflow;
+
+        if (isMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        }
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+        };
+    }, [isMenuOpen]);
+
     const normalizedUrl = useMemo(() => {
         return url.endsWith('/') && url !== '/' ? url.slice(0, -1) : url;
     }, [url]);
@@ -139,15 +96,16 @@ export default function PublicNavbar({ alwaysVisible = false }) {
     };
 
     return (
+        <>
         <header
             className={`fixed inset-x-0 top-0 z-50 w-full transform transition-all duration-300 ease-out ${
                 hasScrolled
                     ? 'translate-y-0 opacity-100 pointer-events-auto'
-                    : '-translate-y-full opacity-0 pointer-events-none'
+                    : 'translate-y-0 opacity-100 pointer-events-auto lg:-translate-y-full lg:opacity-0 lg:pointer-events-none'
             }`}
         >
             {/* ── Barre supérieure ──────────────────────────────────────── */}
-            <div style={{ backgroundColor: MAIN_COLOR }} className="hidden lg:block">
+            <div style={{ backgroundColor: MAIN_COLOR }} className="hidden">
                 <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-1.5 sm:px-6 lg:px-8">
                     {/* Liens gauche */}
                     <div className="flex items-center gap-1 text-[12px] text-white/80">
@@ -317,7 +275,7 @@ export default function PublicNavbar({ alwaysVisible = false }) {
             {isMenuOpen && (
                 <div
                     id="mobile-menu"
-                    className="max-h-[calc(100vh-64px)] overflow-y-auto border-t border-[#d5dee8] bg-white px-4 py-4 shadow-xl lg:hidden"
+                    className="max-h-[calc(100dvh-80px)] overflow-y-auto overscroll-contain border-t border-[#d5dee8] bg-white px-4 py-4 shadow-xl lg:hidden"
                 >
                     {/* Liens rapides visibles sur mobile */}
                     <div
@@ -420,5 +378,7 @@ export default function PublicNavbar({ alwaysVisible = false }) {
                 </div>
             )}
         </header>
+        <div className="h-[81px] shrink-0 lg:hidden" aria-hidden="true" />
+        </>
     );
 }

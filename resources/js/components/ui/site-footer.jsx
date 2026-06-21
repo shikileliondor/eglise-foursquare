@@ -74,7 +74,7 @@ export default function SiteFooter() {
                 <div className="border-t border-white/10 pt-4">
                     <div className="flex flex-col items-center gap-4 text-center text-[13px] leading-6 text-white/75 md:flex-row md:items-center md:justify-between md:text-left">
                         <p>
-                            © 2026 Mouvement LIGHT Foursquare. Tous droits réservés.
+                            © 2026 Eglise évangelique internationale Foursquare. Tous droits réservés.
                         </p>
 
                         <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
